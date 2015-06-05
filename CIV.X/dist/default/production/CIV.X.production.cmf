@@ -1,0 +1,593 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$/tmp/cgtjuRFXX.obj
+end_init CODE 0 0 0 2 2
+config CONFIG 0 2007 2007 2 2
+$dist/default/production/CIV.X.production.obj
+cinit CODE 0 7EA 7EA 16 2
+text1 CODE 0 633 633 3D 2
+text2 CODE 0 5F8 5F8 3B 2
+text3 CODE 0 5AD 5AD 24 2
+text4 CODE 0 6BC 6BC 82 2
+text5 CODE 0 54A 54A 1E 2
+text6 CODE 0 670 670 4C 2
+text7 CODE 0 503 503 11 2
+text8 CODE 0 4DB 4DB 9 2
+text9 CODE 0 58A 58A 23 2
+text10 CODE 0 4E4 4E4 F 2
+text11 CODE 0 73E 73E AC 2
+text12 CODE 0 568 568 22 2
+text13 CODE 0 52E 52E 1C 2
+maintext CODE 0 5D1 5D1 27 2
+cstackCOMMON COMMON 1 70 70 C 1
+cstackBANK0 BANK0 1 56 56 B 1
+inittext CODE 0 4F3 4F3 10 2
+bssBANK0 BANK0 1 20 20 1C 1
+idataBANK0 CODE 0 514 514 1A 2
+strings STRING 0 2 2 4A 2
+swtext1 CONST 0 4C 4C C 2
+dataBANK0 BANK0 1 3C 3C 1A 1
+clrtext CODE 0 4D3 4D3 8 2
+bssCOMMON COMMON 1 7C 7C 2 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 61-6F 1
+RAM A0-EF 1
+RAM 110-16F 1
+RAM 190-1EF 1
+BANK0 61-6F 1
+BANK1 A0-EF 1
+BANK2 110-16F 1
+BANK3 190-1EF 1
+CONST 58-4D2 2
+CONST 800-FFF 2
+ENTRY 58-4D2 2
+ENTRY 800-FFF 2
+IDLOC 2000-2003 2
+STACK 110-16F 1
+CODE 58-4D2 2
+CODE 800-FFF 2
+SFR0 0-1F 1
+SFR1 80-9F 1
+SFR2 100-10F 1
+SFR3 180-18F 1
+EEDATA 2100-21FF 2
+STRCODE 58-4D2 2
+STRCODE 800-FFF 2
+STRING 58-4D2 2
+STRING 800-FFF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production/CIV.X.production.obj
+4C swtext1 CONST >23:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+4D3 clrtext CODE >750:/tmp/cgtPqsVle
+4D3 clrtext CODE >751:/tmp/cgtPqsVle
+4D4 clrtext CODE >752:/tmp/cgtPqsVle
+4D4 clrtext CODE >753:/tmp/cgtPqsVle
+4D5 clrtext CODE >754:/tmp/cgtPqsVle
+4D6 clrtext CODE >755:/tmp/cgtPqsVle
+4D7 clrtext CODE >756:/tmp/cgtPqsVle
+4D8 clrtext CODE >757:/tmp/cgtPqsVle
+4D9 clrtext CODE >758:/tmp/cgtPqsVle
+4DA clrtext CODE >759:/tmp/cgtPqsVle
+4DB text8 CODE >79:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+4DC text8 CODE >81:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+4DF text8 CODE >82:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+4E3 text8 CODE >83:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+4E4 text10 CODE >187:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+4E4 text10 CODE >190:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+4E9 text10 CODE >192:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+4EB text10 CODE >198:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+4EC text10 CODE >200:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+4F3 inittext CODE >777:/tmp/cgtPqsVle
+4F3 inittext CODE >778:/tmp/cgtPqsVle
+4F4 inittext CODE >779:/tmp/cgtPqsVle
+4F5 inittext CODE >780:/tmp/cgtPqsVle
+4F6 inittext CODE >781:/tmp/cgtPqsVle
+4F7 inittext CODE >788:/tmp/cgtPqsVle
+4F7 inittext CODE >789:/tmp/cgtPqsVle
+4F9 inittext CODE >790:/tmp/cgtPqsVle
+4FA inittext CODE >791:/tmp/cgtPqsVle
+4FB inittext CODE >792:/tmp/cgtPqsVle
+4FC inittext CODE >793:/tmp/cgtPqsVle
+4FD inittext CODE >794:/tmp/cgtPqsVle
+4FE inittext CODE >795:/tmp/cgtPqsVle
+4FF inittext CODE >796:/tmp/cgtPqsVle
+500 inittext CODE >797:/tmp/cgtPqsVle
+501 inittext CODE >798:/tmp/cgtPqsVle
+502 inittext CODE >799:/tmp/cgtPqsVle
+503 text7 CODE >50:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+503 text7 CODE >52:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+506 text7 CODE >53:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+50A text7 CODE >54:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+513 text7 CODE >55:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+52E text13 CODE >204:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+52F text13 CODE >206:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+540 text13 CODE >207:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+549 text13 CODE >208:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+54A text5 CODE >59:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+54A text5 CODE >61:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+54D text5 CODE >62:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+559 text5 CODE >63:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+567 text5 CODE >62:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+568 text12 CODE >210:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+56B text12 CODE >213:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+580 text12 CODE >215:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+588 text12 CODE >217:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+58A text9 CODE >37:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+58B text9 CODE >39:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+590 text9 CODE >40:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+5A1 text9 CODE >41:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+5A3 text9 CODE >42:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+5AA text9 CODE >43:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+5AC text9 CODE >44:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+5AD text3 CODE >261:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5AD text3 CODE >263:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5B1 text3 CODE >264:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5B5 text3 CODE >265:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5BC text3 CODE >266:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5C0 text3 CODE >267:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5C6 text3 CODE >269:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5CA text3 CODE >271:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5CE text3 CODE >272:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5D1 maintext CODE >83:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5D1 maintext CODE >89:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5D2 maintext CODE >91:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5D3 maintext CODE >94:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5D6 maintext CODE >95:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5D7 maintext CODE >97:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5DA maintext CODE >98:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5DB maintext CODE >100:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5DE maintext CODE >101:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5DF maintext CODE >103:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5E2 maintext CODE >89:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5F7 maintext CODE >85:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+5F8 text2 CODE >16:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+5F8 text2 CODE >18:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+5F9 text2 CODE >25:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+5FB text2 CODE >29:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+5FD text2 CODE >33:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+5FF text2 CODE >37:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+601 text2 CODE >41:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+605 text2 CODE >42:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+60D text2 CODE >43:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+60E text2 CODE >45:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+610 text2 CODE >49:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+614 text2 CODE >50:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+618 text2 CODE >18:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+618 text2 CODE >53:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+61C text2 CODE >20:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+61E text2 CODE >22:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+61F text2 CODE >23:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+630 text2 CODE >18:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+631 text2 CODE >54:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+633 text1 CODE >155:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+633 text1 CODE >157:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+635 text1 CODE >158:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+63F text1 CODE >160:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+646 text1 CODE >162:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+64A text1 CODE >163:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+651 text1 CODE >165:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+657 text1 CODE >166:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+661 text1 CODE >163:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+662 text1 CODE >169:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+668 text1 CODE >170:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+669 text1 CODE >183:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+670 text6 CODE >86:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+670 text6 CODE >89:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+674 text6 CODE >90:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+677 text6 CODE >91:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+678 text6 CODE >92:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+679 text6 CODE >94:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+682 text6 CODE >95:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+686 text6 CODE >96:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+688 text6 CODE >97:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+691 text6 CODE >98:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+695 text6 CODE >99:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+69C text6 CODE >100:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+6A0 text6 CODE >101:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+6A7 text6 CODE >102:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+6AB text6 CODE >103:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+6AD text6 CODE >105:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+6B1 text6 CODE >106:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+6B5 text6 CODE >107:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+6B8 text6 CODE >108:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+6BB text6 CODE >109:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+6BC text4 CODE >109:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6BC text4 CODE >111:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6C2 text4 CODE >113:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6C6 text4 CODE >114:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6C7 text4 CODE >115:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6C9 text4 CODE >116:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6CC text4 CODE >117:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6CD text4 CODE >118:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6D0 text4 CODE >119:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6D1 text4 CODE >120:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6DD text4 CODE >122:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6E0 text4 CODE >123:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6E9 text4 CODE >124:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6ED text4 CODE >125:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6F1 text4 CODE >126:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6F8 text4 CODE >127:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+6FC text4 CODE >128:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+700 text4 CODE >129:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+707 text4 CODE >130:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+70F text4 CODE >141:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+715 text4 CODE >143:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+716 text4 CODE >144:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+71A text4 CODE >145:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+71E text4 CODE >146:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+725 text4 CODE >147:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+729 text4 CODE >148:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+72D text4 CODE >149:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+731 text4 CODE >150:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+737 text4 CODE >151:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+73E text11 CODE >221:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+73E text11 CODE >226:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+74B text11 CODE >228:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+75A text11 CODE >226:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+76B text11 CODE >231:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+76D text11 CODE >232:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+76F text11 CODE >233:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+77C text11 CODE >235:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+786 text11 CODE >237:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+78E text11 CODE >238:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+794 text11 CODE >241:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7A3 text11 CODE >242:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7A9 text11 CODE >244:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7B4 text11 CODE >246:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7BB text11 CODE >247:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7BC text11 CODE >248:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7C0 text11 CODE >251:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7C5 text11 CODE >253:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7CC text11 CODE >254:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7D2 text11 CODE >233:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7E3 text11 CODE >258:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7E9 text11 CODE >259:/Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+7EA cinit CODE >699:/tmp/cgtPqsVle
+7EA cinit CODE >702:/tmp/cgtPqsVle
+7EA cinit CODE >763:/tmp/cgtPqsVle
+7EB cinit CODE >764:/tmp/cgtPqsVle
+7EC cinit CODE >767:/tmp/cgtPqsVle
+7ED cinit CODE >768:/tmp/cgtPqsVle
+7EE cinit CODE >769:/tmp/cgtPqsVle
+7EF cinit CODE >770:/tmp/cgtPqsVle
+7F0 cinit CODE >771:/tmp/cgtPqsVle
+7F3 cinit CODE >803:/tmp/cgtPqsVle
+7F4 cinit CODE >804:/tmp/cgtPqsVle
+7F5 cinit CODE >805:/tmp/cgtPqsVle
+7F6 cinit CODE >806:/tmp/cgtPqsVle
+7F7 cinit CODE >807:/tmp/cgtPqsVle
+7F8 cinit CODE >808:/tmp/cgtPqsVle
+7F9 cinit CODE >809:/tmp/cgtPqsVle
+7FA cinit CODE >810:/tmp/cgtPqsVle
+7FB cinit CODE >811:/tmp/cgtPqsVle
+7FD cinit CODE >817:/tmp/cgtPqsVle
+7FD cinit CODE >818:/tmp/cgtPqsVle
+7FE cinit CODE >819:/tmp/cgtPqsVle
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+___latbits 1 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__LdataBANK0 0 0 ABS 0 dataBANK0 -
+__Hspace_0 2009 0 ABS 0 - -
+__Hspace_1 7E 0 ABS 0 - -
+__Hspace_2 0 0 ABS 0 - -
+__Hspace_3 0 0 ABS 0 - -
+__HidataBANK0 0 0 ABS 0 idataBANK0 -
+__end_of_data_division A94 0 CODE 0 text13 dist/default/production/CIV.X.production.obj
+__Heeprom_data 0 0 EEDATA 3 eeprom_data -
+__CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+ltemp0 7E 0 ABS 0 - dist/default/production/CIV.X.production.obj
+ltemp1 82 0 ABS 0 - dist/default/production/CIV.X.production.obj
+ltemp2 86 0 ABS 0 - dist/default/production/CIV.X.production.obj
+ltemp3 80 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__Hstrings 0 0 ABS 0 strings -
+_FERR C2 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_RCIF 65 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_TXIF 64 0 ABS 0 - dist/default/production/CIV.X.production.obj
+___sp 0 0 STACK 2 stack /tmp/cgtjuRFXX.obj
+_frag 2A 0 BANK0 1 bssBANK0 dist/default/production/CIV.X.production.obj
+_main BA2 0 CODE 0 maintext dist/default/production/CIV.X.production.obj
+btemp 7E 0 ABS 0 - dist/default/production/CIV.X.production.obj
+ltemp 7E 0 ABS 0 - dist/default/production/CIV.X.production.obj
+start 0 0 CODE 0 init /tmp/cgtjuRFXX.obj
+ttemp 7E 0 ABS 0 - dist/default/production/CIV.X.production.obj
+wtemp 7E 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__size_of_main 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__HbssCOMMON 0 0 ABS 0 bssCOMMON -
+__LidataBANK0 0 0 ABS 0 idataBANK0 -
+__Hpowerup 0 0 CODE 0 powerup -
+ttemp0 7E 0 ABS 0 - dist/default/production/CIV.X.production.obj
+ttemp1 81 0 ABS 0 - dist/default/production/CIV.X.production.obj
+ttemp2 84 0 ABS 0 - dist/default/production/CIV.X.production.obj
+ttemp3 87 0 ABS 0 - dist/default/production/CIV.X.production.obj
+ttemp4 7F 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__end_of_lcd_clear A28 0 CODE 0 text7 dist/default/production/CIV.X.production.obj
+__end_of_lcd_write B5A 0 CODE 0 text9 dist/default/production/CIV.X.production.obj
+__size_of_lcd_clear 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+intlevel0 0 0 CODE 0 functab /tmp/cgtjuRFXX.obj
+intlevel1 0 0 CODE 0 functab /tmp/cgtjuRFXX.obj
+intlevel2 0 0 CODE 0 functab /tmp/cgtjuRFXX.obj
+intlevel3 0 0 CODE 0 functab /tmp/cgtjuRFXX.obj
+intlevel4 0 0 CODE 0 functab /tmp/cgtjuRFXX.obj
+intlevel5 0 0 CODE 0 functab /tmp/cgtjuRFXX.obj
+__LbssCOMMON 0 0 ABS 0 bssCOMMON -
+__size_of_lcd_write 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_swap_freq_data E7C 0 CODE 0 text11 dist/default/production/CIV.X.production.obj
+_receive_data 30 0 BANK0 1 bssBANK0 dist/default/production/CIV.X.production.obj
+wtemp0 7E 0 ABS 0 - dist/default/production/CIV.X.production.obj
+wtemp1 80 0 ABS 0 - dist/default/production/CIV.X.production.obj
+wtemp2 82 0 ABS 0 - dist/default/production/CIV.X.production.obj
+wtemp3 84 0 ABS 0 - dist/default/production/CIV.X.production.obj
+wtemp4 86 0 ABS 0 - dist/default/production/CIV.X.production.obj
+wtemp5 88 0 ABS 0 - dist/default/production/CIV.X.production.obj
+wtemp6 7F 0 ABS 0 - dist/default/production/CIV.X.production.obj
+swap_freq_data@i 7A 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+swap_freq_data@j 78 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+__Hfunctab 0 0 CODE 0 functab -
+__Hclrtext 0 0 ABS 0 clrtext -
+_lcd_clear A06 0 CODE 0 text7 dist/default/production/CIV.X.production.obj
+_lcd_write B14 0 CODE 0 text9 dist/default/production/CIV.X.production.obj
+__Lmaintext 0 0 ABS 0 maintext -
+data_division@freq 74 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+__end_of_swap_freq_data FD4 0 CODE 0 text11 dist/default/production/CIV.X.production.obj
+trans_value@val 60 0 BANK0 1 cstackBANK0 dist/default/production/CIV.X.production.obj
+_INTCON B 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__end_of_ci_v_init E7C 0 CODE 0 text4 dist/default/production/CIV.X.production.obj
+__end_of_trans_value B14 0 CODE 0 text12 dist/default/production/CIV.X.production.obj
+_check_data 9C8 0 CODE 0 text10 dist/default/production/CIV.X.production.obj
+__size_of_ci_v_init 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__size_of_getch 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+start_initialization FD4 0 CODE 0 cinit dist/default/production/CIV.X.production.obj
+__size_of_indicate_frequency_data 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_ci_v_init D78 0 CODE 0 text4 dist/default/production/CIV.X.production.obj
+clear_ram0 9A6 0 CODE 0 clrtext dist/default/production/CIV.X.production.obj
+__pcstackBANK0 56 0 BANK0 1 cstackBANK0 dist/default/production/CIV.X.production.obj
+_TRISB2 432 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_TRISB5 435 0 ABS 0 - dist/default/production/CIV.X.production.obj
+___int_sp 0 0 STACK 2 stack /tmp/cgtjuRFXX.obj
+__Hbank0 0 0 ABS 0 bank0 -
+__Hbank1 0 0 ABS 0 bank1 -
+__Hbank2 0 0 ABS 0 bank2 -
+__Hbank3 0 0 ABS 0 bank3 -
+__Hcinit 1000 0 CODE 0 cinit -
+__Hidloc 0 0 IDLOC 0 idloc -
+__end_of_check_data 9E6 0 CODE 0 text10 dist/default/production/CIV.X.production.obj
+__Hstack 0 0 STACK 2 stack -
+__stringbase 22 0 STRING 0 strings dist/default/production/CIV.X.production.obj
+__Hmaintext 0 0 ABS 0 maintext -
+__size_of_lcd_goto 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__size_of_lcd_init 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__size_of_lcd_puts 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__Hcommon 0 0 ABS 0 common -
+__Hconfig 4012 0 CONFIG 0 config -
+__Lbank0 0 0 ABS 0 bank0 -
+__Lbank1 0 0 ABS 0 bank1 -
+__Lbank2 0 0 ABS 0 bank2 -
+__Lbank3 0 0 ABS 0 bank3 -
+__Lcinit FD4 0 CODE 0 cinit -
+__Lidloc 0 0 IDLOC 0 idloc -
+__Lstack 0 0 STACK 2 stack -
+_scanning_frequency_data C66 0 CODE 0 text1 dist/default/production/CIV.X.production.obj
+__Linittext 0 0 ABS 0 inittext -
+__Habs1 0 0 ABS 0 abs1 -
+__Hcode 0 0 ABS 0 code -
+__Hinit 0 0 CODE 0 init -
+__Hsfr0 0 0 ABS 0 sfr0 -
+__Hsfr1 0 0 ABS 0 sfr1 -
+__Hsfr2 0 0 ABS 0 sfr2 -
+__Hsfr3 0 0 ABS 0 sfr3 -
+__Htext 0 0 ABS 0 text -
+__Labs1 0 0 ABS 0 abs1 -
+__Lcode 0 0 ABS 0 code -
+__Linit 0 0 CODE 0 init -
+__Lsfr0 0 0 ABS 0 sfr0 -
+__Lsfr1 0 0 ABS 0 sfr1 -
+__Lsfr2 0 0 ABS 0 sfr2 -
+__Lsfr3 0 0 ABS 0 sfr3 -
+__Ltext 0 0 ABS 0 text -
+__end_of_scanning_frequency_data CE0 0 CODE 0 text1 dist/default/production/CIV.X.production.obj
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+_RB0 30 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_RB1 31 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_RB3 33 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__S0 2009 0 ABS 0 - -
+__S1 7E 0 ABS 0 - -
+__S2 0 0 ABS 0 - -
+__S3 0 0 ABS 0 - -
+_status_num 2E 0 BANK0 1 bssBANK0 dist/default/production/CIV.X.production.obj
+__size_of_trans_value 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__CFG_BOREN$ON 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_lcd_goto 9B6 0 CODE 0 text8 dist/default/production/CIV.X.production.obj
+_lcd_init CE0 0 CODE 0 text6 dist/default/production/CIV.X.production.obj
+_lcd_puts A94 0 CODE 0 text5 dist/default/production/CIV.X.production.obj
+data_division@num 70 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+__Lintentry 0 0 CODE 0 intentry -
+__stringtab 4 0 STRING 0 strings dist/default/production/CIV.X.production.obj
+reset_vec 0 0 CODE 0 reset_vec /tmp/cgtjuRFXX.obj
+__pdataBANK0 3C 0 BANK0 1 dataBANK0 dist/default/production/CIV.X.production.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
+__end_of_lcd_goto 9C8 0 CODE 0 text8 dist/default/production/CIV.X.production.obj
+__end_of_lcd_init D78 0 CODE 0 text6 dist/default/production/CIV.X.production.obj
+__end_of_lcd_puts AD0 0 CODE 0 text5 dist/default/production/CIV.X.production.obj
+__CFG_FCMEN$ON 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_err_cnt 28 0 BANK0 1 bssBANK0 dist/default/production/CIV.X.production.obj
+__ptext10 9C8 0 CODE 0 text10 dist/default/production/CIV.X.production.obj
+__ptext11 E7C 0 CODE 0 text11 dist/default/production/CIV.X.production.obj
+__ptext12 AD0 0 CODE 0 text12 dist/default/production/CIV.X.production.obj
+__ptext13 A5C 0 CODE 0 text13 dist/default/production/CIV.X.production.obj
+__pmaintext BA2 0 CODE 0 maintext dist/default/production/CIV.X.production.obj
+__Lcommon 0 0 ABS 0 common -
+__Lconfig 400E 0 CONFIG 0 config -
+__CFG_CP$OFF 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_rate_num 2C 0 BANK0 1 bssBANK0 dist/default/production/CIV.X.production.obj
+__CFG_IESO$ON 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__Hinittext 0 0 ABS 0 inittext -
+lcd_init@init_value 77 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+stackhi 0 0 ABS 0 - /tmp/cgtjuRFXX.obj
+stacklo 0 0 ABS 0 - /tmp/cgtjuRFXX.obj
+trans_value@F1039 4C 0 BANK0 1 dataBANK0 dist/default/production/CIV.X.production.obj
+__end_of__stringtab 24 0 STRING 0 strings dist/default/production/CIV.X.production.obj
+__size_of_swap_freq_data 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_2 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__pbssCOMMON 7C 0 COMMON 1 bssCOMMON dist/default/production/CIV.X.production.obj
+init_fetch0 9E6 0 CODE 0 inittext dist/default/production/CIV.X.production.obj
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+_data_num 7C 0 COMMON 1 bssCOMMON dist/default/production/CIV.X.production.obj
+hex2char@F1019 3C 0 BANK0 1 dataBANK0 dist/default/production/CIV.X.production.obj
+__Lend_init 0 0 CODE 0 end_init -
+__CFG_LVP$ON 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__size_of_check_data 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+end_of_initialization FFA 0 CODE 0 cinit dist/default/production/CIV.X.production.obj
+__Hintentry 0 0 CODE 0 intentry -
+_data_division A5C 0 CODE 0 text13 dist/default/production/CIV.X.production.obj
+__Lstrings 0 0 ABS 0 strings -
+__Hreset_vec 0 0 CODE 0 reset_vec -
+_freq_data 20 0 BANK0 1 bssBANK0 dist/default/production/CIV.X.production.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+lcd_write@c 72 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+__ptext1 C66 0 CODE 0 text1 dist/default/production/CIV.X.production.obj
+__ptext2 BF0 0 CODE 0 text2 dist/default/production/CIV.X.production.obj
+__ptext3 B5A 0 CODE 0 text3 dist/default/production/CIV.X.production.obj
+__ptext4 D78 0 CODE 0 text4 dist/default/production/CIV.X.production.obj
+__ptext5 A94 0 CODE 0 text5 dist/default/production/CIV.X.production.obj
+__ptext6 CE0 0 CODE 0 text6 dist/default/production/CIV.X.production.obj
+__ptext7 A06 0 CODE 0 text7 dist/default/production/CIV.X.production.obj
+__ptext8 9B6 0 CODE 0 text8 dist/default/production/CIV.X.production.obj
+__ptext9 B14 0 CODE 0 text9 dist/default/production/CIV.X.production.obj
+__Lpowerup 0 0 CODE 0 powerup -
+__Leeprom_data 0 0 EEDATA 3 eeprom_data -
+trans_value@ascii_array 56 0 BANK0 1 cstackBANK0 dist/default/production/CIV.X.production.obj
+__Lreset_vec 0 0 CODE 0 reset_vec -
+__CFG_FOSC$HS 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_indicate_frequency_data B5A 0 CODE 0 text3 dist/default/production/CIV.X.production.obj
+__end_of__initialization FFA 0 CODE 0 cinit dist/default/production/CIV.X.production.obj
+__Lfunctab 0 0 CODE 0 functab -
+swap_freq_data@space_frag 76 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+__end_of_indicate_frequency_data BA2 0 CODE 0 text3 dist/default/production/CIV.X.production.obj
+__pidataBANK0 A28 0 CODE 0 idataBANK0 dist/default/production/CIV.X.production.obj
+__Lclrtext 0 0 ABS 0 clrtext -
+lcd_puts@s 73 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+_trans_value AD0 0 CODE 0 text12 dist/default/production/CIV.X.production.obj
+__CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+__Hend_init 4 0 CODE 0 end_init -
+init_ram0 9EE 0 CODE 0 inittext dist/default/production/CIV.X.production.obj
+lcd_goto@pos 73 0 COMMON 1 cstackCOMMON dist/default/production/CIV.X.production.obj
+__end_of_main BF0 0 CODE 0 maintext dist/default/production/CIV.X.production.obj
+_ANSEL 9B 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_CMCON 9C 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__end_of_getch C66 0 CODE 0 text2 dist/default/production/CIV.X.production.obj
+_PORTA 5 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_PORTB 6 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_RCREG 1A 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_RCSTA 18 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_SPBRG 99 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_TRISA 85 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_TRISB 86 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_TXREG 19 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_TXSTA 98 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__Hram 0 0 ABS 0 ram -
+__Lram 0 0 ABS 0 ram -
+__CFG_CCPMX$RB0 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+_getch BF0 0 CODE 0 text2 dist/default/production/CIV.X.production.obj
+__CFG_CPD$OFF 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__size_of_data_division 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__HdataBANK0 0 0 ABS 0 dataBANK0 -
+__size_of_scanning_frequency_data 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__initialization FD4 0 CODE 0 cinit dist/default/production/CIV.X.production.obj
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production/CIV.X.production.obj
+__CFG_WRT$OFF 0 0 ABS 0 - dist/default/production/CIV.X.production.obj
+__pstrings 4 0 STRING 0 strings dist/default/production/CIV.X.production.obj
+__pswtext1 98 0 CONST 0 swtext1 dist/default/production/CIV.X.production.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+- 1 7E 2
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+cinit 0 7EA FD4 16 2
+text1 0 633 C66 3D 2
+text2 0 5F8 BF0 3B 2
+text3 0 5AD B5A 24 2
+text4 0 6BC D78 82 2
+text5 0 54A A94 1E 2
+text6 0 670 CE0 4C 2
+text7 0 503 A06 11 2
+text8 0 4DB 9B6 9 2
+text9 0 58A B14 23 2
+text10 0 4E4 9C8 F 2
+text11 0 73E E7C AC 2
+text12 0 568 AD0 22 2
+text13 0 52E A5C 1C 2
+maintext 0 5D1 BA2 27 2
+cstackCOMMON 1 70 70 E 1
+inittext 0 4F3 9E6 10 2
+reset_vec 0 0 0 2 2
+bssBANK0 1 20 20 41 1
+idataBANK0 0 514 A28 1A 2
+strings 0 2 4 4A 2
+swtext1 0 4C 98 C 2
+clrtext 0 4D3 9A6 8 2
+config 0 2007 400E 2 2

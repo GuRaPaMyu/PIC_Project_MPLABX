@@ -1,0 +1,5 @@
+ build/default/production/usart.d  \
+ build/default/production/usart.p1:  \
+ usart.c  \
+lcd.h  \
+usart.h 
