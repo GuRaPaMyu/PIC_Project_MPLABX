@@ -1,0 +1,40 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F648A ]
+[d frameptr 6 ]
+"62 /Applications/microchip/xc8/v1.34/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /Applications/microchip/xc8/v1.34/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.34/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"18 /Users/YudaiHashimoto/MPLABXProjects/7seg_test.X/7seg.c
+[v _main main `(i  1 e 2 0 ]
+"44
+[v _seg_light seg_light `(v  1 e 0 0 ]
+"221 /Applications/microchip/xc8/v1.34/include/pic16f648a.h
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"743
+[v _CMCON CMCON `VEuc  1 e 1 @31 ]
+"881
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"942
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1380
+[v _RA0 RA0 `VEb  1 e 0 @40 ]
+"18 /Users/YudaiHashimoto/MPLABXProjects/7seg_test.X/7seg.c
+[v _main main `(i  1 e 2 0 ]
+{
+"25
+[v main@button button `i  1 a 2 5 ]
+"42
+} 0
+"44
+[v _seg_light seg_light `(v  1 e 0 0 ]
+{
+[v seg_light@num num `i  1 p 2 0 ]
+"70
+} 0
