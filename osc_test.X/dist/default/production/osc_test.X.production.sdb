@@ -1,0 +1,237 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F1822 ]
+[d frameptr 6 ]
+"464 /Applications/microchip/xc8/v1.34/sources/common/doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
+[v i1_printf printf `(i  1 e 2 0 ]
+"62 /Applications/microchip/xc8/v1.34/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /Applications/microchip/xc8/v1.34/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.34/sources/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+[v i1___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"6 /Applications/microchip/xc8/v1.34/sources/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+[v i1___lwmod __lwmod `(ui  1 e 2 0 ]
+"6 /Applications/microchip/xc8/v1.34/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"8 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/adc.c
+[v _adc_init adc_init `(v  1 e 0 0 ]
+"18
+[v _adc_read adc_read `(i  1 e 2 0 ]
+"31
+[v _adc_itrpt_init adc_itrpt_init `(v  1 e 0 0 ]
+"40
+[v _adc_itrpt_go adc_itrpt_go `(v  1 e 0 0 ]
+"47
+[v _adc_itrpt_read adc_itrpt_read `(i  1 e 2 0 ]
+"33 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/osc_test.c
+[v _main main `(i  1 e 2 0 ]
+"48
+[v _init init `(v  1 e 0 0 ]
+"61
+[v _adc adc `II(v  1 e 0 0 ]
+"5 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/usart.c
+[v _putch putch `(v  1 e 0 0 ]
+[v i1_putch putch `(v  1 e 0 0 ]
+"13
+[v _getch getch `(uc  1 e 1 0 ]
+"337 /Applications/microchip/xc8/v1.34/include/pic12f1822.h
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"414
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+"1213
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1609
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1747
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"1766
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+"1785
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
+[s S20 . 1 `uc 1 ADPREF0 1 0 :1:0 
+`uc 1 ADPREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"1894
+[s S28 . 1 `uc 1 ADPREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+]
+[u S32 . 1 `S20 1 . 1 0 `S28 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES32  1 e 1 @158 ]
+"2578
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2810
+[v _RCREG RCREG `VEuc  1 e 1 @409 ]
+"2829
+[v _TXREG TXREG `VEuc  1 e 1 @410 ]
+"2859
+[v _SPBRG SPBRG `VEuc  1 e 1 @411 ]
+"2944
+[v _RCSTA RCSTA `VEuc  1 e 1 @413 ]
+"3005
+[v _TXSTA TXSTA `VEuc  1 e 1 @414 ]
+"4980
+[v _ADIE ADIE `VEb  1 e 0 @1166 ]
+"4982
+[v _ADIF ADIF `VEb  1 e 0 @142 ]
+"4984
+[v _ADON ADON `VEb  1 e 0 @1256 ]
+"5210
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"5212
+[v _GO GO `VEb  1 e 0 @1257 ]
+"5384
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"5424
+[v _RCIF RCIF `VEb  1 e 0 @141 ]
+"5634
+[v _TRISA0 TRISA0 `VEb  1 e 0 @1120 ]
+"5636
+[v _TRISA1 TRISA1 `VEb  1 e 0 @1121 ]
+"5674
+[v _TXIF TXIF `VEb  1 e 0 @140 ]
+"354 /Applications/microchip/xc8/v1.34/sources/common/doprnt.c
+[v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
+"33 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/osc_test.c
+[v _main main `(i  1 e 2 0 ]
+{
+"46
+} 0
+"464 /Applications/microchip/xc8/v1.34/sources/common/doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"528
+[v printf@val val `ui  1 a 2 40 ]
+"499
+[v printf@c c `c  1 a 1 42 ]
+"506
+[v printf@prec prec `c  1 a 1 39 ]
+"508
+[v printf@flag flag `uc  1 a 1 38 ]
+"466
+[v printf@ap ap `[1]*.4v  1 a 1 37 ]
+"464
+[v printf@f f `*.25DCCuc  1 p 2 29 ]
+"1541
+} 0
+"5 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/usart.c
+[v _putch putch `(v  1 e 0 0 ]
+{
+[v putch@byte byte `uc  1 a 1 wreg ]
+[v putch@byte byte `uc  1 a 1 wreg ]
+[v putch@byte byte `uc  1 a 1 15 ]
+"11
+} 0
+"6 /Applications/microchip/xc8/v1.34/sources/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 28 ]
+"6
+[v ___lwmod@divisor divisor `ui  1 p 2 23 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 25 ]
+"26
+} 0
+"6 /Applications/microchip/xc8/v1.34/sources/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 20 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 22 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 15 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 17 ]
+"31
+} 0
+"48 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/osc_test.c
+[v _init init `(v  1 e 0 0 ]
+{
+"59
+} 0
+"31 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/adc.c
+[v _adc_itrpt_init adc_itrpt_init `(v  1 e 0 0 ]
+{
+"38
+} 0
+"8
+[v _adc_init adc_init `(v  1 e 0 0 ]
+{
+"16
+} 0
+"18
+[v _adc_read adc_read `(i  1 e 2 0 ]
+{
+[v adc_read@channel channel `uc  1 a 1 wreg ]
+[v adc_read@channel channel `uc  1 a 1 wreg ]
+"20
+[v adc_read@channel channel `uc  1 a 1 19 ]
+"29
+} 0
+"40
+[v _adc_itrpt_go adc_itrpt_go `(v  1 e 0 0 ]
+{
+[v adc_itrpt_go@channel channel `uc  1 a 1 wreg ]
+[v adc_itrpt_go@channel channel `uc  1 a 1 wreg ]
+"42
+[v adc_itrpt_go@channel channel `uc  1 a 1 17 ]
+"45
+} 0
+"61 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/osc_test.c
+[v _adc adc `II(v  1 e 0 0 ]
+{
+"68
+} 0
+"464 /Applications/microchip/xc8/v1.34/sources/common/doprnt.c
+[v i1_printf printf `(i  1 e 2 0 ]
+{
+[v i1printf@val printf `ui  1 a 2 11 ]
+[v i1printf@c printf `c  1 a 1 13 ]
+[v i1printf@prec printf `c  1 a 1 10 ]
+[v i1printf@flag printf `uc  1 a 1 9 ]
+[v i1printf@ap printf `[1]*.4v  1 a 1 8 ]
+[v i1printf@f f `*.25DCCuc  1 p 2 0 ]
+"1541
+} 0
+"5 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/usart.c
+[v i1_putch putch `(v  1 e 0 0 ]
+{
+[v i1putch@byte byte `uc  1 a 1 wreg ]
+[v i1putch@byte byte `uc  1 a 1 wreg ]
+[v i1putch@byte byte `uc  1 a 1 0 ]
+"11
+} 0
+"6 /Applications/microchip/xc8/v1.34/sources/common/lwmod.c
+[v i1___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+[v i1___lwmod@counter __lwmod `uc  1 a 1 13 ]
+[v i1___lwmod@divisor divisor `ui  1 p 2 8 ]
+[v i1___lwmod@dividend dividend `ui  1 p 2 10 ]
+"26
+} 0
+"6 /Applications/microchip/xc8/v1.34/sources/common/lwdiv.c
+[v i1___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+[v i1___lwdiv@quotient __lwdiv `ui  1 a 2 5 ]
+[v i1___lwdiv@counter __lwdiv `uc  1 a 1 7 ]
+[v i1___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v i1___lwdiv@dividend dividend `ui  1 p 2 2 ]
+"31
+} 0
+"47 /Users/YudaiHashimoto/MPLABXProjects/osc_test.X/adc.c
+[v _adc_itrpt_read adc_itrpt_read `(i  1 e 2 0 ]
+{
+"52
+} 0
