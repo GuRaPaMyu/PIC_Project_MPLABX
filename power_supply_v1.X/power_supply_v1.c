@@ -9,7 +9,7 @@
 #include "usart.h"
 #include "adc.h"
 #include "pwm.h"
-#include "lcd.c"
+#include "lcd.h"
 
 // CONFIG1
 #pragma config FOSC = EXTRCIO   // Oscillator Selection bits (EXTRC oscillator; port I/O function on RA6/OSC2/CLKO)

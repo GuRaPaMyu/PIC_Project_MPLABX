@@ -1,3 +1,7 @@
+#include <xc.h>
+
+#define _XTAL_FREQ 8000000
+
 void pwm_init(unsigned long freq, unsigned char T2presc)  //0 is presc 1, 1 is presc 4, 3 is presc 16
 {
 	T2CON &= 0xFC;

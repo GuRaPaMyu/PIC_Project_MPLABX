@@ -21,8 +21,8 @@
 #endif
 
 #ifndef LCD_PIN_SET
- //#define LCD_RS RE0
- //#define LCD_RW RA4
+ #define LCD_RS RA6
+ #define LCD_RW RA6
  #define LCD_EN RA5
  #define LCD_DATA PORTB
 #endif

@@ -1,60 +1,14 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[p mainexit ]
-"28 pwm_test.c
-[v _init `(i ~T0 @X0 0 ef ]
-"29
-[v _pwm_init `(v ~T0 @X0 0 ef2`ul`uc ]
-"2407 /Applications/microchip/xc8/v1.34/include/pic16f88.h
-[v _TRISB2 `Vb ~T0 @X0 0 e@1074 ]
-"2413
-[v _TRISB5 `Vb ~T0 @X0 0 e@1077 ]
-"1687
-[v _SPBRG `Vuc ~T0 @X0 0 e@153 ]
-"781
-[v _RCSTA `Vuc ~T0 @X0 0 e@24 ]
-"1607
-[v _TXSTA `Vuc ~T0 @X0 0 e@152 ]
-"27 pwm_test.c
-[v _pwm_set_duty `(v ~T0 @X0 0 ef1`d ]
-"23 /Applications/microchip/xc8/v1.34/include/conio.h
-[v _getche `(uc ~T0 @X0 0 ef ]
-"67 /Applications/microchip/xc8/v1.34/include/stdlib.h
-[v _atoi `(i ~T0 @X0 0 ef1`*Cuc ]
-"207 /Applications/microchip/xc8/v1.34/include/stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"1427 /Applications/microchip/xc8/v1.34/include/pic16f88.h
-[v _PR2 `Vuc ~T0 @X0 0 e@146 ]
-"1300
-[v _OSCCON `Vuc ~T0 @X0 0 e@143 ]
-"1057
-[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
-"1118
-[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"1748
-[v _CMCON `Vuc ~T0 @X0 0 e@156 ]
-"160
-[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
-"221
+[v F974 `(v ~T0 @X0 1 tf1`ul ]
+"150 /Applications/microchip/xc8/v1.34/include/pic.h
+[v __delay `JF974 ~T0 @X0 0 e ]
+[p i __delay ]
+"221 /Applications/microchip/xc8/v1.34/include/pic16f88.h
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
-"561
-[v _T2CON `Vuc ~T0 @X0 0 e@18 ]
-"712
-[v _CCPR1L `Vuc ~T0 @X0 0 e@21 ]
-"724
-[v _CCP1CON `Vuc ~T0 @X0 0 e@23 ]
-"994
-[s S42 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S42 . PS PSA T0SE T0CS INTEDG nRBPU ]
-"1002
-[s S43 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S43 . PS0 PS1 PS2 ]
-"993
-[u S41 `S42 1 `S43 1 ]
-[n S41 . . . ]
-"1008
-[v _OPTION_REGbits `VS41 ~T0 @X0 0 e@129 ]
-"2377
-[v _TMR2ON `Vb ~T0 @X0 0 e@146 ]
+"2259
+[v _RA5 `Vb ~T0 @X0 0 e@45 ]
+"2261
+[v _RA6 `Vb ~T0 @X0 0 e@46 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic16f88.h: 49: extern volatile unsigned char INDF @ 0x000;
@@ -966,352 +920,402 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 184: extern unsigned char __resetbits;
 [; ;pic.h: 185: extern __bit __powerdown;
 [; ;pic.h: 186: extern __bit __timeout;
-[; ;stdio.h: 8: typedef int ptrdiff_t;
-[; ;stdio.h: 9: typedef unsigned size_t;
-[; ;stdio.h: 10: typedef unsigned short wchar_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 24: extern int errno;
-[; ;stdio.h: 55: struct __prbuf
-[; ;stdio.h: 56: {
-[; ;stdio.h: 57: char * ptr;
-[; ;stdio.h: 58: void (* func)(char);
-[; ;stdio.h: 59: };
-[; ;conio.h: 17: extern int errno;
-[; ;conio.h: 20: extern void init_uart(void);
-[; ;conio.h: 22: extern char getch(void);
-[; ;conio.h: 23: extern char getche(void);
-[; ;conio.h: 24: extern void putch(char);
-[; ;conio.h: 25: extern void ungetch(char);
-[; ;conio.h: 27: extern __bit kbhit(void);
-[; ;conio.h: 31: extern char * cgets(char *);
-[; ;conio.h: 32: extern void cputs(const char *);
-[; ;stdio.h: 100: extern int cprintf(char *, ...);
-[; ;stdio.h: 105: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 195: extern char * gets(char *);
-[; ;stdio.h: 196: extern int puts(const char *);
-[; ;stdio.h: 197: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 198: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 199: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 200: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 201: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 202: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 206: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 207: extern int printf(const char *, ...);
-[; ;stdlib.h: 27: typedef struct {
-[; ;stdlib.h: 28: int rem;
-[; ;stdlib.h: 29: int quot;
-[; ;stdlib.h: 30: } div_t;
-[; ;stdlib.h: 31: typedef struct {
-[; ;stdlib.h: 32: unsigned rem;
-[; ;stdlib.h: 33: unsigned quot;
-[; ;stdlib.h: 34: } udiv_t;
-[; ;stdlib.h: 35: typedef struct {
-[; ;stdlib.h: 36: long quot;
-[; ;stdlib.h: 37: long rem;
-[; ;stdlib.h: 38: } ldiv_t;
-[; ;stdlib.h: 39: typedef struct {
-[; ;stdlib.h: 40: unsigned long quot;
-[; ;stdlib.h: 41: unsigned long rem;
-[; ;stdlib.h: 42: } uldiv_t;
-[; ;stdlib.h: 65: extern double atof(const char *);
-[; ;stdlib.h: 66: extern double strtod(const char *, const char **);
-[; ;stdlib.h: 67: extern int atoi(const char *);
-[; ;stdlib.h: 68: extern unsigned xtoi(const char *);
-[; ;stdlib.h: 69: extern long atol(const char *);
-[; ;stdlib.h: 70: extern long strtol(const char *, char **, int);
-[; ;stdlib.h: 72: extern int rand(void);
-[; ;stdlib.h: 73: extern void srand(unsigned int);
-[; ;stdlib.h: 74: extern void * calloc(size_t, size_t);
-[; ;stdlib.h: 75: extern div_t div(int numer, int denom);
-[; ;stdlib.h: 76: extern udiv_t udiv(unsigned numer, unsigned denom);
-[; ;stdlib.h: 77: extern ldiv_t ldiv(long numer, long denom);
-[; ;stdlib.h: 78: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
-[; ;stdlib.h: 79: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
-[; ;stdlib.h: 80: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
-[; ;stdlib.h: 81: extern unsigned int _rotl(unsigned int value, unsigned int shift);
-[; ;stdlib.h: 82: extern unsigned int _rotr(unsigned int value, unsigned int shift);
-[; ;stdlib.h: 87: extern void * malloc(size_t);
-[; ;stdlib.h: 88: extern void free(void *);
-[; ;stdlib.h: 89: extern void * realloc(void *, size_t);
-[; ;stdlib.h: 98: extern int atexit(void (*)(void));
-[; ;stdlib.h: 99: extern char * getenv(const char *);
-[; ;stdlib.h: 100: extern char ** environ;
-[; ;stdlib.h: 101: extern int system(char *);
-[; ;stdlib.h: 102: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
-[; ;stdlib.h: 103: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
-[; ;stdlib.h: 104: extern int abs(int);
-[; ;stdlib.h: 105: extern long labs(long);
-[; ;stdlib.h: 108: extern char * itoa(char * buf, int val, int base);
-[; ;stdlib.h: 109: extern char * utoa(char * buf, unsigned val, int base);
-[; ;stdlib.h: 114: extern char * ltoa(char * buf, long val, int base);
-[; ;stdlib.h: 115: extern char * ultoa(char * buf, unsigned long val, int base);
-[; ;stdlib.h: 117: extern char * ftoa(float f, int * status);
-[; ;usart.h: 34: void putch(unsigned char);
-[; ;usart.h: 35: unsigned char getch(void);
-[; ;usart.h: 36: unsigned char getche(void);
-"12 pwm_test.c
-[p x FOSC=EXTRCIO ]
-"13
-[p x WDTE=OFF ]
-"14
-[p x PWRTE=OFF ]
-"15
-[p x MCLRE=ON ]
-"16
-[p x BOREN=OFF ]
-"17
-[p x LVP=OFF ]
-"18
-[p x CPD=OFF ]
-"19
-[p x WRT=OFF ]
-"20
-[p x CCPMX=RB3 ]
-"21
-[p x CP=OFF ]
-"24
-[p x FCMEN=OFF ]
-"25
-[p x IESO=OFF ]
-[; ;pwm_test.c: 27: void pwm_set_duty(double duty_ratio);
-[; ;pwm_test.c: 28: int init(void);
-[; ;pwm_test.c: 29: void pwm_init(unsigned long freq, unsigned char T2presc);
-"31
-[v _main `(i ~T0 @X0 1 ef ]
-"32
-{
-[; ;pwm_test.c: 31: int main (void)
-[; ;pwm_test.c: 32: {
-[e :U _main ]
-[f ]
-[; ;pwm_test.c: 33: init();
-"33
-[e ( _init ..  ]
-[; ;pwm_test.c: 34: pwm_init(1000, 1);
-"34
-[e ( _pwm_init (2 , -> -> -> 1000 `i `l `ul -> -> 1 `i `uc ]
-[; ;pwm_test.c: 35: TRISB2 = 1; TRISB5 = 1; SPBRG = 103; RCSTA = (0|0x90); TXSTA = (0|0|0x20);
-"35
-[e = _TRISB2 -> -> 1 `i `b ]
-[e = _TRISB5 -> -> 1 `i `b ]
-[e = _SPBRG -> -> 103 `i `uc ]
-[e = _RCSTA -> | -> 0 `i -> 144 `i `uc ]
-[e = _TXSTA -> | | -> 0 `i -> 0 `i -> 32 `i `uc ]
-[v F1173 `uc ~T0 @X0 -> 5 `i s ]
-[i F1173
-:U ..
-"36
--> -> 0 `i `uc
-..
-]
-[v _str `uc ~T0 @X0 -> 5 `i a ]
-[; ;pwm_test.c: 36: char str[5] = {0};
-[e = _str F1173 ]
-"37
-[v _duty `i ~T0 @X0 1 a ]
-[; ;pwm_test.c: 37: int duty = 0;
-[e = _duty -> 0 `i ]
+[; ;lcd.h: 8: extern void lcd_write(unsigned char);
+[; ;lcd.h: 12: extern void lcd_clear(void);
+[; ;lcd.h: 16: extern void lcd_puts(const char * s);
+[; ;lcd.h: 20: extern void lcd_goto(unsigned char pos);
+[; ;lcd.h: 24: extern void lcd_init(void);
+[; ;lcd.h: 26: extern void lcd_putch(char);
+[; ;lcd.h: 28: extern int change_baudlate(int rate_num);
+[; ;lcd.h: 35: extern void lcd_cmd(char cmd);
+[; ;lcd.h: 37: extern void lcd_putint(char *buf, int val, int base, int str_length, char space_f);
+"37 lcd.c
+[v _lcd_write `(v ~T0 @X0 1 ef1`uc ]
 "38
-[v _cnt `i ~T0 @X0 1 a ]
-[v _i `i ~T0 @X0 1 a ]
-[; ;pwm_test.c: 38: int cnt,i;
-[; ;pwm_test.c: 40: while(1)
+{
+[; ;lcd.c: 37: void lcd_write(unsigned char c)
+[; ;lcd.c: 38: {
+[e :U _lcd_write ]
+"37
+[v _c `uc ~T0 @X0 1 r1 ]
+"38
+[f ]
+[; ;lcd.c: 39: _delay((unsigned long)((40)*(8000000/4000000.0)));
+"39
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;lcd.c: 40: PORTB = (( c >> 4 ) & 0x0F ) | (PORTB & 0xF0);
 "40
-[e :U 96 ]
-[; ;pwm_test.c: 41: {
+[e = _PORTB -> | & >> -> _c `i -> 4 `i -> 15 `i & -> _PORTB `i -> 240 `i `uc ]
+[; ;lcd.c: 41: ((RA5 = 1),(RA5 = 0));
 "41
-{
-[; ;pwm_test.c: 42: pwm_set_duty(duty / 10);
+[e ; -> = _RA5 -> -> 1 `i `b `i -> = _RA5 -> -> 0 `i `b `i ]
+[; ;lcd.c: 42: PORTB = ( c & 0x0F ) | (PORTB & 0xF0);
 "42
-[e ( _pwm_set_duty (1 -> / _duty -> 10 `i `d ]
-[; ;pwm_test.c: 43: cnt = 0;
+[e = _PORTB -> | & -> _c `i -> 15 `i & -> _PORTB `i -> 240 `i `uc ]
+[; ;lcd.c: 43: ((RA5 = 1),(RA5 = 0));
 "43
-[e = _cnt -> 0 `i ]
-[; ;pwm_test.c: 44: do{
+[e ; -> = _RA5 -> -> 1 `i `b `i -> = _RA5 -> -> 0 `i `b `i ]
+[; ;lcd.c: 44: }
 "44
-[e :U 100 ]
-{
-[; ;pwm_test.c: 45: str[cnt] = getche();
-"45
-[e = *U + &U _str * -> -> _cnt `ui `ux -> -> # *U &U _str `ui `ux ( _getche ..  ]
-[; ;pwm_test.c: 46: cnt ++;
-"46
-[e ++ _cnt -> 1 `i ]
-"47
+[e :UE 89 ]
 }
-[; ;pwm_test.c: 47: }while(str[cnt -1] != 0x0d);
-[e $ != -> *U + &U _str * -> -> - _cnt -> 1 `i `ui `ux -> -> # *U &U _str `ui `ux `i -> 13 `i 100  ]
-[e :U 99 ]
-[; ;pwm_test.c: 49: duty = atoi(str);
-"49
-[e = _duty ( _atoi (1 -> &U _str `*Cuc ]
-[; ;pwm_test.c: 50: printf("set to %d\r\n", duty);
 "50
-[e ( _printf , (. :s 1C _duty ]
-[; ;pwm_test.c: 51: printf("PR2: %x\r\n", PR2);
+[v _lcd_clear `(v ~T0 @X0 1 ef ]
 "51
-[e ( _printf , (. :s 2C -> _PR2 `i ]
-[; ;pwm_test.c: 52: printf("freq: %d\r\n", (unsigned int)(8000000 / ((PR2+1) * 4)));
+{
+[; ;lcd.c: 50: void lcd_clear(void)
+[; ;lcd.c: 51: {
+[e :U _lcd_clear ]
+[f ]
+[; ;lcd.c: 52: RA6 = 0;
 "52
-[e ( _printf , (. :s 3C -> / -> 8000000 `l -> * + -> _PR2 `i -> 1 `i -> 4 `i `l `ui ]
-"66
+[e = _RA6 -> -> 0 `i `b ]
+[; ;lcd.c: 53: lcd_write(0x01);
+"53
+[e ( _lcd_write (1 -> -> 1 `i `uc ]
+[; ;lcd.c: 54: _delay((unsigned long)((2)*(8000000/4000.0)));
+"54
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;lcd.c: 55: }
+"55
+[e :UE 90 ]
 }
-[e :U 95 ]
-"40
-[e $U 96  ]
-[e :U 97 ]
-[; ;pwm_test.c: 66: }
-[; ;pwm_test.c: 67: return 0;
-"67
-[e ) -> 0 `i ]
-[e $UE 94  ]
-[; ;pwm_test.c: 68: }
+"59
+[v _lcd_puts `(v ~T0 @X0 1 ef1`*Cuc ]
+"60
+{
+[; ;lcd.c: 59: void lcd_puts(const char * s)
+[; ;lcd.c: 60: {
+[e :U _lcd_puts ]
+"59
+[v _s `*Cuc ~T0 @X0 1 r1 ]
+"60
+[f ]
+[; ;lcd.c: 61: RA6 = 1;
+"61
+[e = _RA6 -> -> 1 `i `b ]
+[; ;lcd.c: 62: while(*s)
+"62
+[e $U 92  ]
+[e :U 93 ]
+[; ;lcd.c: 63: lcd_write(*s++);
+"63
+[e ( _lcd_write (1 *U ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
+[e :U 92 ]
+"62
+[e $ != -> *U _s `i -> -> -> 0 `i `Cuc `i 93  ]
+[e :U 94 ]
+[; ;lcd.c: 64: }
+"64
+[e :UE 91 ]
+}
 "68
-[e :UE 94 ]
-}
+[v _lcd_putch `(v ~T0 @X0 1 ef1`uc ]
+"69
+{
+[; ;lcd.c: 68: void lcd_putch(char c)
+[; ;lcd.c: 69: {
+[e :U _lcd_putch ]
+"68
+[v _c `uc ~T0 @X0 1 r1 ]
+"69
+[f ]
+[; ;lcd.c: 70: RA6 = 1;
 "70
-[v _init `(i ~T0 @X0 1 ef ]
+[e = _RA6 -> -> 1 `i `b ]
+[; ;lcd.c: 71: lcd_write( c );
 "71
-{
-[; ;pwm_test.c: 70: int init(void)
-[; ;pwm_test.c: 71: {
-[e :U _init ]
-[f ]
-[; ;pwm_test.c: 72: OSCCON = 0b01110010;
+[e ( _lcd_write (1 _c ]
+[; ;lcd.c: 72: }
 "72
-[e = _OSCCON -> -> 114 `i `uc ]
-[; ;pwm_test.c: 73: TRISA = 0x00;
-"73
-[e = _TRISA -> -> 0 `i `uc ]
-[; ;pwm_test.c: 74: TRISB = 0x00;
-"74
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;pwm_test.c: 75: CMCON = 0b00000111;
-"75
-[e = _CMCON -> -> 7 `i `uc ]
-[; ;pwm_test.c: 76: PORTA = 0x00;
-"76
-[e = _PORTA -> -> 0 `i `uc ]
-[; ;pwm_test.c: 77: PORTB = 0b00000010;
-"77
-[e = _PORTB -> -> 2 `i `uc ]
-[; ;pwm_test.c: 78: T2CON = 0x00;
-"78
-[e = _T2CON -> -> 0 `i `uc ]
-[; ;pwm_test.c: 79: }
+[e :UE 95 ]
+}
 "79
-[e :UE 101 ]
-}
-"81
-[v _pwm_set_duty `(v ~T0 @X0 1 ef1`d ]
-"82
+[v _lcd_goto `(v ~T0 @X0 1 ef1`uc ]
+"80
 {
-[; ;pwm_test.c: 81: void pwm_set_duty(double duty_ratio)
-[; ;pwm_test.c: 82: {
-[e :U _pwm_set_duty ]
-"81
-[v _duty_ratio `d ~T0 @X0 1 r1 ]
-"82
+[; ;lcd.c: 79: void lcd_goto(unsigned char pos)
+[; ;lcd.c: 80: {
+[e :U _lcd_goto ]
+"79
+[v _pos `uc ~T0 @X0 1 r1 ]
+"80
 [f ]
+[; ;lcd.c: 81: RA6 = 0;
+"81
+[e = _RA6 -> -> 0 `i `b ]
+[; ;lcd.c: 82: lcd_write(0x80+pos);
+"82
+[e ( _lcd_write (1 -> + -> 128 `i -> _pos `i `uc ]
+[; ;lcd.c: 83: }
 "83
-[v _reg `us ~T0 @X0 1 a ]
-[; ;pwm_test.c: 83: unsigned short reg;
-[; ;pwm_test.c: 84: reg = (unsigned short)duty_ratio * (PR2 + 1) / 25;
-"84
-[e = _reg -> / * -> -> _duty_ratio `us `ui -> + -> _PR2 `i -> 1 `i `ui -> -> 25 `i `ui `us ]
-[; ;pwm_test.c: 85: CCPR1L = reg >> 2;
-"85
-[e = _CCPR1L -> >> -> _reg `ui -> 2 `i `uc ]
-[; ;pwm_test.c: 86: CCP1CON &= 0x0F;
+[e :UE 96 ]
+}
 "86
-[e =& _CCP1CON -> -> 15 `i `uc ]
-[; ;pwm_test.c: 87: CCP1CON |= (reg << 4) & 0x30;
+[v _lcd_init `(v ~T0 @X0 1 ef ]
 "87
-[e =| _CCP1CON -> & << -> _reg `ui -> 4 `i -> -> 48 `i `ui `uc ]
-[; ;pwm_test.c: 88: }
-"88
-[e :UE 102 ]
-}
-"90
-[v _pwm_init `(v ~T0 @X0 1 ef2`ul`uc ]
-"91
 {
-[; ;pwm_test.c: 90: void pwm_init(unsigned long freq, unsigned char T2presc)
-[; ;pwm_test.c: 91: {
-[e :U _pwm_init ]
-"90
-[v _freq `ul ~T0 @X0 1 r1 ]
-[v _T2presc `uc ~T0 @X0 1 r2 ]
-"91
+[; ;lcd.c: 86: void lcd_init()
+[; ;lcd.c: 87: {
+[e :U _lcd_init ]
 [f ]
-[; ;pwm_test.c: 92: T2CON &= 0xFC;
+"88
+[v _init_value `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 88: char init_value;
+[; ;lcd.c: 89: init_value = 0x3;
+"89
+[e = _init_value -> -> 3 `i `uc ]
+[; ;lcd.c: 90: RA6 = 0;
+"90
+[e = _RA6 -> -> 0 `i `b ]
+[; ;lcd.c: 91: RA5 = 0;
+"91
+[e = _RA5 -> -> 0 `i `b ]
+[; ;lcd.c: 92: RA6 = 0;
 "92
-[e =& _T2CON -> -> 252 `i `uc ]
-[; ;pwm_test.c: 93: switch(T2presc)
-"93
-[e $U 105  ]
-[; ;pwm_test.c: 94: {
+[e = _RA6 -> -> 0 `i `b ]
+[; ;lcd.c: 94: _delay((unsigned long)((40)*(8000000/4000.0)));
 "94
-{
-[; ;pwm_test.c: 95: case 1 : T2CON |= 0x00;
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;lcd.c: 95: PORTB = init_value;
 "95
-[e :U 106 ]
-[e =| _T2CON -> -> 0 `i `uc ]
-[; ;pwm_test.c: 96: break;
+[e = _PORTB _init_value ]
+[; ;lcd.c: 96: ((RA5 = 1),(RA5 = 0));
 "96
-[e $U 104  ]
-[; ;pwm_test.c: 97: case 2 : T2CON |= 0x01;
+[e ; -> = _RA5 -> -> 1 `i `b `i -> = _RA5 -> -> 0 `i `b `i ]
+[; ;lcd.c: 97: _delay((unsigned long)((5)*(8000000/4000.0)));
 "97
-[e :U 107 ]
-[e =| _T2CON -> -> 1 `i `uc ]
-[; ;pwm_test.c: 98: break;
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;lcd.c: 98: ((RA5 = 1),(RA5 = 0));
 "98
-[e $U 104  ]
-[; ;pwm_test.c: 99: case 16: T2CON |= 0x02;
+[e ; -> = _RA5 -> -> 1 `i `b `i -> = _RA5 -> -> 0 `i `b `i ]
+[; ;lcd.c: 99: _delay((unsigned long)((200)*(8000000/4000000.0)));
 "99
-[e :U 108 ]
-[e =| _T2CON -> -> 2 `i `uc ]
-[; ;pwm_test.c: 100: break;
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;lcd.c: 100: ((RA5 = 1),(RA5 = 0));
 "100
-[e $U 104  ]
-[; ;pwm_test.c: 101: default: T2CON |= 0x00;
+[e ; -> = _RA5 -> -> 1 `i `b `i -> = _RA5 -> -> 0 `i `b `i ]
+[; ;lcd.c: 101: _delay((unsigned long)((200)*(8000000/4000000.0)));
 "101
-[e :U 109 ]
-[e =| _T2CON -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;lcd.c: 102: PORTB = 2;
 "102
-}
-[; ;pwm_test.c: 102: }
-[e $U 104  ]
-"93
-[e :U 105 ]
-[e [\ _T2presc , $ -> -> 1 `i `uc 106
- , $ -> -> 2 `i `uc 107
- , $ -> -> 16 `i `uc 108
- 109 ]
-"102
-[e :U 104 ]
-[; ;pwm_test.c: 104: PR2 = (unsigned char)(8000000 / freq / 4 - 1);
-"104
-[e = _PR2 -> - / / -> -> 8000000 `l `ul _freq -> -> -> 4 `i `l `ul -> -> -> 1 `i `l `ul `uc ]
-[; ;pwm_test.c: 105: CCPR1L = 0;
+[e = _PORTB -> -> 2 `i `uc ]
+[; ;lcd.c: 103: ((RA5 = 1),(RA5 = 0));
+"103
+[e ; -> = _RA5 -> -> 1 `i `b `i -> = _RA5 -> -> 0 `i `b `i ]
+[; ;lcd.c: 105: lcd_write(0x28);
 "105
-[e = _CCPR1L -> -> 0 `i `uc ]
-[; ;pwm_test.c: 106: OPTION_REGbits.PS = 0b101;
+[e ( _lcd_write (1 -> -> 40 `i `uc ]
+[; ;lcd.c: 106: lcd_write(0b00001100);
 "106
-[e = . . _OPTION_REGbits 0 0 -> -> 5 `i `uc ]
-[; ;pwm_test.c: 107: TMR2ON = 1;
+[e ( _lcd_write (1 -> -> 12 `i `uc ]
+[; ;lcd.c: 107: lcd_clear();
 "107
-[e = _TMR2ON -> -> 1 `i `b ]
-[; ;pwm_test.c: 108: CCP1CON = 0x0C;
+[e ( _lcd_clear ..  ]
+[; ;lcd.c: 108: lcd_write(0x6);
 "108
-[e = _CCP1CON -> -> 12 `i `uc ]
-[; ;pwm_test.c: 109: }
+[e ( _lcd_write (1 -> -> 6 `i `uc ]
+[; ;lcd.c: 109: }
 "109
-[e :UE 103 ]
+[e :UE 97 ]
 }
-[p f _printf 12583040 ]
-[a 2C 80 82 50 58 32 37 120 13 10 0 ]
-[a 1C 115 101 116 32 116 111 32 37 100 13 10 0 ]
-[a 3C 102 114 101 113 58 32 37 100 13 10 0 ]
+"111
+[v _lcd_cmd `(v ~T0 @X0 1 ef1`uc ]
+"112
+{
+[; ;lcd.c: 111: void lcd_cmd(char cmd)
+[; ;lcd.c: 112: {
+[e :U _lcd_cmd ]
+"111
+[v _cmd `uc ~T0 @X0 1 r1 ]
+"112
+[f ]
+[; ;lcd.c: 113: RA6 = 0;
+"113
+[e = _RA6 -> -> 0 `i `b ]
+[; ;lcd.c: 114: lcd_write(cmd);
+"114
+[e ( _lcd_write (1 _cmd ]
+[; ;lcd.c: 115: }
+"115
+[e :UE 98 ]
+}
+"117
+[v _lcd_putint `(v ~T0 @X0 1 ef5`*uc`i`i`i`uc ]
+"118
+{
+[; ;lcd.c: 117: void lcd_putint(char *buf, int val, int base, int str_length, char space_f)
+[; ;lcd.c: 118: {
+[e :U _lcd_putint ]
+"117
+[v _buf `*uc ~T0 @X0 1 r1 ]
+[v _val `i ~T0 @X0 1 r2 ]
+[v _base `i ~T0 @X0 1 r3 ]
+[v _str_length `i ~T0 @X0 1 r4 ]
+[v _space_f `uc ~T0 @X0 1 r5 ]
+"118
+[f ]
+"119
+[v _v `ui ~T0 @X0 1 a ]
+"120
+[v _c `uc ~T0 @X0 1 a ]
+"121
+[v _length `i ~T0 @X0 1 a ]
+[; ;lcd.c: 119: unsigned int v;
+[; ;lcd.c: 120: char c;
+[; ;lcd.c: 121: int length = str_length;
+[e = _length _str_length ]
+"122
+[v _minus_f `i ~T0 @X0 1 a ]
+[; ;lcd.c: 122: int minus_f = 0;
+[e = _minus_f -> 0 `i ]
+[; ;lcd.c: 124: if(val < 0)
+"124
+[e $ ! < _val -> 0 `i 100  ]
+[; ;lcd.c: 125: {
+"125
+{
+[; ;lcd.c: 126: minus_f = 1;
+"126
+[e = _minus_f -> 1 `i ]
+[; ;lcd.c: 127: *buf = '-';
+"127
+[e = *U _buf -> -> 45 `ui `uc ]
+[; ;lcd.c: 128: buf ++;
+"128
+[e ++ _buf * -> -> 1 `i `x -> -> # *U _buf `i `x ]
+[; ;lcd.c: 129: length --;
+"129
+[e -- _length -> 1 `i ]
+[; ;lcd.c: 130: str_length --;
+"130
+[e -- _str_length -> 1 `i ]
+[; ;lcd.c: 131: val = -val;
+"131
+[e = _val -U _val ]
+"132
+}
+[e :U 100 ]
+[; ;lcd.c: 132: }
+[; ;lcd.c: 134: v = val;
+"134
+[e = _v -> _val `ui ]
+[; ;lcd.c: 135: while(length > 1)
+"135
+[e $U 101  ]
+[e :U 102 ]
+[; ;lcd.c: 136: {
+"136
+{
+[; ;lcd.c: 137: v /= base;
+"137
+[e =/ _v -> _base `ui ]
+[; ;lcd.c: 138: buf++;
+"138
+[e ++ _buf * -> -> 1 `i `x -> -> # *U _buf `i `x ]
+[; ;lcd.c: 139: length --;
+"139
+[e -- _length -> 1 `i ]
+"140
+}
+[e :U 101 ]
+"135
+[e $ > _length -> 1 `i 102  ]
+[e :U 103 ]
+[; ;lcd.c: 140: }
+[; ;lcd.c: 142: *buf = 0;
+"142
+[e = *U _buf -> -> 0 `i `uc ]
+[; ;lcd.c: 144: do
+"144
+[e :U 106 ]
+[; ;lcd.c: 145: {
+"145
+{
+[; ;lcd.c: 146: if((val == 0) && (length != 1))
+"146
+[e $ ! && == _val -> 0 `i != _length -> 1 `i 107  ]
+[; ;lcd.c: 147: {
+"147
+{
+[; ;lcd.c: 148: if(space_f == 1)
+"148
+[e $ ! == -> _space_f `i -> 1 `i 108  ]
+[; ;lcd.c: 149: c = 0x20;
+"149
+[e = _c -> -> 32 `i `uc ]
+[e $U 109  ]
+"150
+[e :U 108 ]
+[; ;lcd.c: 150: else
+[; ;lcd.c: 151: c = 0x30;
+"151
+[e = _c -> -> 48 `i `uc ]
+[e :U 109 ]
+"152
+}
+[; ;lcd.c: 152: }else{
+[e $U 110  ]
+[e :U 107 ]
+{
+[; ;lcd.c: 153: c = val % base;
+"153
+[e = _c -> % _val _base `uc ]
+[; ;lcd.c: 154: val /= base;
+"154
+[e =/ _val _base ]
+[; ;lcd.c: 155: if(c >= 10)
+"155
+[e $ ! >= -> _c `i -> 10 `i 111  ]
+[; ;lcd.c: 156: c += 'A'-'0'-10;
+"156
+[e =+ _c -> - - -> 65 `ui -> 48 `ui -> -> 10 `i `ui `uc ]
+[e :U 111 ]
+[; ;lcd.c: 157: c += '0';
+"157
+[e =+ _c -> -> 48 `ui `uc ]
+"158
+}
+[e :U 110 ]
+[; ;lcd.c: 158: }
+[; ;lcd.c: 159: buf --;
+"159
+[e -- _buf * -> -> 1 `i `x -> -> # *U _buf `i `x ]
+[; ;lcd.c: 160: length ++;
+"160
+[e ++ _length -> 1 `i ]
+[; ;lcd.c: 161: *buf = c;
+"161
+[e = *U _buf _c ]
+"162
+}
+[; ;lcd.c: 162: }while(length < str_length);
+[e $ < _length _str_length 106  ]
+[e :U 105 ]
+[; ;lcd.c: 164: if(minus_f == 1)
+"164
+[e $ ! == _minus_f -> 1 `i 112  ]
+[; ;lcd.c: 165: {
+"165
+{
+[; ;lcd.c: 166: buf --;
+"166
+[e -- _buf * -> -> 1 `i `x -> -> # *U _buf `i `x ]
+[; ;lcd.c: 167: length ++;
+"167
+[e ++ _length -> 1 `i ]
+[; ;lcd.c: 168: str_length ++;
+"168
+[e ++ _str_length -> 1 `i ]
+"169
+}
+[e :U 112 ]
+[; ;lcd.c: 169: }
+[; ;lcd.c: 171: lcd_puts(buf);
+"171
+[e ( _lcd_puts (1 -> _buf `*Cuc ]
+[; ;lcd.c: 172: }
+"172
+[e :UE 99 ]
+}
