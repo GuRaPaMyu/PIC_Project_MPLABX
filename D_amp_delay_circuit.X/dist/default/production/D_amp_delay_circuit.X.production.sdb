@@ -1,0 +1,38 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F1822 ]
+[d frameptr 6 ]
+"62 /Applications/microchip/xc8/v1.34/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /Applications/microchip/xc8/v1.34/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.34/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"31 /Users/YudaiHashimoto/MPLABXProjects/D_amp_delay_circuit.X/main.c
+[v _main main `(i  1 e 2 0 ]
+"414 /Applications/microchip/xc8/v1.34/include/pic12f1822.h
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+"1213
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1362
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
+"1609
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"2578
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3117
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"5408
+[v _RA1 RA1 `VEb  1 e 0 @97 ]
+"5414
+[v _RA4 RA4 `VEb  1 e 0 @100 ]
+"5416
+[v _RA5 RA5 `VEb  1 e 0 @101 ]
+"31 /Users/YudaiHashimoto/MPLABXProjects/D_amp_delay_circuit.X/main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"92
+} 0
