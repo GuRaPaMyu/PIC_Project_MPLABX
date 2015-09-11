@@ -2,16 +2,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "32 stepping_controller_main.c
 [v _init `(v ~T0 @X0 0 ef ]
-"5180 /Applications/microchip/xc8/v1.34/include/pic12f1822.h
-[v _DC `Vb ~T0 @X0 0 e@25 ]
-"5064
+"25
+[v _turn_left `(uc ~T0 @X0 0 ef1`uc ]
+"414 /Applications/microchip/xc8/v1.34/include/pic12f1822.h
+[v _PORTA `Vuc ~T0 @X0 0 e@12 ]
+[v F2176 `(v ~T0 @X0 1 tf1`ul ]
+"150 /Applications/microchip/xc8/v1.34/include/pic.h
+[v __delay `JF2176 ~T0 @X0 0 e ]
+[p i __delay ]
+"5064 /Applications/microchip/xc8/v1.34/include/pic12f1822.h
 [v _CARRY `Vb ~T0 @X0 0 e@24 ]
 "5226
 [v _INTF `Vb ~T0 @X0 0 e@89 ]
 "5412
 [v _RA3 `Vb ~T0 @X0 0 e@99 ]
-"414
-[v _PORTA `Vuc ~T0 @X0 0 e@12 ]
 "1615
 [s S87 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S87 . SCS0 SCS1 . IRCF0 IRCF1 IRCF2 IRCF3 SPLLEN ]
@@ -2220,158 +2224,167 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stepping_controller_main.c: 39: {
 "39
 {
-"40
+[; ;stepping_controller_main.c: 41: stepping_state = turn_left(stepping_state);
+"41
+[e = _stepping_state ( _turn_left (1 _stepping_state ]
+[; ;stepping_controller_main.c: 42: PORTA = ((stepping_state & 0x03) | ((stepping_state << 2) & 0x30)) | (PORTA & 0x0C);
+"42
+[e = _PORTA -> | | & -> _stepping_state `i -> 3 `i & << -> _stepping_state `i -> 2 `i -> 48 `i & -> _PORTA `i -> 12 `i `uc ]
+[; ;stepping_controller_main.c: 43: _delay((unsigned long)((1)*(32000000/4000.0)));
+"43
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"45
 }
 [e :U 271 ]
 "38
 [e $U 272  ]
 [e :U 273 ]
-[; ;stepping_controller_main.c: 40: }
-[; ;stepping_controller_main.c: 42: return 0;
-"42
+[; ;stepping_controller_main.c: 45: }
+[; ;stepping_controller_main.c: 47: return 0;
+"47
 [e ) -> 0 `i ]
 [e $UE 270  ]
-[; ;stepping_controller_main.c: 43: }
-"43
+[; ;stepping_controller_main.c: 48: }
+"48
 [e :UE 270 ]
 }
-"45
+"50
 [v _turn_left `(uc ~T0 @X0 1 ef1`uc ]
-"46
+"51
 {
-[; ;stepping_controller_main.c: 45: char turn_left(char output)
-[; ;stepping_controller_main.c: 46: {
+[; ;stepping_controller_main.c: 50: char turn_left(char output)
+[; ;stepping_controller_main.c: 51: {
 [e :U _turn_left ]
-"45
+"50
 [v _output `uc ~T0 @X0 1 r1 ]
-"46
+"51
 [f ]
-[; ;stepping_controller_main.c: 47: output = (output << 1);
-"47
+[; ;stepping_controller_main.c: 52: output = (output << 1);
+"52
 [e = _output -> << -> _output `i -> 1 `i `uc ]
-[; ;stepping_controller_main.c: 48: if(DC)
-"48
-[e $ ! _DC 275  ]
-[; ;stepping_controller_main.c: 49: output ++;
-"49
+[; ;stepping_controller_main.c: 53: if(output & 0x10)
+"53
+[e $ ! != & -> _output `i -> 16 `i -> 0 `i 275  ]
+[; ;stepping_controller_main.c: 54: output ++;
+"54
 [e ++ _output -> -> 1 `i `uc ]
 [e :U 275 ]
-[; ;stepping_controller_main.c: 51: return output;
-"51
+[; ;stepping_controller_main.c: 56: return output;
+"56
 [e ) _output ]
 [e $UE 274  ]
-[; ;stepping_controller_main.c: 52: }
-"52
+[; ;stepping_controller_main.c: 57: }
+"57
 [e :UE 274 ]
 }
-"54
+"59
 [v _turn_right `(uc ~T0 @X0 1 ef1`uc ]
-"55
+"60
 {
-[; ;stepping_controller_main.c: 54: char turn_right(char output)
-[; ;stepping_controller_main.c: 55: {
+[; ;stepping_controller_main.c: 59: char turn_right(char output)
+[; ;stepping_controller_main.c: 60: {
 [e :U _turn_right ]
-"54
+"59
 [v _output `uc ~T0 @X0 1 r1 ]
-"55
+"60
 [f ]
-[; ;stepping_controller_main.c: 56: output = (output >> 1);
-"56
+[; ;stepping_controller_main.c: 61: output = (output >> 1);
+"61
 [e = _output -> >> -> _output `i -> 1 `i `uc ]
-[; ;stepping_controller_main.c: 57: if(CARRY)
-"57
+[; ;stepping_controller_main.c: 62: if(CARRY)
+"62
 [e $ ! _CARRY 277  ]
-[; ;stepping_controller_main.c: 58: output |= 0b00001000;
-"58
+[; ;stepping_controller_main.c: 63: output |= 0b00001000;
+"63
 [e =| _output -> -> 8 `i `uc ]
 [e :U 277 ]
-[; ;stepping_controller_main.c: 60: return output;
-"60
+[; ;stepping_controller_main.c: 65: return output;
+"65
 [e ) _output ]
 [e $UE 276  ]
-[; ;stepping_controller_main.c: 61: }
-"61
+[; ;stepping_controller_main.c: 66: }
+"66
 [e :UE 276 ]
 }
 [v F2188 `(v ~T0 @X0 1 tf ]
-"63
+"68
 [v _step `IF2188 ~T0 @X0 1 e ]
-"64
+"69
 {
-[; ;stepping_controller_main.c: 63: void interrupt step(void)
-[; ;stepping_controller_main.c: 64: {
+[; ;stepping_controller_main.c: 68: void interrupt step(void)
+[; ;stepping_controller_main.c: 69: {
 [e :U _step ]
 [f ]
-[; ;stepping_controller_main.c: 65: if(INTF)
-"65
+[; ;stepping_controller_main.c: 70: if(INTF)
+"70
 [e $ ! _INTF 279  ]
-[; ;stepping_controller_main.c: 66: {
-"66
+[; ;stepping_controller_main.c: 71: {
+"71
 {
-[; ;stepping_controller_main.c: 67: if(~RA3)
-"67
+[; ;stepping_controller_main.c: 72: if(~RA3)
+"72
 [e $ ! != ~ -> _RA3 `ui -> -> 0 `i `ui 280  ]
-[; ;stepping_controller_main.c: 68: stepping_state = turn_right(stepping_state);
-"68
+[; ;stepping_controller_main.c: 73: stepping_state = turn_right(stepping_state);
+"73
 [e = _stepping_state ( _turn_right (1 _stepping_state ]
 [e $U 281  ]
-"69
+"74
 [e :U 280 ]
-[; ;stepping_controller_main.c: 69: else
-[; ;stepping_controller_main.c: 70: stepping_state = turn_left(stepping_state);
-"70
+[; ;stepping_controller_main.c: 74: else
+[; ;stepping_controller_main.c: 75: stepping_state = turn_left(stepping_state);
+"75
 [e = _stepping_state ( _turn_left (1 _stepping_state ]
 [e :U 281 ]
-[; ;stepping_controller_main.c: 72: PORTA = ((stepping_state & 0x03) | ((stepping_state << 2) & 0x30)) | (PORTA & 0x0C);
-"72
+[; ;stepping_controller_main.c: 77: PORTA = ((stepping_state & 0x03) | ((stepping_state << 2) & 0x30)) | (PORTA & 0x0C);
+"77
 [e = _PORTA -> | | & -> _stepping_state `i -> 3 `i & << -> _stepping_state `i -> 2 `i -> 48 `i & -> _PORTA `i -> 12 `i `uc ]
-[; ;stepping_controller_main.c: 73: INTF = 0;
-"73
+[; ;stepping_controller_main.c: 78: INTF = 0;
+"78
 [e = _INTF -> -> 0 `i `b ]
-"74
+"79
 }
 [e :U 279 ]
-[; ;stepping_controller_main.c: 74: }
-[; ;stepping_controller_main.c: 75: }
-"75
+[; ;stepping_controller_main.c: 79: }
+[; ;stepping_controller_main.c: 80: }
+"80
 [e :UE 278 ]
 }
-"77
+"82
 [v _init `(v ~T0 @X0 1 ef ]
-"78
+"83
 {
-[; ;stepping_controller_main.c: 77: void init (void)
-[; ;stepping_controller_main.c: 78: {
+[; ;stepping_controller_main.c: 82: void init (void)
+[; ;stepping_controller_main.c: 83: {
 [e :U _init ]
 [f ]
-[; ;stepping_controller_main.c: 79: OSCCONbits.SCS = 0b00;
-"79
-[e = . . _OSCCONbits 1 0 -> -> 0 `i `uc ]
-[; ;stepping_controller_main.c: 80: OSCCONbits.IRCF = 0b1110;
-"80
-[e = . . _OSCCONbits 1 2 -> -> 14 `i `uc ]
-[; ;stepping_controller_main.c: 81: ANSELA = 0b00000000;
-"81
-[e = _ANSELA -> -> 0 `i `uc ]
-[; ;stepping_controller_main.c: 82: TRISA = 0b00001100;
-"82
-[e = _TRISA -> -> 12 `i `uc ]
-[; ;stepping_controller_main.c: 83: PORTA = ((stepping_state & 0x03) | ((stepping_state << 2) & 0x30));
-"83
-[e = _PORTA -> | & -> _stepping_state `i -> 3 `i & << -> _stepping_state `i -> 2 `i -> 48 `i `uc ]
-[; ;stepping_controller_main.c: 84: ADON = 0;
+[; ;stepping_controller_main.c: 84: OSCCONbits.SCS = 0b00;
 "84
-[e = _ADON -> -> 0 `i `b ]
-[; ;stepping_controller_main.c: 85: INTEDG = 0;
+[e = . . _OSCCONbits 1 0 -> -> 0 `i `uc ]
+[; ;stepping_controller_main.c: 85: OSCCONbits.IRCF = 0b1110;
 "85
-[e = _INTEDG -> -> 0 `i `b ]
-[; ;stepping_controller_main.c: 86: INTE = 1;
+[e = . . _OSCCONbits 1 2 -> -> 14 `i `uc ]
+[; ;stepping_controller_main.c: 86: ANSELA = 0b00000000;
 "86
-[e = _INTE -> -> 1 `i `b ]
-[; ;stepping_controller_main.c: 87: GIE = 1;
+[e = _ANSELA -> -> 0 `i `uc ]
+[; ;stepping_controller_main.c: 87: TRISA = 0b00001100;
 "87
-[e = _GIE -> -> 1 `i `b ]
-[; ;stepping_controller_main.c: 88: }
+[e = _TRISA -> -> 12 `i `uc ]
+[; ;stepping_controller_main.c: 88: PORTA = ((stepping_state & 0x03) | ((stepping_state << 2) & 0x30));
 "88
+[e = _PORTA -> | & -> _stepping_state `i -> 3 `i & << -> _stepping_state `i -> 2 `i -> 48 `i `uc ]
+[; ;stepping_controller_main.c: 89: ADON = 0;
+"89
+[e = _ADON -> -> 0 `i `b ]
+[; ;stepping_controller_main.c: 90: INTEDG = 0;
+"90
+[e = _INTEDG -> -> 0 `i `b ]
+[; ;stepping_controller_main.c: 91: INTE = 1;
+"91
+[e = _INTE -> -> 1 `i `b ]
+[; ;stepping_controller_main.c: 92: GIE = 0;
+"92
+[e = _GIE -> -> 0 `i `b ]
+[; ;stepping_controller_main.c: 93: }
+"93
 [e :UE 282 ]
 }

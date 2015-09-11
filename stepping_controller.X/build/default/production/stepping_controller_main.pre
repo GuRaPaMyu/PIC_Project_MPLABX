@@ -2914,6 +2914,11 @@ init ();
 
 while(1)
 {
+
+stepping_state = turn_left(stepping_state);
+PORTA = ((stepping_state & 0x03) | ((stepping_state << 2) & 0x30)) | (PORTA & 0x0C);
+_delay((unsigned long)((1)*(32000000/4000.0)));
+
 }
 
 return 0;
@@ -2922,7 +2927,7 @@ return 0;
 char turn_left(char output)
 {
 output = (output << 1);
-if(DC)
+if(output & 0x10)
 output ++;
 
 return output;
@@ -2961,5 +2966,5 @@ PORTA = ((stepping_state & 0x03) | ((stepping_state << 2) & 0x30));
 ADON = 0;
 INTEDG = 0;
 INTE = 1;
-GIE = 1;
+GIE = 0;
 }

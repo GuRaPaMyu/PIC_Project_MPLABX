@@ -37,6 +37,11 @@ int main(void)
 	
 	while(1)
 	{
+            //
+            //stepping_state = turn_left(stepping_state);
+            //PORTA = ((stepping_state & 0x03) | ((stepping_state << 2) & 0x30)) | (PORTA & 0x0C);
+            //__delay_ms(1);
+            //
 	}
 		
 	return 0;
@@ -45,7 +50,7 @@ int main(void)
 char turn_left(char output)
 {
 	output = (output << 1);
-	if(DC)
+	if(output & 0x10)
 	output ++;
 	
 	return output;
