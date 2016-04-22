@@ -1,8 +1,8 @@
-#define _XTAL_FREQ 20000000
+#define _XTAL_FREQ 8000000
 #define INTERCEPT -84-30 //for calibration
 #define TANGENT 25 //for calibration
 #define REF_mV 2405 //ADC reference voltage
-#define RES 2048 //resolution of ADC bits
+#define RES 1024 //resolution of ADC bits
 #define RES_mV REF_mV/RES //resolution of ADC voltage
 
 // PIC16F88 Configuration Bit Settings
@@ -37,7 +37,7 @@
 #pragma config IESO = ON        // Internal External Switchover bit (Internal External Switchover mode enabled)
 
 void init();
-void lcd_putint(char *buf, int val, int base, int str_length, char space_f);
+char sprint_double(char *str, int str_length, double val, int digit);
 
 void main(void)
 {
@@ -46,40 +46,50 @@ void main(void)
     double fwd_watt, ref_watt;
     double fwd_sqrt, ref_sqrt;
     double swr;
+    char str[6];
 
     while(1)
     {
-        fwd = adc_read();
-        ref = adc_read();
+        fwd = adc_read(1);
+        ref = adc_read(1);
 
         //bits -> Voltage -> dBm -> Watt
-        fwd_watt = POW(10, (TANGENT*fwd*RES_mV - INTERCEPT)/10);
-        ref_watt = POW(10, (TANGENT*ref*RES_mV - INTERCEPT)/10);
+        fwd_watt = pow(10, (TANGENT * fwd * RES_mV - INTERCEPT)/10);
+        ref_watt = pow(10, (TANGENT * ref * RES_mV - INTERCEPT)/10);
 
-        fwd_sqrt = sqrt(fwd_watt);
-        ref_sqrt = sqrt(ref_watt);
+        //fwd_sqrt = sqrt(fwd_watt);
+        //ref_sqrt = sqrt(ref_watt);
 
         swr = (fwd_sqrt + ref_sqrt)/(fwd_sqrt - ref_sqrt);
 
         lcd_goto(0x00);
         __delay_us(50);
-        lcd_puts("");
+        sprint_double(str, 6, fwd_watt, 2);
+        lcd_puts(str);
         __delay_us(50);
+        lcd_puts(" / ");
+        __delay_us(50);
+        sprint_double(str, 6, ref_watt, 2);
+        lcd_puts(str);
+        __delay_us(50);
+        
         lcd_goto(0x40);
         __delay_us(50);
         lcd_puts("SWR: ");
+        sprint_double(str, 6, swr, 2);
+        lcd_puts(str);
     }
 }
 
 void init()
 {
     CMCON = 0b00000111; //cut off analog comparator just add this one
-    TRISA = 0b00000000;
+    TRISA = 0b00000011; //ra0 and ra1 as input
     TRISB = 0b00000000;
     PORTA = 0b00000000;
     PORTB = 0b00000000;
-    ANSEL = 0;
-    INTCON=0;	// purpose of disabling the interrupts.
+    ANSEL = 0b00001111;
+    INTCON=0; // purpose of disabling the interrupts.
 
     lcd_init();
     adc_init();
@@ -92,71 +102,36 @@ void init()
     __delay_us(50);
     lcd_puts("      METER     ");
     __delay_ms(30);
-
-/*
-    lcd_goto(0x00);
-    __delay_us(50);
-    lcd_puts("IC-756          ");
-    __delay_us(50);
-    lcd_goto(0x40);
-    __delay_us(50);
-    lcd_puts("Freq= ");
-*/
 }
 
-void lcd_putint(char *buf, int val, int base, int str_length, char space_f)
+char sprint_double(char *str, int str_length, double val, int digit)
 {
-    unsigned int v;
-    char c;
-    int length = str_length;
-    int minus_f = 0;
-    
-    if(val < 0)
+  int i,s_flag = 0;
+
+  for(i=0;i<digit;i++)
+  {
+    val *= 10;
+  }
+  *(str + str_length - 1) = '\0';
+  str_length--;
+
+  for(i=str_length ;i>0;i--)
+  {
+    if(digit == 0)
     {
-        minus_f = 1;
-        *buf = '-';
-        buf ++;
-        length --;
-        str_length --;
-        val = -val;
+      *(str + i - 1) = 0x2e;
+    }else{
+      if((val != 0) && (s_flag == 0))
+      {
+        *(str + i - 1) = (int)val % 10 + 0x30;
+      }else{
+        *(str + i - 1) = 0x20;
+        s_flag = 1;
+      }
+      val = (int)val / 10;
     }
-    
-    v = val;
-    while(length > 1)
-    {
-        v /= base;
-        buf++;
-        length --;
-    }
-    
-    *buf = 0;
-    
-    do
-    {
-        if((val == 0) && (length != 1))
-        {
-            if(space_f == 1)
-                c = 0x20;
-            else
-                c = 0x30;
-        }else{  
-            c = val % base;
-            val /= base;
-            if(c >= 10)
-            c += 'A'-'0'-10;
-            c += '0';
-        }
-        buf --;
-        length ++;
-        *buf = c;
-    }while(length < str_length);
-    
-    if(minus_f == 1)
-    {
-        buf --;
-        length ++;
-        str_length ++;
-    }
-        
-    lcd_puts(buf);
+    digit--;
+  }
+  
+  return str;
 }

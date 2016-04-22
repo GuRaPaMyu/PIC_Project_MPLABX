@@ -3,141 +3,81 @@
 [d edition pro ]
 [d chip 16F88 ]
 [d frameptr 6 ]
-"8 Z:\PIC_Project_MPLABX\digital_swr_meter.X\adc.c
-[v _adc_init adc_init `(v  1 e 0 0 ]
-"18
-[v _adc_read adc_read `(i  1 e 2 0 ]
-"31
-[v _adc_itrpt_init adc_itrpt_init `(v  1 e 0 0 ]
-"40
-[v _adc_itrpt_go adc_itrpt_go `(v  1 e 0 0 ]
-"47
-[v _adc_itrpt_read adc_itrpt_read `(i  1 e 2 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\abdiv.c
-[v ___abdiv __abdiv `(c  1 e 1 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\abmod.c
-[v ___abmod __abmod `(c  1 e 1 0 ]
-"33 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\abtoft.c
-[v ___abtoft __abtoft `(f  1 e 3 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\aldiv.c
-[v ___aldiv __aldiv `(l  1 e 4 0 ]
-"5 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\almod.c
-[v ___almod __almod `(l  1 e 4 0 ]
-"42 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\altoft.c
+"42 /Applications/microchip/xc8/v1.34/sources/common/altoft.c
 [v ___altoft __altoft `(f  1 e 3 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\atdiv.c
-[v ___atdiv __atdiv `(m  1 e 3 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\atmod.c
-[v ___atmod __atmod `(m  1 e 3 0 ]
-"37 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\attoft.c
-[v ___attoft __attoft `(f  1 e 3 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\awdiv.c
+"6 /Applications/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\awmod.c
+"6 /Applications/microchip/xc8/v1.34/sources/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
-"32 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\awtoft.c
+"32 /Applications/microchip/xc8/v1.34/sources/common/awtoft.c
 [v ___awtoft __awtoft `(f  1 e 3 0 ]
-"62 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\float.c
+"4 /Applications/microchip/xc8/v1.34/sources/common/evalpoly.c
+[v _eval_poly eval_poly `(d  1 e 3 0 ]
+"12 /Applications/microchip/xc8/v1.34/sources/common/exp.c
+[v _exp exp `(d  1 e 3 0 ]
+"62 /Applications/microchip/xc8/v1.34/sources/common/float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
-"86 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftadd.c
+"13 /Applications/microchip/xc8/v1.34/sources/common/floor.c
+[v _floor floor `(d  1 e 3 0 ]
+"254 /Applications/microchip/xc8/v1.34/sources/common/frexp.c
+[v _frexp frexp `(d  1 e 3 0 ]
+"277
+[v _ldexp ldexp `(d  1 e 3 0 ]
+"86 /Applications/microchip/xc8/v1.34/sources/common/ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftge.c
+"56 /Applications/microchip/xc8/v1.34/sources/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"4 /Applications/microchip/xc8/v1.34/sources/common/ftge.c
 [v ___ftge __ftge `(b  1 e 0 0 ]
-"62 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftmul.c
+"62 /Applications/microchip/xc8/v1.34/sources/common/ftmul.c
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftneg.c
+"15 /Applications/microchip/xc8/v1.34/sources/common/ftneg.c
 [v ___ftneg __ftneg `(f  1 e 3 0 ]
-"18 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftsub.c
+"18 /Applications/microchip/xc8/v1.34/sources/common/ftsub.c
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
-"44 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\fttol.c
+"44 /Applications/microchip/xc8/v1.34/sources/common/fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lbdiv.c
-[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lbmod.c
-[v ___lbmod __lbmod `(uc  1 e 1 0 ]
-"27 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lbtoft.c
-[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lldiv.c
-[v ___lldiv __lldiv `(ul  1 e 4 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\llmod.c
-[v ___llmod __llmod `(ul  1 e 4 0 ]
-"35 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lltoft.c
+"35 /Applications/microchip/xc8/v1.34/sources/common/lltoft.c
 [v ___lltoft __lltoft `(f  1 e 3 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ltdiv.c
-[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ltmod.c
-[v ___ltmod __ltmod `(um  1 e 3 0 ]
-"30 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lttoft.c
-[v ___lttoft __lttoft `(f  1 e 3 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"28 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lwtoft.c
-[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\Umul24.c
-[v ___tmul __tmul `(um  1 e 3 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\Umul32.c
-[v ___lmul __lmul `(ul  1 e 4 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\Umul8.c
+"5 /Applications/microchip/xc8/v1.34/sources/common/log.c
+[v _log log `(d  1 e 3 0 ]
+"5 /Applications/microchip/xc8/v1.34/sources/common/pow.c
+[v _pow pow `(d  1 e 3 0 ]
+"4 /Applications/microchip/xc8/v1.34/sources/common/Umul8.c
 [v ___bmul __bmul `(uc  1 e 1 0 ]
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic\eeprom.c
+"6 /Applications/microchip/xc8/v1.34/sources/pic/eeprom.c
 [v _eecpymem eecpymem `(v  1 e 0 0 ]
 "24
 [v _memcpyee memcpyee `(v  1 e 0 0 ]
-"48
-[v ___eetoc __eetoc `(uc  1 e 1 0 ]
-"56
-[v ___eetoi __eetoi `(ui  1 e 2 0 ]
-"64
-[v ___eetom __eetom `(um  1 e 3 0 ]
-"72
-[v ___eetol __eetol `(ul  1 e 4 0 ]
-"80
-[v ___ctoee __ctoee `(uc  1 e 1 0 ]
-"87
-[v ___itoee __itoee `(ui  1 e 2 0 ]
-"94
-[v ___mtoee __mtoee `(um  1 e 3 0 ]
-"101
-[v ___ltoee __ltoee `(ul  1 e 4 0 ]
-"108
-[v ___eetoft __eetoft `(f  1 e 3 0 ]
-"116
-[v ___eetofl __eetofl `(d  1 e 3 0 ]
-"124
-[v ___fttoee __fttoee `(f  1 e 3 0 ]
-"131
-[v ___fltoee __fltoee `(d  1 e 3 0 ]
-"49 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\pic\ftdiv.c
-[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-"37 Z:\PIC_Project_MPLABX\digital_swr_meter.X\lcd.c
+"8 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/adc.c
+[v _adc_init adc_init `(v  1 e 0 0 ]
+"18
+[v _adc_read adc_read `(i  1 e 2 0 ]
+"37 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/lcd.c
 [v _lcd_write lcd_write `(v  1 e 0 0 ]
 "50
 [v _lcd_clear lcd_clear `(v  1 e 0 0 ]
 "59
 [v _lcd_puts lcd_puts `(v  1 e 0 0 ]
-"68
-[v _lcd_putch lcd_putch `(v  1 e 0 0 ]
 "79
 [v _lcd_goto lcd_goto `(v  1 e 0 0 ]
 "86
 [v _lcd_init lcd_init `(v  1 e 0 0 ]
-"37 Z:\PIC_Project_MPLABX\digital_swr_meter.X\main.c
+"42 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _main main `(v  1 e 0 0 ]
-"47
+"84
 [v _init init `(v  1 e 0 0 ]
-"158 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f88.h
+"107
+[v _sprint_double sprint_double `(uc  1 e 1 0 ]
+"160 /Applications/microchip/xc8/v1.34/include/pic16f88.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
-"219
+"221
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-"299
+"301
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
-"885
+"887
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
-"891
+"893
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
 [s S20 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
@@ -145,7 +85,7 @@
 `uc 1 CHS 1 0 :3:3 
 `uc 1 ADCS 1 0 :2:6 
 ]
-"922
+"924
 [s S26 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 GO 1 0 :1:2 
 `uc 1 CHS0 1 0 :1:3 
@@ -162,79 +102,308 @@
 ]
 [u S40 . 1 `S20 1 . 1 0 `S26 1 . 1 0 `S34 1 . 1 0 `S37 1 . 1 0 ]
 [v _ADCON0bits ADCON0bits `VES40  1 e 1 @31 ]
-"1055
+"1057
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
-"1116
+"1118
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-"1691
+"1693
 [v _ANSEL ANSEL `VEuc  1 e 1 @155 ]
-"1746
+"1748
 [v _CMCON CMCON `VEuc  1 e 1 @156 ]
-"1879
+"1881
 [v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
 [s S66 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG 1 0 :2:4 
 `uc 1 ADCS2 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
-"1903
+"1905
 [s S71 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 ]
 [u S75 . 1 `S66 1 . 1 0 `S71 1 . 1 0 ]
 [v _ADCON1bits ADCON1bits `VES75  1 e 1 @159 ]
-"1989
-[v _EEDATA EEDATA `VEuc  1 e 1 @268 ]
-"1995
-[v _EEADR EEADR `VEuc  1 e 1 @269 ]
-"2013
-[v _EECON1 EECON1 `VEuc  1 e 1 @396 ]
-"2063
-[v _EECON2 EECON2 `VEuc  1 e 1 @397 ]
-"2085
-[v _ADIE ADIE `VEb  1 e 0 @1126 ]
 "2087
-[v _ADIF ADIF `VEb  1 e 0 @102 ]
+[v _ADIE ADIE `VEb  1 e 0 @1126 ]
 "2089
+[v _ADIF ADIF `VEb  1 e 0 @102 ]
+"2091
 [v _ADON ADON `VEb  1 e 0 @248 ]
-"2117
-[v _CARRY CARRY `VEb  1 e 0 @24 ]
-"2193
-[v _GIE GIE `VEb  1 e 0 @95 ]
 "2195
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"2197
 [v _GO GO `VEb  1 e 0 @250 ]
-"2237
+"2239
 [v _PEIE PEIE `VEb  1 e 0 @94 ]
-"2263
-[v _RB0 RB0 `VEb  1 e 0 @48 ]
-"2265
-[v _RB1 RB1 `VEb  1 e 0 @49 ]
-"2269
-[v _RB3 RB3 `VEb  1 e 0 @51 ]
-"2293
-[v _RD RD `VEb  1 e 0 @3168 ]
-"2461
-[v _WR WR `VEb  1 e 0 @3169 ]
-"2463
-[v _WREN WREN `VEb  1 e 0 @3170 ]
-"37 Z:\PIC_Project_MPLABX\digital_swr_meter.X\main.c
+"2273
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
+"2275
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
+"2277
+[v _RB6 RB6 `VEb  1 e 0 @54 ]
+"3 /Applications/microchip/xc8/v1.34/sources/common/errno.c
+[v _errno errno `i  1 e 2 0 ]
+"42 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"44
-} 0
+"49
+[v main@str str `[6]uc  1 a 6 47 ]
 "47
+[v main@ref_sqrt ref_sqrt `d  1 a 3 56 ]
+[v main@fwd_sqrt fwd_sqrt `d  1 a 3 53 ]
+"48
+[v main@swr swr `d  1 a 3 44 ]
+"46
+[v main@ref_watt ref_watt `d  1 a 3 41 ]
+[v main@fwd_watt fwd_watt `d  1 a 3 38 ]
+"45
+[v main@ref ref `d  1 a 3 35 ]
+[v main@fwd fwd `d  1 a 3 32 ]
+"82
+} 0
+"107
+[v _sprint_double sprint_double `(uc  1 e 1 0 ]
+{
+[v sprint_double@str str `*.4uc  1 a 1 wreg ]
+"109
+[v sprint_double@i i `i  1 a 2 43 ]
+[v sprint_double@s_flag s_flag `i  1 a 2 40 ]
+"107
+[v sprint_double@str str `*.4uc  1 a 1 wreg ]
+[v sprint_double@str_length str_length `i  1 p 2 31 ]
+[v sprint_double@val val `d  1 p 3 33 ]
+[v sprint_double@digit digit `i  1 p 2 36 ]
+"109
+[v sprint_double@str str `*.4uc  1 a 1 42 ]
+"137
+} 0
+"6 /Applications/microchip/xc8/v1.34/sources/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"11
+[v ___awmod@sign sign `uc  1 a 1 6 ]
+[v ___awmod@counter counter `uc  1 a 1 5 ]
+"6
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"35
+} 0
+"6 /Applications/microchip/xc8/v1.34/sources/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"6
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"42
+} 0
+"5 /Applications/microchip/xc8/v1.34/sources/common/pow.c
+[v _pow pow `(d  1 e 3 0 ]
+{
+"8
+[v pow@yi yi `ul  1 a 4 27 ]
+"7
+[v pow@sign sign `uc  1 a 1 26 ]
+"5
+[v pow@x x `d  1 p 3 13 ]
+[v pow@y y `d  1 p 3 16 ]
+"31
+} 0
+"5 /Applications/microchip/xc8/v1.34/sources/common/log.c
+[v _log log `(d  1 e 3 0 ]
+{
+"7
+[v log@exponent exponent `i  1 a 2 74 ]
+"5
+[v log@x x `d  1 p 3 70 ]
+"9
+[v log@coeff coeff `DCC[9]d  1 s 27 coeff ]
+"36
+} 0
+"12 /Applications/microchip/xc8/v1.34/sources/common/exp.c
+[v _exp exp `(d  1 e 3 0 ]
+{
+"14
+[v exp@exponent exponent `i  1 a 2 10 ]
+"15
+[v exp@sign sign `uc  1 a 1 12 ]
+"12
+[v exp@x x `d  1 p 3 0 ]
+"17
+[v exp@coeff coeff `DCC[10]d  1 s 30 coeff ]
+"57
+} 0
+"277 /Applications/microchip/xc8/v1.34/sources/common/frexp.c
+[v _ldexp ldexp `(d  1 e 3 0 ]
+{
+[v ldexp@value value `d  1 p 3 70 ]
+[v ldexp@newexp newexp `i  1 p 2 73 ]
+"307
+} 0
+"15 /Applications/microchip/xc8/v1.34/sources/common/ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+{
+[v ___ftneg@f1 f1 `f  1 p 3 0 ]
+"20
+} 0
+"13 /Applications/microchip/xc8/v1.34/sources/common/floor.c
+[v _floor floor `(d  1 e 3 0 ]
+{
+"15
+[v floor@i i `d  1 a 3 64 ]
+"16
+[v floor@expon expon `i  1 a 2 67 ]
+"13
+[v floor@x x `d  1 p 3 60 ]
+"30
+} 0
+"254 /Applications/microchip/xc8/v1.34/sources/common/frexp.c
+[v _frexp frexp `(d  1 e 3 0 ]
+{
+[v frexp@value value `d  1 p 3 0 ]
+[v frexp@eptr eptr `*.4i  1 p 1 3 ]
+"274
+} 0
+"44 /Applications/microchip/xc8/v1.34/sources/common/fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+{
+"47
+[v ___fttol@lval lval `ul  1 a 4 9 ]
+"46
+[v ___fttol@exp1 exp1 `uc  1 a 1 13 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 8 ]
+"44
+[v ___fttol@f1 f1 `f  1 p 3 0 ]
+"73
+} 0
+"4 /Applications/microchip/xc8/v1.34/sources/common/ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+{
+[v ___ftge@ff1 ff1 `f  1 p 3 0 ]
+[v ___ftge@ff2 ff2 `f  1 p 3 3 ]
+"13
+} 0
+"42 /Applications/microchip/xc8/v1.34/sources/common/altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+{
+"44
+[v ___altoft@sign sign `uc  1 a 1 7 ]
+[v ___altoft@exp exp `uc  1 a 1 6 ]
+"42
+[v ___altoft@c c `l  1 p 4 0 ]
+"57
+} 0
+"4 /Applications/microchip/xc8/v1.34/sources/common/evalpoly.c
+[v _eval_poly eval_poly `(d  1 e 3 0 ]
+{
+"6
+[v eval_poly@res res `d  1 a 3 67 ]
+"4
+[v eval_poly@x x `d  1 p 3 60 ]
+[v eval_poly@d d `*.24DCCd  1 p 1 63 ]
+[v eval_poly@n n `i  1 p 2 64 ]
+"12
+} 0
+"62 /Applications/microchip/xc8/v1.34/sources/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+{
+"65
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 26 ]
+"64
+[v ___ftmul@sign sign `uc  1 a 1 30 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 29 ]
+[v ___ftmul@exp exp `uc  1 a 1 25 ]
+"62
+[v ___ftmul@f1 f1 `f  1 p 3 15 ]
+[v ___ftmul@f2 f2 `f  1 p 3 18 ]
+"157
+} 0
+"4 /Applications/microchip/xc8/v1.34/sources/common/Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 2 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
+"51
+} 0
+"18 /Applications/microchip/xc8/v1.34/sources/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+{
+[v ___ftsub@f2 f2 `f  1 p 3 60 ]
+[v ___ftsub@f1 f1 `f  1 p 3 63 ]
+"27
+} 0
+"86 /Applications/microchip/xc8/v1.34/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+{
+"88
+[v ___ftadd@exp1 exp1 `uc  1 a 1 59 ]
+[v ___ftadd@exp2 exp2 `uc  1 a 1 58 ]
+[v ___ftadd@sign sign `uc  1 a 1 57 ]
+"86
+[v ___ftadd@f1 f1 `f  1 p 3 47 ]
+[v ___ftadd@f2 f2 `f  1 p 3 50 ]
+"148
+} 0
+"56 /Applications/microchip/xc8/v1.34/sources/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+{
+"60
+[v ___ftdiv@f3 f3 `f  1 a 3 42 ]
+"59
+[v ___ftdiv@sign sign `uc  1 a 1 46 ]
+[v ___ftdiv@exp exp `uc  1 a 1 45 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 41 ]
+"56
+[v ___ftdiv@f2 f2 `f  1 p 3 31 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 34 ]
+"86
+} 0
+"32 /Applications/microchip/xc8/v1.34/sources/common/awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+{
+"34
+[v ___awtoft@sign sign `uc  1 a 1 14 ]
+"32
+[v ___awtoft@c c `i  1 p 2 9 ]
+"42
+} 0
+"35 /Applications/microchip/xc8/v1.34/sources/common/lltoft.c
+[v ___lltoft __lltoft `(f  1 e 3 0 ]
+{
+"37
+[v ___lltoft@exp exp `uc  1 a 1 13 ]
+"35
+[v ___lltoft@c c `ul  1 p 4 8 ]
+"46
+} 0
+"62 /Applications/microchip/xc8/v1.34/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+{
+[v ___ftpack@arg arg `um  1 p 3 0 ]
+[v ___ftpack@exp exp `uc  1 p 1 3 ]
+[v ___ftpack@sign sign `uc  1 p 1 4 ]
+"86
+} 0
+"84 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _init init `(v  1 e 0 0 ]
 {
-"74
+"105
 } 0
-"59 Z:\PIC_Project_MPLABX\digital_swr_meter.X\lcd.c
+"59 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/lcd.c
 [v _lcd_puts lcd_puts `(v  1 e 0 0 ]
 {
-[v lcd_puts@s s `*.24DCCuc  1 a 1 wreg ]
-[v lcd_puts@s s `*.24DCCuc  1 a 1 wreg ]
-"61
-[v lcd_puts@s s `*.24DCCuc  1 a 1 4 ]
+[v lcd_puts@s s `*.26DCCuc  1 p 2 3 ]
 "64
 } 0
 "86
@@ -266,4 +435,18 @@
 "39
 [v lcd_write@c c `uc  1 a 1 2 ]
 "44
+} 0
+"8 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/adc.c
+[v _adc_init adc_init `(v  1 e 0 0 ]
+{
+"16
+} 0
+"18
+[v _adc_read adc_read `(i  1 e 2 0 ]
+{
+[v adc_read@channel channel `uc  1 a 1 wreg ]
+[v adc_read@channel channel `uc  1 a 1 wreg ]
+"20
+[v adc_read@channel channel `uc  1 a 1 4 ]
+"29
 } 0

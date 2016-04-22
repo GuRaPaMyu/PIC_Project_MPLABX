@@ -11,7 +11,7 @@ void adc_init(void)
 	ADCON0bits.ADCS = 0b10;
 	ADCON1bits.ADFM = 1; //use 2bit of ADRESH
 	ADCON1bits.ADCS2 = 0;
-	ADCON1bits.VCFG = 0b00;
+	ADCON1bits.VCFG = 0b11;
 	ADON = 1;
 }
 
