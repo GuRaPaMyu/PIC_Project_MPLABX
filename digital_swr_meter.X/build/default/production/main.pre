@@ -1337,13 +1337,13 @@ void adc_itrpt_go(unsigned char channel);
 int adc_itrpt_read(void);
 
 
-# 24 "main.c"
+# 20 "main.c"
 #pragma config FOSC = INTOSCIO
-#pragma config WDTE = ON
-#pragma config PWRTE = OFF
+#pragma config WDTE = OFF
+#pragma config PWRTE = ON
 #pragma config MCLRE = OFF
 #pragma config BOREN = ON
-#pragma config LVP = ON
+#pragma config LVP = OFF
 #pragma config CPD = OFF
 #pragma config WRT = OFF
 #pragma config CCPMX = RB0
@@ -1359,21 +1359,23 @@ char sprint_double(char *str, int str_length, double val, int digit);
 void main(void)
 {
 init();
-double fwd, ref;
+int fwd, ref;
 double fwd_watt, ref_watt;
 double fwd_sqrt, ref_sqrt;
-double swr;
+double swr=0;
 char str[6];
 
 while(1)
 {
-fwd = adc_read(1);
+fwd = adc_read(0);
 ref = adc_read(1);
 
 
-fwd_watt = pow(10, (25 * fwd * 2405/1024 - -84-30)/10);
-ref_watt = pow(10, (25 * ref * 2405/1024 - -84-30)/10);
+fwd_watt = 100;
+ref_watt = 10;
 
+fwd_sqrt = pow(fwd_watt, 0.5);
+ref_sqrt = pow(ref_watt, 0.5);
 
 
 
@@ -1381,12 +1383,12 @@ swr = (fwd_sqrt + ref_sqrt)/(fwd_sqrt - ref_sqrt);
 
 lcd_goto(0x00);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
-sprint_double(str, 6, fwd_watt, 2);
+sprint_double(str, 6, fwd_watt, 1);
 lcd_puts(str);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 lcd_puts(" / ");
 _delay((unsigned long)((50)*(8000000/4000000.0)));
-sprint_double(str, 6, ref_watt, 2);
+sprint_double(str, 6, ref_watt, 1);
 lcd_puts(str);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 
@@ -1401,12 +1403,13 @@ lcd_puts(str);
 void init()
 {
 CMCON = 0b00000111;
+INTCON = 0;
+OSCCON = 0b01111010;
 TRISA = 0b00000011;
 TRISB = 0b00000000;
 PORTA = 0b00000000;
 PORTB = 0b00000000;
-ANSEL = 0b00001111;
-INTCON=0;
+ANSEL = 0b00000011;
 
 lcd_init();
 adc_init();
@@ -1418,7 +1421,8 @@ lcd_puts("  POWER &  SWR  ");
 lcd_goto(0x40);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 lcd_puts("      METER     ");
-_delay((unsigned long)((30)*(8000000/4000.0)));
+_delay((unsigned long)((1500)*(8000000/4000.0)));
+lcd_clear();
 }
 
 char sprint_double(char *str, int str_length, double val, int digit)
