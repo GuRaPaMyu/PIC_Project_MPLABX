@@ -43,6 +43,8 @@
 [v _log log `(d  1 e 3 0 ]
 "5 /Applications/microchip/xc8/v1.34/sources/common/pow.c
 [v _pow pow `(d  1 e 3 0 ]
+"15 /Applications/microchip/xc8/v1.34/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 /Applications/microchip/xc8/v1.34/sources/common/Umul8.c
 [v ___bmul __bmul `(uc  1 e 1 0 ]
 "6 /Applications/microchip/xc8/v1.34/sources/pic/eeprom.c
@@ -65,9 +67,9 @@
 [v _lcd_init lcd_init `(v  1 e 0 0 ]
 "38 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _main main `(v  1 e 0 0 ]
-"82
+"84
 [v _init init `(v  1 e 0 0 ]
-"107
+"109
 [v _sprint_double sprint_double `(uc  1 e 1 0 ]
 "160 /Applications/microchip/xc8/v1.34/include/pic16f88.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -150,35 +152,35 @@
 [v _main main `(v  1 e 0 0 ]
 {
 "45
-[v main@str str `[6]uc  1 a 6 21 ]
+[v main@str str `[6]uc  1 a 6 26 ]
 "43
-[v main@ref_sqrt ref_sqrt `d  1 a 3 39 ]
-[v main@fwd_sqrt fwd_sqrt `d  1 a 3 36 ]
-"42
-[v main@ref_watt ref_watt `d  1 a 3 33 ]
-[v main@fwd_watt fwd_watt `d  1 a 3 30 ]
+[v main@ref_sqrt ref_sqrt `d  1 a 3 38 ]
+[v main@fwd_sqrt fwd_sqrt `d  1 a 3 35 ]
 "44
-[v main@swr swr `d  1 a 3 27 ]
+[v main@swr swr `d  1 a 3 32 ]
+"42
+[v main@ref_watt ref_watt `d  1 a 3 23 ]
+[v main@fwd_watt fwd_watt `d  1 a 3 20 ]
 "41
-[v main@ref ref `i  1 a 2 19 ]
-[v main@fwd fwd `i  1 a 2 17 ]
-"80
+[v main@ref ref `i  1 a 2 43 ]
+[v main@fwd fwd `i  1 a 2 41 ]
+"82
 } 0
-"107
+"109
 [v _sprint_double sprint_double `(uc  1 e 1 0 ]
 {
 [v sprint_double@str str `*.4uc  1 a 1 wreg ]
-"109
+"111
 [v sprint_double@i i `i  1 a 2 43 ]
 [v sprint_double@s_flag s_flag `i  1 a 2 40 ]
-"107
+"109
 [v sprint_double@str str `*.4uc  1 a 1 wreg ]
 [v sprint_double@str_length str_length `i  1 p 2 31 ]
 [v sprint_double@val val `d  1 p 3 33 ]
 [v sprint_double@digit digit `i  1 p 2 36 ]
-"109
+"111
 [v sprint_double@str str `*.4uc  1 a 1 42 ]
-"137
+"139
 } 0
 "6 /Applications/microchip/xc8/v1.34/sources/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -397,10 +399,10 @@
 [v ___ftpack@sign sign `uc  1 p 1 4 ]
 "86
 } 0
-"82 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
+"84 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _init init `(v  1 e 0 0 ]
 {
-"105
+"107
 } 0
 "59 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/lcd.c
 [v _lcd_puts lcd_puts `(v  1 e 0 0 ]
@@ -451,4 +453,14 @@
 "20
 [v adc_read@channel channel `uc  1 a 1 4 ]
 "29
+} 0
+"15 /Applications/microchip/xc8/v1.34/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
 } 0

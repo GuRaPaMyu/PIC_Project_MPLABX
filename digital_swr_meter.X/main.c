@@ -50,8 +50,8 @@ void main(void)
         ref = adc_read(1);
         
         //bits -> Voltage -> dBm -> Watt
-        fwd_watt = 100;//pow(10, (TANGENT * fwd * RES_mV - INTERCEPT)/10);
-        ref_watt = 10;//pow(10, (TANGENT * ref * RES_mV - INTERCEPT)/10);
+        fwd_watt = pow(10, (TANGENT * fwd * RES_mV - INTERCEPT)/10);
+        ref_watt = pow(10, (TANGENT * ref * RES_mV - INTERCEPT)/10);
         
         fwd_sqrt = pow(fwd_watt, 0.5);
         ref_sqrt = pow(ref_watt, 0.5);
@@ -62,12 +62,12 @@ void main(void)
         
         lcd_goto(0x00);
         __delay_us(50);
-        sprint_double(str, 6, fwd_watt, 1);
+        sprint_double(str, 6, fwd, 0);
         lcd_puts(str);
         __delay_us(50);
         lcd_puts(" / ");
         __delay_us(50);
-        sprint_double(str, 6, ref_watt, 1);
+        sprint_double(str, 6, ref, 0);
         lcd_puts(str);
         __delay_us(50);
         
@@ -76,6 +76,8 @@ void main(void)
         lcd_puts("SWR: ");
         sprint_double(str, 6, swr, 2);
         lcd_puts(str);
+        
+        __delay_ms(100);
     }
 }
 
