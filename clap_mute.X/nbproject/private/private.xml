@@ -19,12 +19,6 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Users/YudaiHashimoto/MPLABXProjects/clap_mute.X/usb_descriptors.c</file>
-            <file>file:/Users/YudaiHashimoto/MPLABXProjects/clap_mute.X/main.c</file>
-            <file>file:/Users/YudaiHashimoto/MPLABXProjects/clap_mute.X/leds.c</file>
-            <file>file:/Users/YudaiHashimoto/MPLABXProjects/clap_mute.X/usb_device.c</file>
-            <file>file:/Users/YudaiHashimoto/MPLABXProjects/clap_mute.X/system.c</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
