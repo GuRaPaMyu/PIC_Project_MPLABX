@@ -173,7 +173,8 @@ void main()
   TMR1H = 0;
   // 変数の初期化 
   prescaler = 1;
-  gateTime = GATETIME_1SEC;
+  gateTime = GATETIME_100MSEC;
+  
   // ＬＣＤ（液晶モニタ）の初期化 
   lcd_init();
   lcd_puts("Freq Counter");
@@ -208,9 +209,11 @@ void main()
     }
     
     lcd_goto(0x00);
-    ltoa_lcd(buf, 13, 123456789, 1);
+    ltoa_lcd(buf, 13, freq, 1);
+    lcd_goto(0x0C);
+    lcd_puts("Hz");
     
-    __delay_ms(100);
+    __delay_ms(50);
   }
 }
 
@@ -235,7 +238,7 @@ void ltoa_lcd(char *buf, int buf_size, long val, char div)
       val /= 10;
       buf_size --;
     }
-    if(((cnt % 3) == 2) && (val != 0))
+    if(((cnt % 3) == 2) && (val != 0) && (div == 1))
     {
       buf[buf_size - 1] = 0x2e;  //0x2c is comma,0x2e is decimal
       buf_size --;
