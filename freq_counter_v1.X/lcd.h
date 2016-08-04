@@ -3,6 +3,8 @@
  *	See lcd.c for more info
  */
 
+extern void lcd_puts_ltoa(char *buf, int buf_size, long val, char div);
+
 extern void lcd_go_and_puts(unsigned char pos, const char * s);
 
 /* write a byte to the LCD in 4 bit mode */

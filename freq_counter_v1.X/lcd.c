@@ -83,3 +83,35 @@ void lcd_init()
 	lcd_clear();	// Clear screen
 	lcd_write(0x6); // Set entry Mode
 }
+
+void lcd_puts_ltoa(char *buf, int buf_size, long val, char div)
+{
+  char ascii_array[10] = {0x30,0x31,0x32,0x33,0x34,
+              0x35,0x36,0x37,0x38,0x39};
+  char zero_flag = 0;
+  char cnt = 0;
+  
+  buf[buf_size - 1] = 0x00;
+  buf_size --;
+  while(buf_size > 0)
+  {
+    if(zero_flag == 0)
+    {
+      buf[buf_size - 1] = ascii_array[(val%10 & 0x0F)];
+      val /= 10;
+      buf_size --;
+    }else{
+      buf[buf_size - 1] = 0x20;
+      val /= 10;
+      buf_size --;
+    }
+    if(((cnt % 3) == 2) && (val != 0) && (div == 1))
+    {
+      buf[buf_size - 1] = 0x2e;  //0x2c is comma,0x2e is decimal
+      buf_size --;
+    }
+    cnt ++;
+    val == 0 ? zero_flag=1 : zero_flag=0;
+  }
+  lcd_puts(buf);
+}
