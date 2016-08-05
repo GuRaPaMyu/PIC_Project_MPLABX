@@ -41,6 +41,10 @@
 [v ___lltoft __lltoft `(f  1 e 3 0 ]
 "5 /Applications/microchip/xc8/v1.34/sources/common/log.c
 [v _log log `(d  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.34/sources/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"28 /Applications/microchip/xc8/v1.34/sources/common/lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
 "5 /Applications/microchip/xc8/v1.34/sources/common/pow.c
 [v _pow pow `(d  1 e 3 0 ]
 "15 /Applications/microchip/xc8/v1.34/sources/common/Umul16.c
@@ -67,10 +71,10 @@
 [v _lcd_init lcd_init `(v  1 e 0 0 ]
 "38 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _main main `(v  1 e 0 0 ]
-"84
+"83
 [v _init init `(v  1 e 0 0 ]
-"109
-[v _sprint_double sprint_double `(uc  1 e 1 0 ]
+"108
+[v _lcd_puts_ltoa lcd_puts_ltoa `(v  1 e 0 0 ]
 "160 /Applications/microchip/xc8/v1.34/include/pic16f88.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "221
@@ -152,35 +156,224 @@
 [v _main main `(v  1 e 0 0 ]
 {
 "45
-[v main@str str `[6]uc  1 a 6 26 ]
-"43
-[v main@ref_sqrt ref_sqrt `d  1 a 3 38 ]
-[v main@fwd_sqrt fwd_sqrt `d  1 a 3 35 ]
-"44
-[v main@swr swr `d  1 a 3 32 ]
+[v main@str str `[6]uc  1 a 6 3 ]
 "42
-[v main@ref_watt ref_watt `d  1 a 3 23 ]
-[v main@fwd_watt fwd_watt `d  1 a 3 20 ]
+[v main@ref_watt ref_watt `d  1 a 3 25 ]
+[v main@fwd_watt fwd_watt `d  1 a 3 22 ]
+"43
+[v main@ref_sqrt ref_sqrt `d  1 a 3 19 ]
+[v main@fwd_sqrt fwd_sqrt `d  1 a 3 16 ]
+"44
+[v main@swr swr `d  1 a 3 13 ]
 "41
-[v main@ref ref `i  1 a 2 43 ]
-[v main@fwd fwd `i  1 a 2 41 ]
-"82
+[v main@ref ref `ui  1 a 2 11 ]
+[v main@fwd fwd `ui  1 a 2 9 ]
+"81
 } 0
-"109
-[v _sprint_double sprint_double `(uc  1 e 1 0 ]
+"5 /Applications/microchip/xc8/v1.34/sources/common/pow.c
+[v _pow pow `(d  1 e 3 0 ]
 {
-[v sprint_double@str str `*.4uc  1 a 1 wreg ]
-"111
-[v sprint_double@i i `i  1 a 2 43 ]
-[v sprint_double@s_flag s_flag `i  1 a 2 40 ]
+"8
+[v pow@yi yi `ul  1 a 4 76 ]
+"7
+[v pow@sign sign `uc  1 a 1 75 ]
+"5
+[v pow@x x `d  1 p 3 62 ]
+[v pow@y y `d  1 p 3 65 ]
+"31
+} 0
+"5 /Applications/microchip/xc8/v1.34/sources/common/log.c
+[v _log log `(d  1 e 3 0 ]
+{
+"7
+[v log@exponent exponent `i  1 a 2 43 ]
+"5
+[v log@x x `d  1 p 3 39 ]
+"9
+[v log@coeff coeff `DCC[9]d  1 s 27 coeff ]
+"36
+} 0
+"12 /Applications/microchip/xc8/v1.34/sources/common/exp.c
+[v _exp exp `(d  1 e 3 0 ]
+{
+"14
+[v exp@exponent exponent `i  1 a 2 59 ]
+"15
+[v exp@sign sign `uc  1 a 1 61 ]
+"12
+[v exp@x x `d  1 p 3 49 ]
+"17
+[v exp@coeff coeff `DCC[10]d  1 s 30 coeff ]
+"57
+} 0
+"277 /Applications/microchip/xc8/v1.34/sources/common/frexp.c
+[v _ldexp ldexp `(d  1 e 3 0 ]
+{
+[v ldexp@value value `d  1 p 3 39 ]
+[v ldexp@newexp newexp `i  1 p 2 42 ]
+"307
+} 0
+"15 /Applications/microchip/xc8/v1.34/sources/common/ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+{
+[v ___ftneg@f1 f1 `f  1 p 3 0 ]
+"20
+} 0
+"13 /Applications/microchip/xc8/v1.34/sources/common/floor.c
+[v _floor floor `(d  1 e 3 0 ]
+{
+"15
+[v floor@i i `d  1 a 3 42 ]
+"16
+[v floor@expon expon `i  1 a 2 45 ]
+"13
+[v floor@x x `d  1 p 3 38 ]
+"30
+} 0
+"254 /Applications/microchip/xc8/v1.34/sources/common/frexp.c
+[v _frexp frexp `(d  1 e 3 0 ]
+{
+[v frexp@value value `d  1 p 3 0 ]
+[v frexp@eptr eptr `*.4i  1 p 1 3 ]
+"274
+} 0
+"44 /Applications/microchip/xc8/v1.34/sources/common/fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+{
+"47
+[v ___fttol@lval lval `ul  1 a 4 25 ]
+"46
+[v ___fttol@exp1 exp1 `uc  1 a 1 29 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 24 ]
+"44
+[v ___fttol@f1 f1 `f  1 p 3 16 ]
+"73
+} 0
+"4 /Applications/microchip/xc8/v1.34/sources/common/ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+{
+[v ___ftge@ff1 ff1 `f  1 p 3 0 ]
+[v ___ftge@ff2 ff2 `f  1 p 3 3 ]
+"13
+} 0
+"42 /Applications/microchip/xc8/v1.34/sources/common/altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+{
+"44
+[v ___altoft@sign sign `uc  1 a 1 37 ]
+[v ___altoft@exp exp `uc  1 a 1 36 ]
+"42
+[v ___altoft@c c `l  1 p 4 30 ]
+"57
+} 0
+"4 /Applications/microchip/xc8/v1.34/sources/common/evalpoly.c
+[v _eval_poly eval_poly `(d  1 e 3 0 ]
+{
+"6
+[v eval_poly@res res `d  1 a 3 36 ]
+"4
+[v eval_poly@x x `d  1 p 3 29 ]
+[v eval_poly@d d `*.24DCCd  1 p 1 32 ]
+[v eval_poly@n n `i  1 p 2 33 ]
+"12
+} 0
+"62 /Applications/microchip/xc8/v1.34/sources/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+{
+"65
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 11 ]
+"64
+[v ___ftmul@sign sign `uc  1 a 1 15 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 14 ]
+[v ___ftmul@exp exp `uc  1 a 1 10 ]
+"62
+[v ___ftmul@f1 f1 `f  1 p 3 0 ]
+[v ___ftmul@f2 f2 `f  1 p 3 3 ]
+"157
+} 0
+"4 /Applications/microchip/xc8/v1.34/sources/common/Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 2 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
+"51
+} 0
+"18 /Applications/microchip/xc8/v1.34/sources/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+{
+[v ___ftsub@f2 f2 `f  1 p 3 29 ]
+[v ___ftsub@f1 f1 `f  1 p 3 32 ]
+"27
+} 0
+"86 /Applications/microchip/xc8/v1.34/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+{
+"88
+[v ___ftadd@exp1 exp1 `uc  1 a 1 28 ]
+[v ___ftadd@exp2 exp2 `uc  1 a 1 27 ]
+[v ___ftadd@sign sign `uc  1 a 1 26 ]
+"86
+[v ___ftadd@f1 f1 `f  1 p 3 16 ]
+[v ___ftadd@f2 f2 `f  1 p 3 19 ]
+"148
+} 0
+"56 /Applications/microchip/xc8/v1.34/sources/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+{
+"60
+[v ___ftdiv@f3 f3 `f  1 a 3 40 ]
+"59
+[v ___ftdiv@sign sign `uc  1 a 1 44 ]
+[v ___ftdiv@exp exp `uc  1 a 1 43 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 39 ]
+"56
+[v ___ftdiv@f2 f2 `f  1 p 3 29 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 32 ]
+"86
+} 0
+"32 /Applications/microchip/xc8/v1.34/sources/common/awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+{
+"34
+[v ___awtoft@sign sign `uc  1 a 1 13 ]
+"32
+[v ___awtoft@c c `i  1 p 2 8 ]
+"42
+} 0
+"35 /Applications/microchip/xc8/v1.34/sources/common/lltoft.c
+[v ___lltoft __lltoft `(f  1 e 3 0 ]
+{
+"37
+[v ___lltoft@exp exp `uc  1 a 1 13 ]
+"35
+[v ___lltoft@c c `ul  1 p 4 8 ]
+"46
+} 0
+"108 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
+[v _lcd_puts_ltoa lcd_puts_ltoa `(v  1 e 0 0 ]
+{
+[v lcd_puts_ltoa@buf buf `*.4uc  1 a 1 wreg ]
+"110
+[v lcd_puts_ltoa@ascii_array ascii_array `[10]uc  1 a 10 38 ]
+"112
+[v lcd_puts_ltoa@zero_flag zero_flag `uc  1 a 1 49 ]
+"113
+[v lcd_puts_ltoa@cnt cnt `uc  1 a 1 48 ]
+"108
+[v lcd_puts_ltoa@buf buf `*.4uc  1 a 1 wreg ]
+[v lcd_puts_ltoa@buf_size buf_size `i  1 p 2 30 ]
+[v lcd_puts_ltoa@val val `i  1 p 2 32 ]
 "109
-[v sprint_double@str str `*.4uc  1 a 1 wreg ]
-[v sprint_double@str_length str_length `i  1 p 2 31 ]
-[v sprint_double@val val `d  1 p 3 33 ]
-[v sprint_double@digit digit `i  1 p 2 36 ]
+[v lcd_puts_ltoa@F1094 F1094 `[10]uc  1 s 10 F1094 ]
 "111
-[v sprint_double@str str `*.4uc  1 a 1 42 ]
-"139
+[v lcd_puts_ltoa@buf buf `*.4uc  1 a 1 50 ]
+"133
 } 0
 "6 /Applications/microchip/xc8/v1.34/sources/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -206,203 +399,10 @@
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "42
 } 0
-"5 /Applications/microchip/xc8/v1.34/sources/common/pow.c
-[v _pow pow `(d  1 e 3 0 ]
-{
-"8
-[v pow@yi yi `ul  1 a 4 13 ]
-"7
-[v pow@sign sign `uc  1 a 1 12 ]
-"5
-[v pow@x x `d  1 p 3 0 ]
-[v pow@y y `d  1 p 3 3 ]
-"31
-} 0
-"5 /Applications/microchip/xc8/v1.34/sources/common/log.c
-[v _log log `(d  1 e 3 0 ]
-{
-"7
-[v log@exponent exponent `i  1 a 2 58 ]
-"5
-[v log@x x `d  1 p 3 54 ]
-"9
-[v log@coeff coeff `DCC[9]d  1 s 27 coeff ]
-"36
-} 0
-"12 /Applications/microchip/xc8/v1.34/sources/common/exp.c
-[v _exp exp `(d  1 e 3 0 ]
-{
-"14
-[v exp@exponent exponent `i  1 a 2 74 ]
-"15
-[v exp@sign sign `uc  1 a 1 76 ]
-"12
-[v exp@x x `d  1 p 3 64 ]
-"17
-[v exp@coeff coeff `DCC[10]d  1 s 30 coeff ]
-"57
-} 0
-"277 /Applications/microchip/xc8/v1.34/sources/common/frexp.c
-[v _ldexp ldexp `(d  1 e 3 0 ]
-{
-[v ldexp@value value `d  1 p 3 54 ]
-[v ldexp@newexp newexp `i  1 p 2 57 ]
-"307
-} 0
-"15 /Applications/microchip/xc8/v1.34/sources/common/ftneg.c
-[v ___ftneg __ftneg `(f  1 e 3 0 ]
-{
-[v ___ftneg@f1 f1 `f  1 p 3 0 ]
-"20
-} 0
-"13 /Applications/microchip/xc8/v1.34/sources/common/floor.c
-[v _floor floor `(d  1 e 3 0 ]
-{
-"15
-[v floor@i i `d  1 a 3 48 ]
-"16
-[v floor@expon expon `i  1 a 2 51 ]
-"13
-[v floor@x x `d  1 p 3 44 ]
-"30
-} 0
-"254 /Applications/microchip/xc8/v1.34/sources/common/frexp.c
-[v _frexp frexp `(d  1 e 3 0 ]
-{
-[v frexp@value value `d  1 p 3 0 ]
-[v frexp@eptr eptr `*.4i  1 p 1 3 ]
-"274
-} 0
-"44 /Applications/microchip/xc8/v1.34/sources/common/fttol.c
-[v ___fttol __fttol `(l  1 e 4 0 ]
-{
-"47
-[v ___fttol@lval lval `ul  1 a 4 9 ]
-"46
-[v ___fttol@exp1 exp1 `uc  1 a 1 13 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 8 ]
-"44
-[v ___fttol@f1 f1 `f  1 p 3 0 ]
-"73
-} 0
-"4 /Applications/microchip/xc8/v1.34/sources/common/ftge.c
-[v ___ftge __ftge `(b  1 e 0 0 ]
-{
-[v ___ftge@ff1 ff1 `f  1 p 3 0 ]
-[v ___ftge@ff2 ff2 `f  1 p 3 3 ]
-"13
-} 0
-"42 /Applications/microchip/xc8/v1.34/sources/common/altoft.c
-[v ___altoft __altoft `(f  1 e 3 0 ]
-{
-"44
-[v ___altoft@sign sign `uc  1 a 1 7 ]
-[v ___altoft@exp exp `uc  1 a 1 6 ]
-"42
-[v ___altoft@c c `l  1 p 4 0 ]
-"57
-} 0
-"4 /Applications/microchip/xc8/v1.34/sources/common/evalpoly.c
-[v _eval_poly eval_poly `(d  1 e 3 0 ]
-{
-"6
-[v eval_poly@res res `d  1 a 3 51 ]
-"4
-[v eval_poly@x x `d  1 p 3 44 ]
-[v eval_poly@d d `*.24DCCd  1 p 1 47 ]
-[v eval_poly@n n `i  1 p 2 48 ]
-"12
-} 0
-"62 /Applications/microchip/xc8/v1.34/sources/common/ftmul.c
-[v ___ftmul __ftmul `(f  1 e 3 0 ]
-{
-"65
-[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 26 ]
-"64
-[v ___ftmul@sign sign `uc  1 a 1 30 ]
-[v ___ftmul@cntr cntr `uc  1 a 1 29 ]
-[v ___ftmul@exp exp `uc  1 a 1 25 ]
-"62
-[v ___ftmul@f1 f1 `f  1 p 3 15 ]
-[v ___ftmul@f2 f2 `f  1 p 3 18 ]
-"157
-} 0
-"4 /Applications/microchip/xc8/v1.34/sources/common/Umul8.c
-[v ___bmul __bmul `(uc  1 e 1 0 ]
-{
-[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
-"6
-[v ___bmul@product product `uc  1 a 1 2 ]
-"4
-[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
-[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
-"6
-[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
-"51
-} 0
-"18 /Applications/microchip/xc8/v1.34/sources/common/ftsub.c
-[v ___ftsub __ftsub `(f  1 e 3 0 ]
-{
-[v ___ftsub@f2 f2 `f  1 p 3 44 ]
-[v ___ftsub@f1 f1 `f  1 p 3 47 ]
-"27
-} 0
-"86 /Applications/microchip/xc8/v1.34/sources/common/ftadd.c
-[v ___ftadd __ftadd `(f  1 e 3 0 ]
-{
-"88
-[v ___ftadd@exp1 exp1 `uc  1 a 1 43 ]
-[v ___ftadd@exp2 exp2 `uc  1 a 1 42 ]
-[v ___ftadd@sign sign `uc  1 a 1 41 ]
-"86
-[v ___ftadd@f1 f1 `f  1 p 3 31 ]
-[v ___ftadd@f2 f2 `f  1 p 3 34 ]
-"148
-} 0
-"56 /Applications/microchip/xc8/v1.34/sources/common/ftdiv.c
-[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-{
-"60
-[v ___ftdiv@f3 f3 `f  1 a 3 55 ]
-"59
-[v ___ftdiv@sign sign `uc  1 a 1 59 ]
-[v ___ftdiv@exp exp `uc  1 a 1 58 ]
-[v ___ftdiv@cntr cntr `uc  1 a 1 54 ]
-"56
-[v ___ftdiv@f2 f2 `f  1 p 3 44 ]
-[v ___ftdiv@f1 f1 `f  1 p 3 47 ]
-"86
-} 0
-"32 /Applications/microchip/xc8/v1.34/sources/common/awtoft.c
-[v ___awtoft __awtoft `(f  1 e 3 0 ]
-{
-"34
-[v ___awtoft@sign sign `uc  1 a 1 14 ]
-"32
-[v ___awtoft@c c `i  1 p 2 9 ]
-"42
-} 0
-"35 /Applications/microchip/xc8/v1.34/sources/common/lltoft.c
-[v ___lltoft __lltoft `(f  1 e 3 0 ]
-{
-"37
-[v ___lltoft@exp exp `uc  1 a 1 13 ]
-"35
-[v ___lltoft@c c `ul  1 p 4 8 ]
-"46
-} 0
-"62 /Applications/microchip/xc8/v1.34/sources/common/float.c
-[v ___ftpack __ftpack `(f  1 e 3 0 ]
-{
-[v ___ftpack@arg arg `um  1 p 3 0 ]
-[v ___ftpack@exp exp `uc  1 p 1 3 ]
-[v ___ftpack@sign sign `uc  1 p 1 4 ]
-"86
-} 0
-"84 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
+"83 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _init init `(v  1 e 0 0 ]
 {
-"107
+"106
 } 0
 "59 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/lcd.c
 [v _lcd_puts lcd_puts `(v  1 e 0 0 ]
@@ -463,4 +463,30 @@
 [v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
+} 0
+"28 /Applications/microchip/xc8/v1.34/sources/common/lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+{
+[v ___lwtoft@c c `ui  1 p 2 0 ]
+"31
+} 0
+"62 /Applications/microchip/xc8/v1.34/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+{
+[v ___ftpack@arg arg `um  1 p 3 0 ]
+[v ___ftpack@exp exp `uc  1 p 1 3 ]
+[v ___ftpack@sign sign `uc  1 p 1 4 ]
+"86
+} 0
+"6 /Applications/microchip/xc8/v1.34/sources/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 11 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 13 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 6 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 8 ]
+"31
 } 0

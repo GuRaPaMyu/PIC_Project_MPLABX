@@ -33,12 +33,12 @@
 #pragma config IESO = ON        // Internal External Switchover bit (Internal External Switchover mode enabled)
 
 void init();
-char sprint_double(char *str, int str_length, double val, int digit);
+void lcd_puts_ltoa(char *buf, int buf_size, int val);
 
 void main(void)
 {
     init();
-    int fwd, ref;
+    unsigned int fwd, ref;
     double fwd_watt, ref_watt;
     double fwd_sqrt, ref_sqrt;
     double swr=0;
@@ -52,6 +52,8 @@ void main(void)
         //bits -> Voltage -> dBm -> Watt
         fwd_watt = pow(10, (TANGENT * fwd * RES_mV - INTERCEPT)/10);
         ref_watt = pow(10, (TANGENT * ref * RES_mV - INTERCEPT)/10);
+        fwd_watt = 100;
+        ref_watt = 10;
         
         fwd_sqrt = pow(fwd_watt, 0.5);
         ref_sqrt = pow(ref_watt, 0.5);
@@ -62,20 +64,17 @@ void main(void)
         
         lcd_goto(0x00);
         __delay_us(50);
-        sprint_double(str, 6, fwd, 0);
-        lcd_puts(str);
+        lcd_puts_ltoa(str, 4, (unsigned int)fwd_watt);
         __delay_us(50);
         lcd_puts(" / ");
         __delay_us(50);
-        sprint_double(str, 6, ref, 0);
-        lcd_puts(str);
+        lcd_puts_ltoa(str, 4, (unsigned int)ref_watt);
         __delay_us(50);
         
         lcd_goto(0x40);
         __delay_us(50);
         lcd_puts("SWR: ");
-        sprint_double(str, 6, swr, 2);
-        lcd_puts(str);
+        lcd_puts_ltoa(str, 5, (unsigned int)(swr*100));
         
         __delay_ms(100);
     }
@@ -106,34 +105,29 @@ void init()
     lcd_clear();
 }
 
-char sprint_double(char *str, int str_length, double val, int digit)
+void lcd_puts_ltoa(char *buf, int buf_size, int val)
 {
-  int i,s_flag = 0;
-
-  for(i=0;i<digit;i++)
-  {
-    val *= 10;
-  }
-  *(str + str_length - 1) = '\0';
-  str_length--;
-
-  for(i=str_length ;i>0;i--)
-  {
-    if(digit == 0)
-    {
-      *(str + i - 1) = 0x2e;
-    }else{
-      if((val != 0) && (s_flag == 0))
-      {
-        *(str + i - 1) = (int)val % 10 + 0x30;
-      }else{
-        *(str + i - 1) = 0x20;
-        s_flag = 1;
-      }
-      val = (int)val / 10;
-    }
-    digit--;
-  }
+  char ascii_array[10] = {0x30,0x31,0x32,0x33,0x34,
+              0x35,0x36,0x37,0x38,0x39};
+  char zero_flag = 0;
+  char cnt = 0;
   
-  return str;
+  buf[buf_size - 1] = 0x00;
+  buf_size --;
+  while(buf_size > 0)
+  {
+    if(zero_flag == 0)
+    {
+      buf[buf_size - 1] = ascii_array[val%10];
+      val /= 10;
+      buf_size --;
+    }else{
+      buf[buf_size - 1] = 0x20;
+      val /= 10;
+      buf_size --;
+    }
+    cnt ++;
+    val == 0 ? zero_flag=1 : zero_flag=0;
+  }
+  lcd_puts(buf);
 }
