@@ -3,7 +3,7 @@
 #define TANGENT 25 //for calibration
 #define REF_mV 5000 //ADC reference voltage
 #define RES 1024 //resolution of ADC bits
-#define RES_mV REF_mV/RES //resolution of ADC voltage
+#define RES_mV 4.8828125 //resolution of ADC voltage
 
 // PIC16F88 Configuration Bit Settings
 
@@ -50,10 +50,8 @@ void main(void)
         ref = adc_read(1);
         
         //bits -> Voltage -> dBm -> Watt
-        fwd_watt = pow(10, (TANGENT * fwd * RES_mV - INTERCEPT)/10);
-        ref_watt = pow(10, (TANGENT * ref * RES_mV - INTERCEPT)/10);
-        fwd_watt = 100;
-        ref_watt = 10;
+        fwd_watt = pow(10, (1/25*fwd*RES_mV -84+45.64)/10)/1000;
+        ref_watt = pow(10, (1/25*ref*RES_mV -84+45.64)/10)/1000;
         
         fwd_sqrt = pow(fwd_watt, 0.5);
         ref_sqrt = pow(ref_watt, 0.5);
@@ -64,11 +62,11 @@ void main(void)
         
         lcd_goto(0x00);
         __delay_us(50);
-        lcd_puts_ltoa(str, 4, (unsigned int)fwd_watt);
+        lcd_puts_ltoa(str, 5, (int)fwd_watt);
         __delay_us(50);
         lcd_puts(" / ");
         __delay_us(50);
-        lcd_puts_ltoa(str, 4, (unsigned int)ref_watt);
+        lcd_puts_ltoa(str, 5, (int)ref_watt);
         __delay_us(50);
         
         lcd_goto(0x40);

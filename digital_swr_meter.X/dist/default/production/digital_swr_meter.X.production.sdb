@@ -41,8 +41,6 @@
 [v ___lltoft __lltoft `(f  1 e 3 0 ]
 "5 /Applications/microchip/xc8/v1.34/sources/common/log.c
 [v _log log `(d  1 e 3 0 ]
-"6 /Applications/microchip/xc8/v1.34/sources/common/lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "28 /Applications/microchip/xc8/v1.34/sources/common/lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
 "5 /Applications/microchip/xc8/v1.34/sources/common/pow.c
@@ -71,9 +69,9 @@
 [v _lcd_init lcd_init `(v  1 e 0 0 ]
 "38 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _main main `(v  1 e 0 0 ]
-"83
+"81
 [v _init init `(v  1 e 0 0 ]
-"108
+"106
 [v _lcd_puts_ltoa lcd_puts_ltoa `(v  1 e 0 0 ]
 "160 /Applications/microchip/xc8/v1.34/include/pic16f88.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -157,18 +155,18 @@
 {
 "45
 [v main@str str `[6]uc  1 a 6 3 ]
-"42
-[v main@ref_watt ref_watt `d  1 a 3 25 ]
-[v main@fwd_watt fwd_watt `d  1 a 3 22 ]
 "43
-[v main@ref_sqrt ref_sqrt `d  1 a 3 19 ]
-[v main@fwd_sqrt fwd_sqrt `d  1 a 3 16 ]
+[v main@ref_sqrt ref_sqrt `d  1 a 3 25 ]
+[v main@fwd_sqrt fwd_sqrt `d  1 a 3 22 ]
+"42
+[v main@ref_watt ref_watt `d  1 a 3 19 ]
+[v main@fwd_watt fwd_watt `d  1 a 3 16 ]
 "44
 [v main@swr swr `d  1 a 3 13 ]
 "41
 [v main@ref ref `ui  1 a 2 11 ]
 [v main@fwd fwd `ui  1 a 2 9 ]
-"81
+"79
 } 0
 "5 /Applications/microchip/xc8/v1.34/sources/common/pow.c
 [v _pow pow `(d  1 e 3 0 ]
@@ -355,25 +353,25 @@
 [v ___lltoft@c c `ul  1 p 4 8 ]
 "46
 } 0
-"108 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
+"106 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _lcd_puts_ltoa lcd_puts_ltoa `(v  1 e 0 0 ]
 {
 [v lcd_puts_ltoa@buf buf `*.4uc  1 a 1 wreg ]
-"110
-[v lcd_puts_ltoa@ascii_array ascii_array `[10]uc  1 a 10 38 ]
-"112
-[v lcd_puts_ltoa@zero_flag zero_flag `uc  1 a 1 49 ]
-"113
-[v lcd_puts_ltoa@cnt cnt `uc  1 a 1 48 ]
 "108
+[v lcd_puts_ltoa@ascii_array ascii_array `[10]uc  1 a 10 38 ]
+"110
+[v lcd_puts_ltoa@zero_flag zero_flag `uc  1 a 1 49 ]
+"111
+[v lcd_puts_ltoa@cnt cnt `uc  1 a 1 48 ]
+"106
 [v lcd_puts_ltoa@buf buf `*.4uc  1 a 1 wreg ]
 [v lcd_puts_ltoa@buf_size buf_size `i  1 p 2 30 ]
 [v lcd_puts_ltoa@val val `i  1 p 2 32 ]
-"109
+"107
 [v lcd_puts_ltoa@F1094 F1094 `[10]uc  1 s 10 F1094 ]
-"111
+"109
 [v lcd_puts_ltoa@buf buf `*.4uc  1 a 1 50 ]
-"133
+"131
 } 0
 "6 /Applications/microchip/xc8/v1.34/sources/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -399,10 +397,10 @@
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "42
 } 0
-"83 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
+"81 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/main.c
 [v _init init `(v  1 e 0 0 ]
 {
-"106
+"104
 } 0
 "59 /Users/YudaiHashimoto/MPLABXProjects/digital_swr_meter.X/lcd.c
 [v _lcd_puts lcd_puts `(v  1 e 0 0 ]
@@ -467,7 +465,7 @@
 "28 /Applications/microchip/xc8/v1.34/sources/common/lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
 {
-[v ___lwtoft@c c `ui  1 p 2 0 ]
+[v ___lwtoft@c c `ui  1 p 2 8 ]
 "31
 } 0
 "62 /Applications/microchip/xc8/v1.34/sources/common/float.c
@@ -477,16 +475,4 @@
 [v ___ftpack@exp exp `uc  1 p 1 3 ]
 [v ___ftpack@sign sign `uc  1 p 1 4 ]
 "86
-} 0
-"6 /Applications/microchip/xc8/v1.34/sources/common/lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwdiv@quotient quotient `ui  1 a 2 11 ]
-"12
-[v ___lwdiv@counter counter `uc  1 a 1 13 ]
-"6
-[v ___lwdiv@divisor divisor `ui  1 p 2 6 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 8 ]
-"31
 } 0

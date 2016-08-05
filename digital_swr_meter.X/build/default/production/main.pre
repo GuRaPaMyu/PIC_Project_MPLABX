@@ -1371,10 +1371,8 @@ fwd = adc_read(0);
 ref = adc_read(1);
 
 
-fwd_watt = pow(10, (25 * fwd * 5000/1024 - -84-30)/10);
-ref_watt = pow(10, (25 * ref * 5000/1024 - -84-30)/10);
-fwd_watt = 100;
-ref_watt = 10;
+fwd_watt = pow(10, (1/25*fwd*4.8828125 -84+45.64)/10)/1000;
+ref_watt = pow(10, (1/25*ref*4.8828125 -84+45.64)/10)/1000;
 
 fwd_sqrt = pow(fwd_watt, 0.5);
 ref_sqrt = pow(ref_watt, 0.5);
@@ -1385,11 +1383,11 @@ swr = (fwd_sqrt + ref_sqrt)/(fwd_sqrt - ref_sqrt);
 
 lcd_goto(0x00);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
-lcd_puts_ltoa(str, 4, (unsigned int)fwd_watt);
+lcd_puts_ltoa(str, 5, (int)fwd_watt);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 lcd_puts(" / ");
 _delay((unsigned long)((50)*(8000000/4000000.0)));
-lcd_puts_ltoa(str, 4, (unsigned int)ref_watt);
+lcd_puts_ltoa(str, 5, (int)ref_watt);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 
 lcd_goto(0x40);
