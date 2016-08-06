@@ -6,9 +6,9 @@
             <name>level_meter</name>
             <creation-uuid>19dbcd1d-fd08-401d-b026-d6093ab78d2d</creation-uuid>
             <make-project-type>0</make-project-type>
-            <c-extensions/>
+            <c-extensions>c</c-extensions>
             <cpp-extensions/>
-            <header-extensions/>
+            <header-extensions>h</header-extensions>
             <asminc-extensions/>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
