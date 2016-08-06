@@ -50,8 +50,8 @@ void main(void)
         ref = adc_read(1);
         
         //bits -> Voltage -> dBm -> Watt
-        fwd_watt = pow(10, (1/25*fwd*RES_mV -84+45.64)/10)/1000;
-        ref_watt = pow(10, (1/25*ref*RES_mV -84+45.64)/10)/1000;
+        fwd_watt = pow(10, (fwd*4.8828125/25 -84+45.64)/10)/1000;//pow(10, (1/25*fwd*RES_mV -84+45.64)/10)/1000;
+        ref_watt = pow(10, (ref*4.8828125/25 -84+45.64)/10)/1000;//pow(10, (1/25*ref*RES_mV -84+45.64)/10)/1000;
         
         fwd_sqrt = pow(fwd_watt, 0.5);
         ref_sqrt = pow(ref_watt, 0.5);
