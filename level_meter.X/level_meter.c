@@ -12,7 +12,7 @@
 #pragma config PWRTE = ON       // Power-up Timer Enable bit (PWRT enabled)
 #pragma config MCLRE = OFF      // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is digital I/O, MCLR internally tied to VDD)
 #pragma config BOREN = ON       // Brown-out Reset Enable bit (BOR enabled)
-#pragma config LVP = ON         // Low-Voltage Programming Enable bit (RB3/PGM pin has PGM function, Low-Voltage Programming enabled)
+#pragma config LVP = OFF         // Low-Voltage Programming Enable bit (RB3/PGM pin has PGM function, Low-Voltage Programming enabled)
 #pragma config CPD = OFF        // Data EE Memory Code Protection bit (Code protection off)
 #pragma config WRT = OFF        // Flash Program Memory Write Enable bits (Write protection off)
 #pragma config CCPMX = RB0      // CCP1 Pin Selection bit (CCP1 function on RB0)
@@ -36,7 +36,8 @@ void main(void)
 
   while(1)
   {
-    sound_v = adc_read(0);
+    sound_v = adc_read(2);
+    sound_v >>= 2;
 
     if(sound_v < 9){
       PORTB = 0b11111111;
@@ -74,11 +75,11 @@ void main(void)
       PORTB = 0b00000000;
       RA6 = 1;
       RA7 = 1;
-    }else if((158<=sound_v) && (sound_v < 224)){
+    }else if((158<=sound_v) && (sound_v < 165)){
       PORTB = 0b00000000;
       RA6 = 0;
       RA7 = 1;
-    }else if(224<=sound_v){
+    }else if(165<=sound_v){
       PORTB = 0b00000000;
       RA6 = 0;
       RA7 = 0;
@@ -87,7 +88,6 @@ void main(void)
       RA6 = 1;
       RA7 = 0;
     }
-
   }
 }
 
@@ -96,11 +96,11 @@ void init()
   CMCON = 0b00000111; //cut off analog comparator just add this one
   INTCON = 0; // purpose of disabling the interrupts.
   OSCCON = 0b01111010;
-  TRISA = 0b00000011; //ra0 and ra1 as input
+  TRISA = 0b00000100; //ra2 as input
   TRISB = 0b00000000;
   PORTA = 0b00000000;
   PORTB = 0b00000000;
-  ANSEL = 0b00000011;
+  ANSEL = 0b00000100;
 
   adc_init();
 }
