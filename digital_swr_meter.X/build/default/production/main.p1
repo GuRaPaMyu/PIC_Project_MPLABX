@@ -1049,18 +1049,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 48: {
 "48
 {
-[; ;main.c: 49: fwd = adc_read(0);
+[; ;main.c: 49: fwd = adc_read(1);
 "49
-[e = _fwd -> ( _adc_read (1 -> -> 0 `i `uc `ui ]
-[; ;main.c: 50: ref = adc_read(1);
+[e = _fwd -> ( _adc_read (1 -> -> 1 `i `uc `ui ]
+[; ;main.c: 50: ref = adc_read(0);
 "50
-[e = _ref -> ( _adc_read (1 -> -> 1 `i `uc `ui ]
-[; ;main.c: 53: fwd_watt = pow(10, (fwd*4.8828125/25 -84+45.64)/10)/1000;
+[e = _ref -> ( _adc_read (1 -> -> 0 `i `uc `ui ]
+[; ;main.c: 53: fwd_watt = pow(10, (fwd*2.4365234375/25 -84+45.64)/10);
 "53
-[e = _fwd_watt / ( _pow (2 , -> -> 10 `i `d / + - / * -> _fwd `d .4.8828125 -> -> 25 `i `d -> -> 84 `i `d .45.64 -> -> 10 `i `d -> -> 1000 `i `d ]
-[; ;main.c: 54: ref_watt = pow(10, (ref*4.8828125/25 -84+45.64)/10)/1000;
+[e = _fwd_watt ( _pow (2 , -> -> 10 `i `d / + - / * -> _fwd `d .2.4365234375 -> -> 25 `i `d -> -> 84 `i `d .45.64 -> -> 10 `i `d ]
+[; ;main.c: 54: ref_watt = pow(10, (ref*2.4365234375/25 -84+45.64)/10);
 "54
-[e = _ref_watt / ( _pow (2 , -> -> 10 `i `d / + - / * -> _ref `d .4.8828125 -> -> 25 `i `d -> -> 84 `i `d .45.64 -> -> 10 `i `d -> -> 1000 `i `d ]
+[e = _ref_watt ( _pow (2 , -> -> 10 `i `d / + - / * -> _ref `d .2.4365234375 -> -> 25 `i `d -> -> 84 `i `d .45.64 -> -> 10 `i `d ]
 [; ;main.c: 56: fwd_sqrt = pow(fwd_watt, 0.5);
 "56
 [e = _fwd_sqrt ( _pow (2 , _fwd_watt .0.5 ]
@@ -1137,9 +1137,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 85: OSCCON = 0b01111010;
 "85
 [e = _OSCCON -> -> 122 `i `uc ]
-[; ;main.c: 86: TRISA = 0b00000011;
+[; ;main.c: 86: TRISA = 0b00001111;
 "86
-[e = _TRISA -> -> 3 `i `uc ]
+[e = _TRISA -> -> 15 `i `uc ]
 [; ;main.c: 87: TRISB = 0b00000000;
 "87
 [e = _TRISB -> -> 0 `i `uc ]
@@ -1149,9 +1149,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 89: PORTB = 0b00000000;
 "89
 [e = _PORTB -> -> 0 `i `uc ]
-[; ;main.c: 90: ANSEL = 0b00000011;
+[; ;main.c: 90: ANSEL = 0b00001111;
 "90
-[e = _ANSEL -> -> 3 `i `uc ]
+[e = _ANSEL -> -> 15 `i `uc ]
 [; ;main.c: 92: lcd_init();
 "92
 [e ( _lcd_init ..  ]

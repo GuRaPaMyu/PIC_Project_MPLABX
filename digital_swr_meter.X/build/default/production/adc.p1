@@ -987,9 +987,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.c: 13: ADCON1bits.ADCS2 = 0;
 "13
 [e = . . _ADCON1bits 0 2 -> -> 0 `i `uc ]
-[; ;adc.c: 14: ADCON1bits.VCFG = 0b00;
+[; ;adc.c: 14: ADCON1bits.VCFG = 0b11;
 "14
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+[e = . . _ADCON1bits 0 1 -> -> 3 `i `uc ]
 [; ;adc.c: 15: ADON = 1;
 "15
 [e = _ADON -> -> 1 `i `b ]

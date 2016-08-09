@@ -1292,7 +1292,7 @@ ADCON0 &= 0x05;
 ADCON0bits.ADCS = 0b10;
 ADCON1bits.ADFM = 1;
 ADCON1bits.ADCS2 = 0;
-ADCON1bits.VCFG = 0b00;
+ADCON1bits.VCFG = 0b11;
 ADON = 1;
 }
 

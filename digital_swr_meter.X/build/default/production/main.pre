@@ -1367,12 +1367,12 @@ char str[6];
 
 while(1)
 {
-fwd = adc_read(0);
-ref = adc_read(1);
+fwd = adc_read(1);
+ref = adc_read(0);
 
 
-fwd_watt = pow(10, (fwd*4.8828125/25 -84+45.64)/10)/1000;
-ref_watt = pow(10, (ref*4.8828125/25 -84+45.64)/10)/1000;
+fwd_watt = pow(10, (fwd*2.4365234375/25 -84+45.64)/10);
+ref_watt = pow(10, (ref*2.4365234375/25 -84+45.64)/10);
 
 fwd_sqrt = pow(fwd_watt, 0.5);
 ref_sqrt = pow(ref_watt, 0.5);
@@ -1404,11 +1404,11 @@ void init()
 CMCON = 0b00000111;
 INTCON = 0;
 OSCCON = 0b01111010;
-TRISA = 0b00000011;
+TRISA = 0b00001111;
 TRISB = 0b00000000;
 PORTA = 0b00000000;
 PORTB = 0b00000000;
-ANSEL = 0b00000011;
+ANSEL = 0b00001111;
 
 lcd_init();
 adc_init();

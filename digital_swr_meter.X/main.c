@@ -1,9 +1,9 @@
 #define _XTAL_FREQ 8000000
 #define INTERCEPT -84-30 //for calibration
 #define TANGENT 25 //for calibration
-#define REF_mV 5000 //ADC reference voltage
-#define RES 1024 //resolution of ADC bits
-#define RES_mV 4.8828125 //resolution of ADC voltage
+//#define REF_mV 5000 //ADC reference voltage
+//#define RES 1024 //resolution of ADC bits
+//#define RES_mV 4.8828125 //resolution of ADC voltage
 
 // PIC16F88 Configuration Bit Settings
 
@@ -46,12 +46,12 @@ void main(void)
     
     while(1)
     {
-        fwd = adc_read(0);
-        ref = adc_read(1);
+        fwd = adc_read(1);
+        ref = adc_read(0);
         
         //bits -> Voltage -> dBm -> Watt
-        fwd_watt = pow(10, (fwd*4.8828125/25 -84+45.64)/10)/1000;//pow(10, (1/25*fwd*RES_mV -84+45.64)/10)/1000;
-        ref_watt = pow(10, (ref*4.8828125/25 -84+45.64)/10)/1000;//pow(10, (1/25*ref*RES_mV -84+45.64)/10)/1000;
+        fwd_watt = pow(10, (fwd*2.4365234375/25 -84+45.64)/10);//pow(10, (1/25*fwd*RES_mV -84+45.64)/10)/1000;
+        ref_watt = pow(10, (ref*2.4365234375/25 -84+45.64)/10);//pow(10, (1/25*ref*RES_mV -84+45.64)/10)/1000;
         
         fwd_sqrt = pow(fwd_watt, 0.5);
         ref_sqrt = pow(ref_watt, 0.5);
@@ -83,11 +83,11 @@ void init()
     CMCON = 0b00000111; //cut off analog comparator just add this one
     INTCON = 0; // purpose of disabling the interrupts.
     OSCCON = 0b01111010;
-    TRISA = 0b00000011; //ra0 and ra1 as input
+    TRISA = 0b00001111; //ra0 and ra1 as input
     TRISB = 0b00000000;
     PORTA = 0b00000000;
     PORTB = 0b00000000;
-    ANSEL = 0b00000011;
+    ANSEL = 0b00001111;
 
     lcd_init();
     adc_init();
