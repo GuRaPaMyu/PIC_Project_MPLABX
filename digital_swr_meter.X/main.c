@@ -4,6 +4,7 @@
 //#define REF_mV 5000 //ADC reference voltage
 //#define RES 1024 //resolution of ADC bits
 //#define RES_mV 4.8828125 //resolution of ADC voltage
+#define BUTTON1 RA7
 
 // PIC16F88 Configuration Bit Settings
 
@@ -34,46 +35,90 @@
 
 void init();
 void lcd_puts_ltoa(char *buf, int buf_size, int val);
+int ButtonPush(void);
 
 void main(void)
 {
     init();
     unsigned int fwd, ref;
     double fwd_watt, ref_watt;
+    double fwd_result, ref_result;
     double fwd_sqrt, ref_sqrt;
     double swr=0;
     char str[6];
+    int mode = 0;
     
     while(1)
     {
         fwd = adc_read(1);
         ref = adc_read(0);
         
+        fwd_watt = fwd * 2.4365234375; //volt
+        ref_watt = ref * 2.4365234375;
+        if(mode == 0)
+        {
+          fwd_result = fwd_watt;
+          ref_result = ref_watt;
+        }
+        
+        fwd_watt = fwd_watt/25 -84+45.64;
+        ref_watt = ref_watt/25 -84+45.64;
+        if(mode == 1)
+        {
+          fwd_result = fwd_watt;
+          ref_result = ref_watt;
+        }
+        
+        fwd_watt = pow(10, fwd_watt/10);
+        ref_watt = pow(10, ref_watt/10);
+        if(mode == 2)
+        {
+          fwd_result = fwd_watt;
+          ref_result = ref_watt;
+        }
+        
+        fwd_watt = fwd_watt / 1000;
+        ref_watt = ref_watt / 1000;
+        if(mode == 3)
+        {
+          fwd_result = fwd_watt;
+          ref_result = ref_watt;
+        }
+        
         //bits -> Voltage -> dBm -> Watt
-        fwd_watt = pow(10, (fwd*2.4365234375/25 -84+45.64)/10);//pow(10, (1/25*fwd*RES_mV -84+45.64)/10)/1000;
-        ref_watt = pow(10, (ref*2.4365234375/25 -84+45.64)/10);//pow(10, (1/25*ref*RES_mV -84+45.64)/10)/1000;
+        //fwd_watt = pow(10, (fwd*2.4365234375/25 -84+45.64)/10);//pow(10, (1/25*fwd*RES_mV -84+45.64)/10)/1000;
+        //ref_watt = pow(10, (ref*2.4365234375/25 -84+45.64)/10);//pow(10, (1/25*ref*RES_mV -84+45.64)/10)/1000;
         
         fwd_sqrt = pow(fwd_watt, 0.5);
         ref_sqrt = pow(ref_watt, 0.5);
         //fwd_sqrt = sqrt(fwd_watt);
         //ref_sqrt = sqrt(ref_watt);
 
-        swr = (fwd_sqrt + ref_sqrt)/(fwd_sqrt - ref_sqrt);
+        if(fwd >= ref)
+          swr = (fwd_sqrt + ref_sqrt)/(fwd_sqrt - ref_sqrt);
+        else
+          swr = -1;
+        
+        if(ButtonPush())
+        {
+          mode ++;
+          if(mode > 3)
+            mode %= 4;
+        }
         
         lcd_goto(0x00);
         __delay_us(50);
-        lcd_puts_ltoa(str, 5, (int)fwd_watt);
+        lcd_puts_ltoa(str, 5, (int)fwd_result);
         __delay_us(50);
         lcd_puts(" / ");
         __delay_us(50);
-        lcd_puts_ltoa(str, 5, (int)ref_watt);
+        lcd_puts_ltoa(str, 5, (int)ref_result);
         __delay_us(50);
         
         lcd_goto(0x40);
         __delay_us(50);
         lcd_puts("SWR: ");
-        lcd_puts_ltoa(str, 5, (unsigned int)(swr*100));
-        
+        lcd_puts_ltoa(str, 5, (int)(swr*100));
         __delay_ms(100);
     }
 }
@@ -128,4 +173,15 @@ void lcd_puts_ltoa(char *buf, int buf_size, int val)
     val == 0 ? zero_flag=1 : zero_flag=0;
   }
   lcd_puts(buf);
+}
+
+int ButtonPush(void)
+{
+  int push_value;
+	do{
+			if(BUTTON1 == 0)
+				push_value = 1;	
+	}while(!BUTTON1);
+
+	return push_value;
 }
