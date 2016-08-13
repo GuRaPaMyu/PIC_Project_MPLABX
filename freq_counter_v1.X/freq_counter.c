@@ -115,8 +115,38 @@ unsigned  long  FreqMeasurement(unsigned char gateTime)
   GIE = 1;
   // 開始 
   TMR2ON = 1; //タイマを開始する。 
-  //  Delay
-  __delay_ms(100);
+
+  // //  Delay
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // asm nop;
+  // //
+  // __delay_ms(100);
+
+
+
   TMR1ON = 1; //ゲートを開ける。
   // 測定 
   while (TMR2ON != 0) {
@@ -140,6 +170,7 @@ void main()
 {
   static char* msg;
   static unsigned long freq, temp; // 0...4294967295
+  int speed;
   unsigned char buf[13], prescaler, gateTime;
   // アナログの設定
   ANSEL  = 0b00000000;  // 使用しない。
@@ -173,6 +204,8 @@ void main()
   // 変数の初期化 
   prescaler = 1;
   gateTime = GATETIME_100MSEC;
+
+  adc_init();
   
   // ＬＣＤ（液晶モニタ）の初期化 
   lcd_init();
@@ -185,6 +218,10 @@ void main()
     freq = FreqMeasurement(gateTime);
     //換算 
     freq = freq * prescaler * gateTime;
+
+    // rpm = freq / 60 / MAGNET_NUM;
+    speed = freq / 3600 * WHEEL_PERIMETER / MAGNET_NUM;
+
     // プリスケーラの切り替え
     if (PRESC == 1) {
       T1CKPS0 = 0;
@@ -211,6 +248,10 @@ void main()
     lcd_puts_ltoa(buf, 13, freq, 1);
     lcd_goto(0x0C);
     lcd_puts("Hz");
+
+    adc_read(0);
+    lcd_goto();
+    lcd_puts();
     
     __delay_ms(50);
   }
