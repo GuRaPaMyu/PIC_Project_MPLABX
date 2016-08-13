@@ -35,18 +35,15 @@
 
 void init();
 void lcd_puts_ltoa(char *buf, int buf_size, int val);
-int ButtonPush(void);
 
 void main(void)
 {
     init();
     unsigned int fwd, ref;
     double fwd_watt, ref_watt;
-    double fwd_result, ref_result;
     double fwd_sqrt, ref_sqrt;
     double swr=0;
-    char str[6];
-    int mode = 0;
+    unsigned char str[6];
     
     while(1)
     {
@@ -55,35 +52,18 @@ void main(void)
         
         fwd_watt = fwd * 2.4365234375; //volt
         ref_watt = ref * 2.4365234375;
-        if(mode == 0)
-        {
-          fwd_result = fwd_watt;
-          ref_result = ref_watt;
-        }
+
         
-        fwd_watt = fwd_watt/25 -84+45.64;
+        fwd_watt = fwd_watt/25 -84+45.64; //volt -> dBm
         ref_watt = ref_watt/25 -84+45.64;
-        if(mode == 1)
-        {
-          fwd_result = fwd_watt;
-          ref_result = ref_watt;
-        }
+
         
-        fwd_watt = pow(10, fwd_watt/10);
+        fwd_watt = pow(10, fwd_watt/10);  //dBm -> mW
         ref_watt = pow(10, ref_watt/10);
-        if(mode == 2)
-        {
-          fwd_result = fwd_watt;
-          ref_result = ref_watt;
-        }
-        
-        fwd_watt = fwd_watt / 1000;
-        ref_watt = ref_watt / 1000;
-        if(mode == 3)
-        {
-          fwd_result = fwd_watt;
-          ref_result = ref_watt;
-        }
+
+
+        fwd_watt /= 1000;
+        ref_watt /= 1000;
         
         //bits -> Voltage -> dBm -> Watt
         //fwd_watt = pow(10, (fwd*2.4365234375/25 -84+45.64)/10);//pow(10, (1/25*fwd*RES_mV -84+45.64)/10)/1000;
@@ -93,32 +73,29 @@ void main(void)
         ref_sqrt = pow(ref_watt, 0.5);
         //fwd_sqrt = sqrt(fwd_watt);
         //ref_sqrt = sqrt(ref_watt);
-
-        if(fwd >= ref)
-          swr = (fwd_sqrt + ref_sqrt)/(fwd_sqrt - ref_sqrt);
-        else
-          swr = -1;
         
-        if(ButtonPush())
-        {
-          mode ++;
-          if(mode > 3)
-            mode %= 4;
-        }
+        swr = (fwd_sqrt + ref_sqrt)/(fwd_sqrt - ref_sqrt);
         
         lcd_goto(0x00);
         __delay_us(50);
-        lcd_puts_ltoa(str, 5, (int)fwd_result);
+        lcd_puts("      W /      W");
+        
+        lcd_goto(0x01);
         __delay_us(50);
-        lcd_puts(" / ");
+        lcd_puts_ltoa(str, 5, (int)fwd_watt);
         __delay_us(50);
-        lcd_puts_ltoa(str, 5, (int)ref_result);
+        
+        lcd_goto(0x0A);
+        __delay_us(50);
+        lcd_puts_ltoa(str, 5, (int)ref_watt);
         __delay_us(50);
         
         lcd_goto(0x40);
         __delay_us(50);
         lcd_puts("SWR: ");
         lcd_puts_ltoa(str, 5, (int)(swr*100));
+        //if(swr == -1)
+        //  lcd_puts("infinite");
         __delay_ms(100);
     }
 }
@@ -146,6 +123,7 @@ void init()
     lcd_puts("      METER     ");
     __delay_ms(1500);
     lcd_clear();
+    __delay_ms(1);
 }
 
 void lcd_puts_ltoa(char *buf, int buf_size, int val)
@@ -173,15 +151,4 @@ void lcd_puts_ltoa(char *buf, int buf_size, int val)
     val == 0 ? zero_flag=1 : zero_flag=0;
   }
   lcd_puts(buf);
-}
-
-int ButtonPush(void)
-{
-  int push_value;
-	do{
-			if(BUTTON1 == 0)
-				push_value = 1;	
-	}while(!BUTTON1);
-
-	return push_value;
 }
