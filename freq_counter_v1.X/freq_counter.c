@@ -54,7 +54,7 @@ Pin-18ＬＣＤ：Ｄ６
 // CONFIG1
 #pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
-#pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
+#pragma config PWRTE = ON      // Power-up Timer Enable bit (PWRT enabled)
 #pragma config MCLRE = OFF      // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is digital I/O, MCLR internally tied to VDD)
 #pragma config BOREN = ON       // Brown-out Reset Enable bit (BOR enabled)
 #pragma config LVP = OFF        // Low-Voltage Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
@@ -71,6 +71,8 @@ Pin-18ＬＣＤ：Ｄ６
 #define GATETIME_1SEC   1
 #define PRESC 1
 #define GTIME 1
+#define WHEEL_PERIMETER 1
+#define MAGNET_NUM 6
 
 #define _XTAL_FREQ 20000000
 
@@ -117,31 +119,31 @@ unsigned  long  FreqMeasurement(unsigned char gateTime)
   TMR2ON = 1; //タイマを開始する。 
 
   // //  Delay
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
+   NOP();
   // //
   // __delay_ms(100);
 
@@ -170,7 +172,7 @@ void main()
 {
   static char* msg;
   static unsigned long freq, temp; // 0...4294967295
-  int speed;
+  double speed;
   unsigned char buf[13], prescaler, gateTime;
   // アナログの設定
   ANSEL  = 0b00000000;  // 使用しない。
@@ -205,7 +207,7 @@ void main()
   prescaler = 1;
   gateTime = GATETIME_100MSEC;
 
-  adc_init();
+  //adc_init();
   
   // ＬＣＤ（液晶モニタ）の初期化 
   lcd_init();
@@ -249,9 +251,9 @@ void main()
     lcd_goto(0x0C);
     lcd_puts("Hz");
 
-    adc_read(0);
-    lcd_goto();
-    lcd_puts();
+//    adc_read(0);
+//    lcd_goto();
+//    lcd_puts();
     
     __delay_ms(50);
   }
