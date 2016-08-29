@@ -38,43 +38,37 @@ Pin-16クロック入力（２０ＭＨｚ入力）
 Pin-17ＬＣＤ：Ｄ７
 Pin-18ＬＣＤ：Ｄ６ 
 */
-
-// PIC16F88 Configuration Bit Settings
+// PIC16F886 Configuration Bit Settings
 
 // 'C' source line config statements
 
 #include <xc.h>
-#include <pic16f88.h>
-#include "lcd.h"
-#include <stdlib.h>
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
-// CONFIG1
+// CONFIG
 #pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
-#pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
-#pragma config MCLRE = OFF      // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is digital I/O, MCLR internally tied to VDD)
+#pragma config PWRTE = ON       // Power-up Timer Enable bit (PWRT enabled)
+#pragma config CP = OFF         // FLASH Program Memory Code Protection bits (Code protection off)
 #pragma config BOREN = ON       // Brown-out Reset Enable bit (BOR enabled)
-#pragma config LVP = OFF        // Low-Voltage Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
-#pragma config CPD = OFF        // Data EE Memory Code Protection bit (Code protection off)
-#pragma config WRT = OFF        // Flash Program Memory Write Enable bits (Write protection off)
-#pragma config CCPMX = RB0      // CCP1 Pin Selection bit (CCP1 function on RB0)
-#pragma config CP = OFF         // Flash Program Memory Code Protection bit (Code protection off)
+#pragma config LVP = OFF        // Low Voltage In-Circuit Serial Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
+#pragma config CPD = OFF        // Data EE Memory Code Protection (Code Protection off)
+#pragma config WRT = ON         // FLASH Program Memory Write Enable (Unprotected program memory may be written to by EECON control)
 
-// CONFIG2
-#pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
-#pragma config IESO = OFF       // Internal External Switchover bit (Internal External Switchover mode disabled)
+
+#include "lcd.h"
 
 #define GATETIME_100MSEC  10
 #define GATETIME_1SEC   1
-#define PRESC 1
-#define GTIME 1
+#define PRESC 0 //prescalar disable
+#define GTIME 0 //getetime 1sec
 
 #define _XTAL_FREQ 20000000
 
 static unsigned int MeasurementCnt;
+void interrupt itrpt(void);
 
 void interrupt itrpt(void)
 {
@@ -99,8 +93,8 @@ unsigned  long  FreqMeasurement(unsigned char gateTime)
   switch (gateTime) {
   case GATETIME_1SEC:
     MeasurementCnt = 1221;
-    TMR2 = 0x4C;    // 312500=1/((1/20000000) * 4 * 16)
-              // 0x4C=256-(312500-(256*1220))
+    TMR2 = 0x44;    // 312500=1/((1/20000000) * 4 * 16)
+              // 0x4C=256-(312500-(256*1220)) //0x44 is yoi?
     break;
   case GATETIME_100MSEC:
     MeasurementCnt = 123;
@@ -114,39 +108,21 @@ unsigned  long  FreqMeasurement(unsigned char gateTime)
   PEIE = 1;
   GIE = 1;
   // 開始 
-  TMR2ON = 1; //タイマを開始する。 
-
-  // //  Delay
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // asm nop;
-  // //
-  // __delay_ms(100);
-
-
-
+  TMR2ON = 1; //タイマを開始する。
+  
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  
+  
   TMR1ON = 1; //ゲートを開ける。
   // 測定 
   while (TMR2ON != 0) {
@@ -170,13 +146,16 @@ void main()
 {
   static char* msg;
   static unsigned long freq, temp; // 0...4294967295
-  int speed;
   unsigned char buf[13], prescaler, gateTime;
-  // アナログの設定
-  ANSEL  = 0b00000000;  // 使用しない。
   // ポートの設定
-  TRISA  = 0b11100000;
-  TRISB  = 0b01001000;
+  TRISA = 0b11101111;
+  TRISB = 0b00000000;
+  TRISC = 0b00000001;
+  PORTA = 0x00;
+  PORTB = 0x00;
+  PORTC = 0x00;
+  
+  ADCON1bits.PCFG  = 0b0111;
   nRBPU = 0;    // PORTBをプルアップする。 
   // TIMER2の設定
   TMR2IE = 1;
@@ -192,7 +171,6 @@ void main()
   // TIMER1の設定
   TMR1IE = 0;
   TMR1IF = 0;
-  T1RUN = 0;
   T1CKPS0 = 0;
   T1CKPS1 = 0;
   T1OSCEN = 0;
@@ -203,11 +181,9 @@ void main()
   TMR1H = 0;
   // 変数の初期化 
   prescaler = 1;
-  gateTime = GATETIME_100MSEC;
-
-  adc_init();
+  gateTime = GATETIME_1SEC;
   
-  // ＬＣＤ（液晶モニタ）の初期化 
+  //LCDの初期化 
   lcd_init();
   lcd_puts("Freq Counter");
   __delay_ms(1000);
@@ -219,11 +195,8 @@ void main()
     //換算 
     freq = freq * prescaler * gateTime;
 
-    // rpm = freq / 60 / MAGNET_NUM;
-    speed = freq / 3600 * WHEEL_PERIMETER / MAGNET_NUM;
-
     // プリスケーラの切り替え
-    if (PRESC == 1) {
+    if (PRESC == 0) {
       T1CKPS0 = 0;
       T1CKPS1 = 0;
       prescaler = 1;
@@ -236,7 +209,7 @@ void main()
     }
 
     // ゲートタイムの切り替え
-    if (GTIME == 1) {
+    if (GTIME == 0) {
       gateTime = GATETIME_1SEC;
       msg = "1sec   ";
     } else {
@@ -248,11 +221,9 @@ void main()
     lcd_puts_ltoa(buf, 13, freq, 1);
     lcd_goto(0x0C);
     lcd_puts("Hz");
-
-    adc_read(0);
-    lcd_goto();
-    lcd_puts();
     
-    __delay_ms(50);
+    RB7 = 0;
+    __delay_ms(500);
+    RB7 = 1;
   }
 }

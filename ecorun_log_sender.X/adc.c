@@ -7,19 +7,19 @@
 
 void adc_init(void)
 {
-	ADCON0 &= 0x05;
-	ADCON0bits.ADCS = 0b10;
-	ADCON1bits.ADFM = 1; //use 2bit of ADRESH
-	ADCON1bits.ADCS2 = 0;
-	ADCON1bits.VCFG = 0b00;
-	ADON = 1;
+  ADCON0bits.ADON = 1;
+  ADCON0 &= 0x03;
+  ADCON1bits.ADFM = 1; //use 2bit of ADRESH
+  ADCON0bits.ADCS = 0b10;
+  ADCON1bits.VCFG0 = 0;
+  ADCON1bits.VCFG1 = 0;
 }
 
 int adc_read(unsigned char channel)
 {
-	channel &= 0x07;	// truncate channel to 3 bits
-	ADCON0 &= 0xC5;
-	ADCON0 |=(channel << 3);
+	channel &= 0x0F;	// truncate channel to 4 bits
+	ADCON0 &= 0xC3;
+	ADCON0 |=(channel << 2);
 	__delay_us(10);	
 	GO = 1;	// initiate conversion on the selected channel
 	while(GO)
