@@ -48,7 +48,7 @@ Pin-18ＬＣＤ：Ｄ６
 // Use project enums instead of #define for ON and OFF.
 
 // CONFIG1
-#pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator)
+#pragma config FOSC = EC        // Oscillator Selection bits (HS oscillator)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
 #pragma config PWRTE = ON       // Power-up Timer Enable bit (PWRT enabled)
 #pragma config MCLRE = OFF      // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is digital I/O, MCLR internally tied to VDD)
@@ -68,6 +68,10 @@ Pin-18ＬＣＤ：Ｄ６
 #define GATETIME_1SEC   1
 #define PRESC 0 //prescalar disable
 #define GTIME 0 //getetime 1sec
+#define	SW1	RB0
+#define	SW2	RB1
+#define	SW3	RB2
+#define SW4	RB3
 
 #define _XTAL_FREQ 20000000
 
@@ -101,7 +105,7 @@ unsigned	long	FreqMeasurement(unsigned char gateTime)
 	switch (gateTime) {
 	case GATETIME_1SEC:
 		MeasurementCnt = 1221;
-		TMR2 = 0x4C;		// 312500=1/((1/20000000) * 4 * 16)
+		TMR2 = 0x52;		// 312500=1/((1/20000000) * 4 * 16)
 							// 0x4C=256-(312500-(256*1220))
 		break;
 	case GATETIME_100MSEC:
@@ -119,7 +123,33 @@ unsigned	long	FreqMeasurement(unsigned char gateTime)
 	TMR2ON = 1;	//タイマを開始する。 
   
 	//	Delay
-
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
+  NOP();
   
 	TMR1ON = 1;	//ゲートを開ける。
 	// 測定 
@@ -151,7 +181,7 @@ void main()
 	ANSEL  = 0b00000000;	// 使用しない。
 	// ポートの設定
 	TRISA  = 0b11100000;
-	TRISB  = 0b01000000;
+	TRISB  = 0b01001111;
 	nRBPU = 0;		// PORTBをプルアップする。 
 	// TIMER2の設定
 	TMR2IE = 1;
@@ -187,14 +217,15 @@ void main()
   __delay_ms(1000);
   lcd_clear(); 
 	//
-	while (1) {
+while (1) {
 		// 周波数の測定 
 		freq = FreqMeasurement(gateTime);
-
 		//換算 
 		freq = freq * prescaler * gateTime;
+    
+    
 		// プリスケーラの切り替え
-		if (PRESC == 0) {
+		if (SW1 == 1) {
 			T1CKPS0 = 0;
 			T1CKPS1 = 0;
 			prescaler = 1;
@@ -205,20 +236,35 @@ void main()
 			prescaler = 8;
 			msg = "1/8 ";
 		}
-
+		lcd_goto(0x40);
+    lcd_puts(msg);
+    
 		// ゲートタイムの切り替え
-		if (GTIME == 0) {
+		if (SW2 == 1) {
 			gateTime = GATETIME_1SEC;
 			msg = "1sec   ";
 		} else {
 			gateTime = GATETIME_100MSEC;
 			msg = "0.1sec ";
 		}
+		lcd_goto(0x44);
+    lcd_puts(msg);
+    
+		// －４５５ｋHzの有無 
+		if (SW3 == 0) {
+			freq -= 455000;
+			msg = "-455k";
+		} else {
+			msg = "     ";
+		}
+		lcd_goto(0x4B);
+    lcd_puts(msg);
     
     lcd_goto(0x00);
     lcd_puts_ltoa(buf, 13, freq, 1);
     lcd_goto(0x0C);
     lcd_puts("Hz");
-    __delay_ms(500);
+    
+    __delay_ms(50);
 	}
 }

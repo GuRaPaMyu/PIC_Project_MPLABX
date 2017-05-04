@@ -3,7 +3,7 @@
 
 #define BAUD 1200
 #define NINE 0     /* Use 9bit communication? FALSE=8bit */
-#define SPDIF 129
+#define SPDIF 32
 
 #ifndef _XTAL_FREQ
 #define _XTAL_FREQ 20000000

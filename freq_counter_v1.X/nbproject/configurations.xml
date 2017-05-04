@@ -14,7 +14,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>adc.c</itemPath>
       <itemPath>freq_counter.c</itemPath>
       <itemPath>lcd.c</itemPath>
     </logicalFolder>

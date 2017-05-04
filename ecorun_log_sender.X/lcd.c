@@ -104,7 +104,7 @@ void lcd_init()
 	lcd_write(0x6); // Set entry Mode
 }
 
-void lcd_puts_ltoa(char *buf, int buf_size, long val, char div)
+void lcd_puts_ltoa(char *buf, int buf_size, unsigned long val, char div)
 {
   char ascii_array[10] = {0x30,0x31,0x32,0x33,0x34,
               0x35,0x36,0x37,0x38,0x39};

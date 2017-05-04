@@ -26,27 +26,15 @@ unsigned char getch() {
 					rate_num++;
 					break;
 											
-			case 1 : SPBRG = 31;
+			case 1 : SPBRG = 32;
 					rate_num++;
 					break;
 					
 			case 2 : SPBRG = 64;
 					rate_num++;
 					break;
-					
-			case 3 : SPBRG = 129;
-					rate_num++;
-					break;
-					
-			case 4 : SPBRG = 254;
-					rate_num++;
-					break;
-								
-			case 5 : SPBRG = 1040;
-					rate_num = 0;
-					break;
-
-			default : SPBRG = 15;
+          
+			default : SPBRG = 32;
 					rate_num = 0;
 			}
 		}

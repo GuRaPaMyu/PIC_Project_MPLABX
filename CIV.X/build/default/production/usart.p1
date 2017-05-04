@@ -1038,10 +1038,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usart.c: 27: break;
 "27
 [e $U 99  ]
-[; ;usart.c: 29: case 1 : SPBRG = 31;
+[; ;usart.c: 29: case 1 : SPBRG = 32;
 "29
 [e :U 102 ]
-[e = _SPBRG -> -> 31 `i `uc ]
+[e = _SPBRG -> -> 32 `i `uc ]
 [; ;usart.c: 30: rate_num++;
 "30
 [e ++ _rate_num -> 1 `i ]
@@ -1058,96 +1058,63 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usart.c: 35: break;
 "35
 [e $U 99  ]
-[; ;usart.c: 37: case 3 : SPBRG = 129;
+[; ;usart.c: 37: default : SPBRG = 32;
 "37
 [e :U 104 ]
-[e = _SPBRG -> -> 129 `i `uc ]
-[; ;usart.c: 38: rate_num++;
+[e = _SPBRG -> -> 32 `i `uc ]
+[; ;usart.c: 38: rate_num = 0;
 "38
-[e ++ _rate_num -> 1 `i ]
-[; ;usart.c: 39: break;
+[e = _rate_num -> 0 `i ]
 "39
-[e $U 99  ]
-[; ;usart.c: 41: case 4 : SPBRG = 254;
-"41
-[e :U 105 ]
-[e = _SPBRG -> -> 254 `i `uc ]
-[; ;usart.c: 42: rate_num++;
-"42
-[e ++ _rate_num -> 1 `i ]
-[; ;usart.c: 43: break;
-"43
-[e $U 99  ]
-[; ;usart.c: 45: case 5 : SPBRG = 1040;
-"45
-[e :U 106 ]
-[e = _SPBRG -> -> 1040 `i `uc ]
-[; ;usart.c: 46: rate_num = 0;
-"46
-[e = _rate_num -> 0 `i ]
-[; ;usart.c: 47: break;
-"47
-[e $U 99  ]
-[; ;usart.c: 49: default : SPBRG = 15;
-"49
-[e :U 107 ]
-[e = _SPBRG -> -> 15 `i `uc ]
-[; ;usart.c: 50: rate_num = 0;
-"50
-[e = _rate_num -> 0 `i ]
-"51
 }
-[; ;usart.c: 51: }
+[; ;usart.c: 39: }
 [e $U 99  ]
 "23
 [e :U 100 ]
 [e [\ _rate_num , $ -> 0 `i 101
  , $ -> 1 `i 102
  , $ -> 2 `i 103
- , $ -> 3 `i 104
- , $ -> 4 `i 105
- , $ -> 5 `i 106
- 107 ]
-"51
+ 104 ]
+"39
 [e :U 99 ]
-"52
+"40
 }
 [e :U 98 ]
-"53
+"41
 }
 [e :U 95 ]
 "18
 [e $ ! _RCIF 96  ]
 [e :U 97 ]
-[; ;usart.c: 52: }
-[; ;usart.c: 53: }
-[; ;usart.c: 54: return RCREG;
-"54
+[; ;usart.c: 40: }
+[; ;usart.c: 41: }
+[; ;usart.c: 42: return RCREG;
+"42
 [e ) _RCREG ]
 [e $UE 94  ]
-[; ;usart.c: 55: }
-"55
+[; ;usart.c: 43: }
+"43
 [e :UE 94 ]
 }
-"57
+"45
 [v _getche `(uc ~T0 @X0 1 ef ]
-"58
+"46
 {
-[; ;usart.c: 57: unsigned char getche(void)
-[; ;usart.c: 58: {
+[; ;usart.c: 45: unsigned char getche(void)
+[; ;usart.c: 46: {
 [e :U _getche ]
 [f ]
-"59
+"47
 [v _c `uc ~T0 @X0 1 a ]
-[; ;usart.c: 59: unsigned char c;
-[; ;usart.c: 60: putch(c = getch());
-"60
+[; ;usart.c: 47: unsigned char c;
+[; ;usart.c: 48: putch(c = getch());
+"48
 [e ( _putch (1 = _c ( _getch ..  ]
-[; ;usart.c: 61: return c;
-"61
+[; ;usart.c: 49: return c;
+"49
 [e ) _c ]
-[e $UE 108  ]
-[; ;usart.c: 62: }
-"62
-[e :UE 108 ]
+[e $UE 105  ]
+[; ;usart.c: 50: }
+"50
+[e :UE 105 ]
 }

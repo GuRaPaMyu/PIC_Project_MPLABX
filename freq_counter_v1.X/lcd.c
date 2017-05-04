@@ -6,10 +6,13 @@
 #include	<xc.h>
 #include	"lcd.h"
 
-#define	LCD_RS RB0
-#define	LCD_RW RB1
-#define LCD_EN RB2
-#define LCD_DATA PORTA
+#define	LCD_RS RB4
+#define	LCD_RW RB7
+#define LCD_EN RB5
+#define LCD_D4 RA0
+#define LCD_D5 RA1
+#define LCD_D6 RA2
+#define LCD_D7 RA3
 #define	LCD_STROBE()	((LCD_EN = 1),(LCD_EN=0))
 
 void lcd_go_and_puts(unsigned char pos, const char * s)
@@ -21,11 +24,18 @@ void lcd_go_and_puts(unsigned char pos, const char * s)
 /* write a byte to the LCD in 4 bit mode */
 void lcd_write(unsigned char c)
 {
-	__delay_us(40);
-	LCD_DATA = (( c >> 4 ) & 0x0F ) | (LCD_DATA & 0xF0);
-	LCD_STROBE();
-	LCD_DATA = ( c & 0x0F ) | (LCD_DATA & 0xF0);
-	LCD_STROBE();
+  // 送信データのバイト列上位４ビットを処理
+  LCD_D4 = ( ( c >> 4 ) & 0x01 ) ;
+  LCD_D5 = ( ( c >> 5 ) & 0x01 ) ;
+  LCD_D6 = ( ( c >> 6 ) & 0x01 ) ;
+  LCD_D7 = ( ( c >> 7 ) & 0x01 ) ;
+  LCD_STROBE() ;
+  // 送信データのバイト列下位４ビットを処理
+  LCD_D4 = ( ( c ) & 0x01 ) ;
+  LCD_D5 = ( ( c >> 1 ) & 0x01 ) ;
+  LCD_D6 = ( ( c >> 2 ) & 0x01 ) ;
+  LCD_D7 = ( ( c >> 3 ) & 0x01 ) ;
+  LCD_STROBE() ;
 }
 
 /*Clear and home the LCD*/
@@ -58,6 +68,16 @@ void lcd_goto(unsigned char pos)
 	lcd_write(0x80+pos);
 }
 
+void command(unsigned char c)
+{
+     LCD_RS = 0 ;
+     LCD_D4 = ( ( c ) & 0x01 ) ;
+     LCD_D5 = ( ( c >> 1 ) & 0x01 ) ;
+     LCD_D6 = ( ( c >> 2 ) & 0x01 ) ;
+     LCD_D7 = ( ( c >> 3 ) & 0x01 ) ;
+     LCD_STROBE() ;
+}
+
 /* initialise the LCD - put into 4 bit mode */
 void lcd_init()
 {
@@ -68,14 +88,14 @@ void lcd_init()
 	LCD_RW = 0;
 	
 	__delay_ms(15);	// wait 15mSec after power applied,
-	LCD_DATA	 = init_value;
+  command(init_value);
 	LCD_STROBE();
 	__delay_ms(5);
 	LCD_STROBE();
 	__delay_us(200);
 	LCD_STROBE();
 	__delay_us(200);
-	LCD_DATA = 2;	// Four bit mode
+	command(0x02);	// Four bit mode
 	LCD_STROBE();
 
 	lcd_write(0x28); // Set interface length

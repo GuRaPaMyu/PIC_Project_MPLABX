@@ -141,14 +141,14 @@ void ModeSelect(void)
 		{
 			mode --;
 			if(mode < 0)
-				mode += 4;
+				mode += 5;
 			IndicateSelectedMode(0x40);
 		}
 		if(button == 2)
 		{
 			mode ++;
-			if(mode > 3)
-				mode -= 4;
+			if(mode > 4)
+				mode -= 5;
 			IndicateSelectedMode(0x40);
 		}
 	}
@@ -204,7 +204,7 @@ void SetCheckRow(void)
 	int button = 0;
 	int cursor = 0;
 
-	if((mode == 0) || (mode == 1))
+	if((mode == 0) || (mode == 1) || (mode == 2))
 	{
 		for(i=0;i<8;i++)  //set straight cable row
 		{
@@ -218,7 +218,18 @@ void SetCheckRow(void)
 			checkrow[2] = 1;
 			checkrow[5] = 2;
 		}
-	}else if(mode == 2)	//custom cable mode
+    if(mode == 2)  //full cross mode
+    {
+      checkrow[0] = 3;
+			checkrow[1] = 6;
+			checkrow[2] = 1;
+			checkrow[5] = 2;
+      checkrow[3] = 7;
+			checkrow[4] = 8;
+			checkrow[6] = 4;
+			checkrow[7] = 5;
+    }
+	}else if(mode == 3)	//custom cable mode
 	{
 		lcd_clear();
 		lcd_goto(0x00);
@@ -278,7 +289,7 @@ void SetNumberOfTimes(void)
 	
 	lcd_cmd(0b00001110); // Display On, Cursor on blinking off
 
-	if(mode != 3)
+	if(mode != 4)
 	{
 		while((button != 3) && (button != 4))
 		{
@@ -347,31 +358,33 @@ void Confirm(void)
 
 	switch(mode)
 	{
-		case 0 :	lcd_puts("STR");
+		case 0 :	lcd_puts("STRAIGHT  ");
 							break;
-		case 1 :	lcd_puts("CRS");
+		case 1 :	lcd_puts("CROSS     ");
 							break;
-		case 2 :	lcd_puts("CTM");
+    case 2 :	lcd_puts("FULL CROSS");
+          		break;
+		case 3 :	lcd_puts("CUSTOM    ");
 							break;
-		case 3 :	lcd_puts("DBG");
+		case 4 :	lcd_puts("DEBUG     ");
 							break;
-		default:	lcd_puts("???");
+		default:	lcd_puts("??????????");
 	}
 
-	if(mode != 3)
+	if(mode != 4)
 	{
-		lcd_goto(0x0A);
+		lcd_goto(0x46);
 		lcd_putint(chknum, times, 10, 4, 1);
-		lcd_puts("TMS");
+		lcd_puts(" TIMES");
 	}
 
 	if(ButtonPush() == 3)
 	{
 		state = 4;
-		if(mode == 3)
+		if(mode == 4)
 			state = 5;
 	}else{
-		if(mode == 3)
+		if(mode == 4)
 			state = 0;
 		else
 			state = 2;
@@ -486,7 +499,7 @@ void ShowResult(void)
 	lcd_puts("Result");
 	lcd_goto(0x08);
 	lcd_putch('(');
-	lcd_putint(result_str, (int)(ok_num * 100 / (ok_num + ng_num)), 10 ,4, 1);
+	lcd_putint(result_str, (int)((ok_num / (ok_num + ng_num)*100)), 10 ,4, 1);
 	lcd_puts("%)");
 	lcd_goto(0x40);
 	lcd_puts("OK:");
@@ -538,15 +551,17 @@ void IndicateSelectedMode(char start)
 	lcd_goto(start);
 	switch(mode)
 	{
-		case 0 : 	lcd_puts("MODE:STRAIGHT");
+		case 0 : 	lcd_puts("MODE:STRAIGHT  ");
 							break;
-		case 1 :	lcd_puts("MODE:CROSS   ");
+		case 1 :	lcd_puts("MODE:CROSS     ");
 							break;
-		case 2 :	lcd_puts("MODE:CUSTOM  ");
+    case 2 :	lcd_puts("MODE:FULL CROSS");
 							break;
-		case 3 :	lcd_puts("MODE:DEBUG   ");
+		case 3 :	lcd_puts("MODE:CUSTOM    ");
 							break;
-		default :	lcd_puts("MODE:????????");
+		case 4 :	lcd_puts("MODE:DEBUG     ");
+							break;
+		default :	lcd_puts("MODE:??????????");
 	}
 }
 
@@ -561,7 +576,7 @@ void SetIntervalTime(void)
 	lcd_goto(0x40);
 	lcd_putint(str, interval_time_ms, 10, 4, 1);
 	lcd_goto(0x44);
-	lcd_puts("ms/1");
+	lcd_puts("ms/scan");
 
 	while(button != 3)
 	{

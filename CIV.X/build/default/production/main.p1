@@ -1,12 +1,12 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"64 main.c
+"62 main.c
 [v _ci_v_init `(v ~T0 @X0 0 ef ]
-"65
+"63
 [v _scanning_frequency_data `(v ~T0 @X0 0 ef ]
-"66
+"64
 [v _check_data `(v ~T0 @X0 0 ef ]
-"70
+"68
 [v _indicate_frequency_data `(v ~T0 @X0 0 ef ]
 "1748 /Applications/microchip/xc8/v1.34/include/pic16f88.h
 [v _CMCON `Vuc ~T0 @X0 0 e@156 ]
@@ -42,10 +42,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _lcd_goto `(v ~T0 @X0 0 ef1`uc ]
 "16
 [v _lcd_puts `(v ~T0 @X0 0 ef1`*Cuc ]
-"38 usart.h
+"37 usart.h
+[v _putch `(v ~T0 @X0 0 ef1`uc ]
+"38
 [v _getch `(uc ~T0 @X0 0 ef ]
-"68 main.c
+"66 main.c
 [v _swap_freq_data `(v ~T0 @X0 0 ef ]
+"69
+[v _indicate_mode `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic16f88.h: 49: extern volatile unsigned char INDF @ 0x000;
@@ -982,7 +986,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "50
 [p x BOREN=ON ]
 "51
-[p x LVP=ON ]
+[p x LVP=OFF ]
 "52
 [p x CPD=OFF ]
 "53
@@ -992,375 +996,418 @@ Version 3.2 HI-TECH Software Intermediate Code
 "55
 [p x CP=OFF ]
 "58
-[p x FCMEN=ON ]
+[p x FCMEN=OFF ]
 "59
-[p x IESO=ON ]
-[; ;main.c: 64: void ci_v_init();
-[; ;main.c: 65: void scanning_frequency_data();
-[; ;main.c: 66: void check_data();
-[; ;main.c: 67: void data_division(char freq, int num);
-[; ;main.c: 68: void swap_freq_data();
-[; ;main.c: 69: char trans_value(char val);
-[; ;main.c: 70: void indicate_frequency_data();
-[; ;main.c: 71: void indicate_mode();
-[; ;main.c: 72: void scan_ex();
-[; ;main.c: 73: void debug_unit(char debug_unit);
-"76
+[p x IESO=OFF ]
+[; ;main.c: 62: void ci_v_init();
+[; ;main.c: 63: void scanning_frequency_data();
+[; ;main.c: 64: void check_data();
+[; ;main.c: 65: void data_division(char freq, int num);
+[; ;main.c: 66: void swap_freq_data();
+[; ;main.c: 67: char trans_value(char val);
+[; ;main.c: 68: void indicate_frequency_data();
+[; ;main.c: 69: void indicate_mode();
+[; ;main.c: 70: void scan_ex();
+[; ;main.c: 71: void debug_unit(char debug_unit);
+"74
 [v _status_num `i ~T0 @X0 1 s ]
 [i _status_num
 -> 0 `i
 ]
-[; ;main.c: 76: static int status_num = 0;
-"77
-[v _frag `i ~T0 @X0 1 s ]
-[i _frag
+[; ;main.c: 74: static int status_num = 0;
+"75
+[v _flag `i ~T0 @X0 1 s ]
+[i _flag
 -> 0 `i
 ]
-[; ;main.c: 77: static int frag = 0;
-"78
+[; ;main.c: 75: static int flag = 0;
+"76
 [v _receive_data `uc ~T0 @X0 -> 12 `i e ]
-[; ;main.c: 78: char receive_data[12];
-"79
+[; ;main.c: 76: char receive_data[12];
+"77
 [v _freq_data `uc ~T0 @X0 -> 8 `i e ]
-[; ;main.c: 79: char freq_data[8];
-"80
+[; ;main.c: 77: char freq_data[8];
+"78
 [v _data_num `i ~T0 @X0 1 e ]
 [i _data_num
 -> 0 `i
 ]
-[; ;main.c: 80: int data_num = 0;
-"81
+[; ;main.c: 78: int data_num = 0;
+"79
 [v _err_cnt `i ~T0 @X0 1 e ]
 [i _err_cnt
 -> 0 `i
 ]
-[; ;main.c: 81: int err_cnt = 0;
-"83
+[; ;main.c: 79: int err_cnt = 0;
+"80
+[v _recv_addr `uc ~T0 @X0 1 e ]
+[i _recv_addr
+-> -> 0 `i `uc
+]
+[; ;main.c: 80: unsigned char recv_addr = 0x00;
+"82
 [v _main `(v ~T0 @X0 1 ef ]
-"84
+"83
 {
-[; ;main.c: 83: void main(void)
-[; ;main.c: 84: {
+[; ;main.c: 82: void main(void)
+[; ;main.c: 83: {
 [e :U _main ]
 [f ]
+[; ;main.c: 84: ci_v_init();
+"84
+[e ( _ci_v_init ..  ]
 [; ;main.c: 85: while(1)
 "85
 [e :U 91 ]
 [; ;main.c: 86: {
 "86
 {
-[; ;main.c: 89: switch(status_num)
-"89
+[; ;main.c: 88: switch(status_num)
+"88
 [e $U 94  ]
-[; ;main.c: 90: {
-"90
+[; ;main.c: 89: {
+"89
 {
-[; ;main.c: 91: case 0 : ci_v_init();
-"91
+[; ;main.c: 90: case 0 : ci_v_init();
+"90
 [e :U 95 ]
 [e ( _ci_v_init ..  ]
-[; ;main.c: 92: break;
-"92
+[; ;main.c: 91: break;
+"91
 [e $U 93  ]
-[; ;main.c: 94: case 1 : scanning_frequency_data();
-"94
+[; ;main.c: 93: case 1 : scanning_frequency_data();
+"93
 [e :U 96 ]
 [e ( _scanning_frequency_data ..  ]
-[; ;main.c: 95: break;
-"95
+[; ;main.c: 94: break;
+"94
 [e $U 93  ]
-[; ;main.c: 97: case 2 : check_data();
-"97
+[; ;main.c: 96: case 2 : check_data();
+"96
 [e :U 97 ]
 [e ( _check_data ..  ]
-[; ;main.c: 98: break;
-"98
+[; ;main.c: 97: break;
+"97
 [e $U 93  ]
-[; ;main.c: 100: case 3 : indicate_frequency_data();
-"100
+[; ;main.c: 99: case 3 : indicate_frequency_data();
+"99
 [e :U 98 ]
 [e ( _indicate_frequency_data ..  ]
-[; ;main.c: 101: break;
-"101
+[; ;main.c: 100: break;
+"100
 [e $U 93  ]
-[; ;main.c: 103: default: ci_v_init();
-"103
+[; ;main.c: 102: default: ci_v_init();
+"102
 [e :U 99 ]
 [e ( _ci_v_init ..  ]
-"104
+"103
 }
-[; ;main.c: 104: }
+[; ;main.c: 103: }
 [e $U 93  ]
-"89
+"88
 [e :U 94 ]
 [e [\ _status_num , $ -> 0 `i 95
  , $ -> 1 `i 96
  , $ -> 2 `i 97
  , $ -> 3 `i 98
  99 ]
-"104
+"103
 [e :U 93 ]
-"105
+"104
 }
 [e :U 90 ]
 "85
 [e $U 91  ]
 [e :U 92 ]
+[; ;main.c: 104: }
 [; ;main.c: 105: }
-[; ;main.c: 106: }
-"106
+"105
 [e :UE 89 ]
 }
-"109
+"108
 [v _ci_v_init `(v ~T0 @X0 1 ef ]
-"110
+"109
 {
-[; ;main.c: 109: void ci_v_init()
-[; ;main.c: 110: {
+[; ;main.c: 108: void ci_v_init()
+[; ;main.c: 109: {
 [e :U _ci_v_init ]
 [f ]
-[; ;main.c: 111: if(frag == 0)
+[; ;main.c: 110: if(flag == 0)
+"110
+[e $ ! == _flag -> 0 `i 101  ]
+[; ;main.c: 111: {
 "111
-[e $ ! == _frag -> 0 `i 101  ]
-[; ;main.c: 112: {
-"112
 {
-[; ;main.c: 113: CMCON = 0b00000111;
-"113
+[; ;main.c: 112: CMCON = 0b00000111;
+"112
 [e = _CMCON -> -> 7 `i `uc ]
-[; ;main.c: 114: TRISA = 0b00000000;
-"114
+[; ;main.c: 113: TRISA = 0b00000000;
+"113
 [e = _TRISA -> -> 0 `i `uc ]
-[; ;main.c: 115: TRISB = 0b00000100;
-"115
+[; ;main.c: 114: TRISB = 0b00000100;
+"114
 [e = _TRISB -> -> 4 `i `uc ]
-[; ;main.c: 116: PORTA = 0b00000000;
-"116
+[; ;main.c: 115: PORTA = 0b00000000;
+"115
 [e = _PORTA -> -> 0 `i `uc ]
-[; ;main.c: 117: PORTB = 0b00000000;
-"117
+[; ;main.c: 116: PORTB = 0b00000000;
+"116
 [e = _PORTB -> -> 0 `i `uc ]
-[; ;main.c: 118: ANSEL = 0;
-"118
+[; ;main.c: 117: ANSEL = 0;
+"117
 [e = _ANSEL -> -> 0 `i `uc ]
-[; ;main.c: 119: INTCON=0;
-"119
+[; ;main.c: 118: INTCON=0;
+"118
 [e = _INTCON -> -> 0 `i `uc ]
-[; ;main.c: 120: TRISB2 = 1; TRISB5 = 1; SPBRG = 129; RCSTA = (0|0x90); TXSTA = (0|0|0x20);
-"120
+[; ;main.c: 119: TRISB2 = 1; TRISB5 = 1; SPBRG = 32; RCSTA = (0|0x90); TXSTA = (0|0|0x20);
+"119
 [e = _TRISB2 -> -> 1 `i `b ]
 [e = _TRISB5 -> -> 1 `i `b ]
-[e = _SPBRG -> -> 129 `i `uc ]
+[e = _SPBRG -> -> 32 `i `uc ]
 [e = _RCSTA -> | -> 0 `i -> 144 `i `uc ]
 [e = _TXSTA -> | | -> 0 `i -> 0 `i -> 32 `i `uc ]
-[; ;main.c: 122: lcd_init();
-"122
+[; ;main.c: 121: lcd_init();
+"121
 [e ( _lcd_init ..  ]
-[; ;main.c: 123: _delay((unsigned long)((2)*(20000000/4000.0)));
-"123
+[; ;main.c: 122: _delay((unsigned long)((2)*(20000000/4000.0)));
+"122
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 124: lcd_goto(0x00);
-"124
+[; ;main.c: 123: lcd_goto(0x00);
+"123
 [e ( _lcd_goto (1 -> -> 0 `i `uc ]
-[; ;main.c: 125: _delay((unsigned long)((50)*(20000000/4000000.0)));
+[; ;main.c: 124: _delay((unsigned long)((50)*(20000000/4000000.0)));
+"124
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 125: lcd_puts("**** JP7IFH ****");
 "125
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 126: lcd_puts("**** IC-756 ****");
-"126
 [e ( _lcd_puts (1 :s 1C ]
-[; ;main.c: 127: lcd_goto(0x40);
-"127
+[; ;main.c: 126: lcd_goto(0x40);
+"126
 [e ( _lcd_goto (1 -> -> 64 `i `uc ]
-[; ;main.c: 128: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"128
+[; ;main.c: 127: _delay((unsigned long)((50)*(20000000/4000000.0)));
+"127
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 129: lcd_puts("--Freq Display--");
-"129
+[; ;main.c: 128: lcd_puts("- Freq Display -");
+"128
 [e ( _lcd_puts (1 :s 2C ]
-[; ;main.c: 130: _delay((unsigned long)((30)*(20000000/4000.0)));
-"130
+[; ;main.c: 129: _delay((unsigned long)((30)*(20000000/4000.0)));
+"129
 [e ( __delay (1 -> * -> -> 30 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 141: status_num = 1;
-"141
+[; ;main.c: 131: status_num = 1;
+"131
 [e = _status_num -> 1 `i ]
-"143
+"133
 }
-[; ;main.c: 143: }else{
+[; ;main.c: 133: }else{
 [e $U 102  ]
 [e :U 101 ]
 {
-[; ;main.c: 144: lcd_goto(0x00);
-"144
+[; ;main.c: 134: lcd_goto(0x00);
+"134
 [e ( _lcd_goto (1 -> -> 0 `i `uc ]
-[; ;main.c: 145: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"145
+[; ;main.c: 135: _delay((unsigned long)((50)*(20000000/4000000.0)));
+"135
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 146: lcd_puts("IC-756          ");
-"146
+[; ;main.c: 136: lcd_puts("JP7IFH          ");
+"136
 [e ( _lcd_puts (1 :s 3C ]
-[; ;main.c: 147: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"147
+[; ;main.c: 137: _delay((unsigned long)((50)*(20000000/4000000.0)));
+"137
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 148: lcd_goto(0x40);
-"148
+[; ;main.c: 138: lcd_goto(0x40);
+"138
 [e ( _lcd_goto (1 -> -> 64 `i `uc ]
-[; ;main.c: 149: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"149
+[; ;main.c: 139: _delay((unsigned long)((50)*(20000000/4000000.0)));
+"139
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 150: lcd_puts("Freq= ");
-"150
+[; ;main.c: 140: lcd_puts("Freq= ");
+"140
 [e ( _lcd_puts (1 :s 4C ]
-[; ;main.c: 151: status_num = 1;
-"151
+[; ;main.c: 141: recv_addr = receive_data[4 - 1];
+"141
+[e = _recv_addr *U + &U _receive_data * -> -> - -> 4 `i -> 1 `i `ui `ux -> -> # *U &U _receive_data `ui `ux ]
+[; ;main.c: 142: putch(0xFE);
+"142
+[e ( _putch (1 -> -> 254 `i `uc ]
+[; ;main.c: 143: putch(0xFE);
+"143
+[e ( _putch (1 -> -> 254 `i `uc ]
+[; ;main.c: 144: putch(recv_addr);
+"144
+[e ( _putch (1 _recv_addr ]
+[; ;main.c: 145: putch(0x00);
+"145
+[e ( _putch (1 -> -> 0 `i `uc ]
+[; ;main.c: 146: putch(0x04);
+"146
+[e ( _putch (1 -> -> 4 `i `uc ]
+[; ;main.c: 147: putch(0xFD);
+"147
+[e ( _putch (1 -> -> 253 `i `uc ]
+[; ;main.c: 148: status_num = 1;
+"148
 [e = _status_num -> 1 `i ]
-"152
+"149
 }
 [e :U 102 ]
-[; ;main.c: 152: }
-[; ;main.c: 153: }
-"153
+[; ;main.c: 149: }
+[; ;main.c: 150: }
+"150
 [e :UE 100 ]
 }
-"155
+"152
 [v _scanning_frequency_data `(v ~T0 @X0 1 ef ]
-"156
+"153
 {
-[; ;main.c: 155: void scanning_frequency_data()
-[; ;main.c: 156: {
+[; ;main.c: 152: void scanning_frequency_data()
+[; ;main.c: 153: {
 [e :U _scanning_frequency_data ]
 [f ]
-[; ;main.c: 157: data_num = 0;
-"157
+[; ;main.c: 154: data_num = 0;
+"154
 [e = _data_num -> 0 `i ]
-[; ;main.c: 158: receive_data[data_num] = getch();
-"158
+[; ;main.c: 155: receive_data[data_num] = getch();
+"155
 [e = *U + &U _receive_data * -> -> _data_num `ui `ux -> -> # *U &U _receive_data `ui `ux ( _getch ..  ]
-[; ;main.c: 160: if(receive_data[data_num] == 0xFE)
-"160
+[; ;main.c: 157: if(receive_data[data_num] == 0xFE)
+"157
 [e $ ! == -> *U + &U _receive_data * -> -> _data_num `ui `ux -> -> # *U &U _receive_data `ui `ux `i -> 254 `i 104  ]
+[; ;main.c: 158: {
+"158
+{
+[; ;main.c: 159: err_cnt = 0;
+"159
+[e = _err_cnt -> 0 `i ]
+[; ;main.c: 160: while(receive_data[data_num] != 0xFD)
+"160
+[e $U 105  ]
+[e :U 106 ]
 [; ;main.c: 161: {
 "161
 {
-[; ;main.c: 162: err_cnt = 0;
+[; ;main.c: 162: data_num++;
 "162
-[e = _err_cnt -> 0 `i ]
-[; ;main.c: 163: while(receive_data[data_num] != 0xFD)
-"163
-[e $U 105  ]
-[e :U 106 ]
-[; ;main.c: 164: {
-"164
-{
-[; ;main.c: 165: data_num++;
-"165
 [e ++ _data_num -> 1 `i ]
-[; ;main.c: 166: receive_data[data_num] = getch();
-"166
+[; ;main.c: 163: receive_data[data_num] = getch();
+"163
 [e = *U + &U _receive_data * -> -> _data_num `ui `ux -> -> # *U &U _receive_data `ui `ux ( _getch ..  ]
-"167
+"164
 }
 [e :U 105 ]
-"163
+"160
 [e $ != -> *U + &U _receive_data * -> -> _data_num `ui `ux -> -> # *U &U _receive_data `ui `ux `i -> 253 `i 106  ]
 [e :U 107 ]
-[; ;main.c: 167: }
-[; ;main.c: 169: status_num = 2;
-"169
+[; ;main.c: 164: }
+[; ;main.c: 166: status_num = 2;
+"166
 [e = _status_num -> 2 `i ]
-"170
+"167
 }
-[; ;main.c: 170: }else{
+[; ;main.c: 167: }else{
 [e $U 108  ]
 [e :U 104 ]
 {
-[; ;main.c: 183: status_num = 1;
-"183
+[; ;main.c: 180: status_num = 1;
+"180
 [e = _status_num -> 1 `i ]
-"184
+"181
 }
 [e :U 108 ]
-[; ;main.c: 184: }
-[; ;main.c: 185: }
-"185
+[; ;main.c: 181: }
+[; ;main.c: 182: }
+"182
 [e :UE 103 ]
 }
-"187
+"184
 [v _check_data `(v ~T0 @X0 1 ef ]
-"188
+"185
 {
-[; ;main.c: 187: void check_data()
-[; ;main.c: 188: {
+[; ;main.c: 184: void check_data()
+[; ;main.c: 185: {
 [e :U _check_data ]
 [f ]
-[; ;main.c: 190: if(receive_data[4] == 0x00)
-"190
+[; ;main.c: 187: if(receive_data[4] == 0x00)
+"187
 [e $ ! == -> *U + &U _receive_data * -> -> -> 4 `i `ui `ux -> -> # *U &U _receive_data `ui `ux `i -> 0 `i 110  ]
-[; ;main.c: 191: {
-"191
+[; ;main.c: 188: {
+"188
 {
-[; ;main.c: 192: swap_freq_data();
-"192
+[; ;main.c: 189: swap_freq_data();
+"189
 [e ( _swap_freq_data ..  ]
-"198
+"191
 }
-[; ;main.c: 198: }else{
+[; ;main.c: 191: }else if(receive_data[4] == 0x01)
 [e $U 111  ]
 [e :U 110 ]
+[e $ ! == -> *U + &U _receive_data * -> -> -> 4 `i `ui `ux -> -> # *U &U _receive_data `ui `ux `i -> 1 `i 112  ]
+[; ;main.c: 192: {
+"192
 {
-[; ;main.c: 200: status_num = 1;
-"200
-[e = _status_num -> 1 `i ]
-"201
+[; ;main.c: 193: indicate_mode();
+"193
+[e ( _indicate_mode ..  ]
+"195
 }
+[; ;main.c: 195: }else{
+[e $U 113  ]
+[e :U 112 ]
+{
+[; ;main.c: 197: status_num = 1;
+"197
+[e = _status_num -> 1 `i ]
+"198
+}
+[e :U 113 ]
 [e :U 111 ]
-[; ;main.c: 201: }
-[; ;main.c: 202: }
-"202
+[; ;main.c: 198: }
+[; ;main.c: 199: }
+"199
 [e :UE 109 ]
 }
-"204
+"201
 [v _data_division `(v ~T0 @X0 1 ef2`uc`i ]
-"205
+"202
 {
-[; ;main.c: 204: void data_division(char freq, int num)
-[; ;main.c: 205: {
+[; ;main.c: 201: void data_division(char freq, int num)
+[; ;main.c: 202: {
 [e :U _data_division ]
-"204
+"201
 [v _freq `uc ~T0 @X0 1 r1 ]
 [v _num `i ~T0 @X0 1 r2 ]
-"205
+"202
 [f ]
-[; ;main.c: 206: freq_data[num] = ((freq >> 4 ) & 0x0F);
-"206
+[; ;main.c: 203: freq_data[num] = ((freq >> 4 ) & 0x0F);
+"203
 [e = *U + &U _freq_data * -> -> _num `ui `ux -> -> # *U &U _freq_data `ui `ux -> & >> -> _freq `i -> 4 `i -> 15 `i `uc ]
-[; ;main.c: 207: freq_data[num+1] = (freq & 0x0F);
-"207
+[; ;main.c: 204: freq_data[num+1] = (freq & 0x0F);
+"204
 [e = *U + &U _freq_data * -> -> + _num -> 1 `i `ui `ux -> -> # *U &U _freq_data `ui `ux -> & -> _freq `i -> 15 `i `uc ]
-[; ;main.c: 208: }
-"208
-[e :UE 112 ]
+[; ;main.c: 205: }
+"205
+[e :UE 114 ]
 }
-"210
+"207
 [v _trans_value `(uc ~T0 @X0 1 ef1`uc ]
-"211
+"208
 {
-[; ;main.c: 210: char trans_value(char val)
-[; ;main.c: 211: {
+[; ;main.c: 207: char trans_value(char val)
+[; ;main.c: 208: {
 [e :U _trans_value ]
-"210
+"207
 [v _val `uc ~T0 @X0 1 r1 ]
-"211
+"208
 [f ]
-[v F1039 `uc ~T0 @X0 -> 10 `i s ]
-[i F1039
+[v F1040 `uc ~T0 @X0 -> 10 `i s ]
+[i F1040
 :U ..
-"212
+"209
 -> -> 48 `i `uc
 -> -> 49 `i `uc
 -> -> 50 `i `uc
 -> -> 51 `i `uc
 -> -> 52 `i `uc
-"213
+"210
 -> -> 53 `i `uc
 -> -> 54 `i `uc
 -> -> 55 `i `uc
@@ -1368,196 +1415,301 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 57 `i `uc
 ..
 ]
-"212
+"209
 [v _ascii_array `uc ~T0 @X0 -> 10 `i a ]
-[; ;main.c: 212: char ascii_array[10] = {0x30,0x31,0x32,0x33,0x34,
-[; ;main.c: 213: 0x35,0x36,0x37,0x38,0x39};
-"213
-[e = _ascii_array F1039 ]
-[; ;main.c: 215: val = ascii_array[(val & 0x0F)];
-"215
+[; ;main.c: 209: char ascii_array[10] = {0x30,0x31,0x32,0x33,0x34,
+[; ;main.c: 210: 0x35,0x36,0x37,0x38,0x39};
+"210
+[e = _ascii_array F1040 ]
+[; ;main.c: 212: val = ascii_array[(val & 0x0F)];
+"212
 [e = _val *U + &U _ascii_array * -> -> & -> _val `i -> 15 `i `ui `ux -> -> # *U &U _ascii_array `ui `ux ]
-[; ;main.c: 217: return val;
-"217
+[; ;main.c: 214: return val;
+"214
 [e ) _val ]
-[e $UE 113  ]
-[; ;main.c: 218: }
-"218
-[e :UE 113 ]
+[e $UE 115  ]
+[; ;main.c: 215: }
+"215
+[e :UE 115 ]
 }
-"221
+"218
 [v _swap_freq_data `(v ~T0 @X0 1 ef ]
-"222
+"219
 {
-[; ;main.c: 221: void swap_freq_data()
-[; ;main.c: 222: {
+[; ;main.c: 218: void swap_freq_data()
+[; ;main.c: 219: {
 [e :U _swap_freq_data ]
 [f ]
-"223
-[v _space_frag `i ~T0 @X0 1 a ]
-"224
+"220
+[v _space_flag `i ~T0 @X0 1 a ]
+"221
 [v _i `i ~T0 @X0 1 a ]
 [v _j `i ~T0 @X0 1 a ]
-[; ;main.c: 223: int space_frag;
-[; ;main.c: 224: int i,j;
-[; ;main.c: 226: for(i=0;i<4;i++)
-"226
+[; ;main.c: 220: int space_flag;
+[; ;main.c: 221: int i,j;
+[; ;main.c: 223: for(i=0;i<4;i++)
+"223
 {
 [e = _i -> 0 `i ]
-[e $ < _i -> 4 `i 115  ]
-[e $U 116  ]
-"227
-[e :U 115 ]
-[; ;main.c: 227: {
+[e $ < _i -> 4 `i 117  ]
+[e $U 118  ]
+"224
+[e :U 117 ]
+[; ;main.c: 224: {
 {
-[; ;main.c: 228: data_division(receive_data[5 + 3 - i], i * 2);
-"228
+[; ;main.c: 225: data_division(receive_data[5 + 3 - i], i * 2);
+"225
 [e ( _data_division (2 , *U + &U _receive_data * -> -> - + -> 5 `i -> 3 `i _i `ui `ux -> -> # *U &U _receive_data `ui `ux * _i -> 2 `i ]
-"229
-}
 "226
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 4 `i 115  ]
-[e :U 116 ]
-"229
 }
-[; ;main.c: 229: }
-[; ;main.c: 231: j = 0;
-"231
+"223
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 4 `i 117  ]
+[e :U 118 ]
+"226
+}
+[; ;main.c: 226: }
+[; ;main.c: 228: j = 0;
+"228
 [e = _j -> 0 `i ]
-[; ;main.c: 232: space_frag = 0;
+[; ;main.c: 229: space_flag = 0;
+"229
+[e = _space_flag -> 0 `i ]
+[; ;main.c: 230: for(i=0;i<8;i++)
+"230
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 8 `i 120  ]
+[e $U 121  ]
+"231
+[e :U 120 ]
+[; ;main.c: 231: {
+{
+[; ;main.c: 232: if((i == 2) || (i == 5))
 "232
-[e = _space_frag -> 0 `i ]
-[; ;main.c: 233: for(i=0;i<8;i++)
+[e $ ! || == _i -> 2 `i == _i -> 5 `i 123  ]
+[; ;main.c: 233: {
 "233
 {
-[e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 118  ]
-[e $U 119  ]
+[; ;main.c: 234: receive_data[j] = 0x2e;
 "234
-[e :U 118 ]
-[; ;main.c: 234: {
-{
-[; ;main.c: 235: if((i == 2) || (i == 5))
-"235
-[e $ ! || == _i -> 2 `i == _i -> 5 `i 121  ]
-[; ;main.c: 236: {
-"236
-{
-[; ;main.c: 237: receive_data[j] = 0x2e;
-"237
 [e = *U + &U _receive_data * -> -> _j `ui `ux -> -> # *U &U _receive_data `ui `ux -> -> 46 `i `uc ]
-[; ;main.c: 238: j++;
-"238
+[; ;main.c: 235: j++;
+"235
 [e ++ _j -> 1 `i ]
-"239
-}
-[e :U 121 ]
-[; ;main.c: 239: }
-[; ;main.c: 241: receive_data[j] = trans_value(freq_data[i]);
-"241
-[e = *U + &U _receive_data * -> -> _j `ui `ux -> -> # *U &U _receive_data `ui `ux ( _trans_value (1 *U + &U _freq_data * -> -> _i `ui `ux -> -> # *U &U _freq_data `ui `ux ]
-[; ;main.c: 242: j++;
-"242
-[e ++ _j -> 1 `i ]
-[; ;main.c: 244: if((receive_data[i] == 0x30) && (space_frag == 0))
-"244
-[e $ ! && == -> *U + &U _receive_data * -> -> _i `ui `ux -> -> # *U &U _receive_data `ui `ux `i -> 48 `i == _space_frag -> 0 `i 122  ]
-[; ;main.c: 245: {
-"245
-{
-[; ;main.c: 246: receive_data[i] = 0x20;
-"246
-[e = *U + &U _receive_data * -> -> _i `ui `ux -> -> # *U &U _receive_data `ui `ux -> -> 32 `i `uc ]
-"247
-}
-[; ;main.c: 247: }else{
-[e $U 123  ]
-[e :U 122 ]
-{
-[; ;main.c: 248: space_frag = 1;
-"248
-[e = _space_frag -> 1 `i ]
-"249
+"236
 }
 [e :U 123 ]
-[; ;main.c: 249: }
-[; ;main.c: 251: if(j == 10)
-"251
-[e $ ! == _j -> 10 `i 124  ]
-[; ;main.c: 252: {
-"252
-{
-[; ;main.c: 253: receive_data[j] = 0x20;
-"253
-[e = *U + &U _receive_data * -> -> _j `ui `ux -> -> # *U &U _receive_data `ui `ux -> -> 32 `i `uc ]
-[; ;main.c: 254: j++;
-"254
+[; ;main.c: 236: }
+[; ;main.c: 238: receive_data[j] = trans_value(freq_data[i]);
+"238
+[e = *U + &U _receive_data * -> -> _j `ui `ux -> -> # *U &U _receive_data `ui `ux ( _trans_value (1 *U + &U _freq_data * -> -> _i `ui `ux -> -> # *U &U _freq_data `ui `ux ]
+[; ;main.c: 239: j++;
+"239
 [e ++ _j -> 1 `i ]
-"255
+[; ;main.c: 241: if((receive_data[i] == 0x30) && (space_flag == 0))
+"241
+[e $ ! && == -> *U + &U _receive_data * -> -> _i `ui `ux -> -> # *U &U _receive_data `ui `ux `i -> 48 `i == _space_flag -> 0 `i 124  ]
+[; ;main.c: 242: {
+"242
+{
+[; ;main.c: 243: receive_data[i] = 0x20;
+"243
+[e = *U + &U _receive_data * -> -> _i `ui `ux -> -> # *U &U _receive_data `ui `ux -> -> 32 `i `uc ]
+"244
 }
+[; ;main.c: 244: }else{
+[e $U 125  ]
 [e :U 124 ]
-"257
-}
-"233
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 118  ]
-[e :U 119 ]
-"257
-}
-[; ;main.c: 255: }
-[; ;main.c: 257: }
-[; ;main.c: 258: status_num = 3;
-"258
-[e = _status_num -> 3 `i ]
-[; ;main.c: 259: }
-"259
-[e :UE 114 ]
-}
-"261
-[v _indicate_frequency_data `(v ~T0 @X0 1 ef ]
-"262
 {
-[; ;main.c: 261: void indicate_frequency_data()
-[; ;main.c: 262: {
-[e :U _indicate_frequency_data ]
-[f ]
-[; ;main.c: 263: lcd_goto(0x46);
-"263
-[e ( _lcd_goto (1 -> -> 70 `i `uc ]
-[; ;main.c: 264: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"264
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 265: lcd_puts(receive_data);
-"265
-[e ( _lcd_puts (1 -> &U _receive_data `*Cuc ]
-[; ;main.c: 266: _delay((unsigned long)((50)*(20000000/4000000.0)));
-"266
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 267: status_num = 1;
-"267
-[e = _status_num -> 1 `i ]
-[; ;main.c: 269: if(frag == 0)
-"269
-[e $ ! == _frag -> 0 `i 126  ]
-[; ;main.c: 270: {
-"270
+[; ;main.c: 245: space_flag = 1;
+"245
+[e = _space_flag -> 1 `i ]
+"246
+}
+[e :U 125 ]
+[; ;main.c: 246: }
+[; ;main.c: 248: if(j == 10)
+"248
+[e $ ! == _j -> 10 `i 126  ]
+[; ;main.c: 249: {
+"249
 {
-[; ;main.c: 271: frag = 1;
-"271
-[e = _frag -> 1 `i ]
-[; ;main.c: 272: status_num = 0;
-"272
-[e = _status_num -> 0 `i ]
-"273
+[; ;main.c: 250: receive_data[j] = 0x20;
+"250
+[e = *U + &U _receive_data * -> -> _j `ui `ux -> -> # *U &U _receive_data `ui `ux -> -> 32 `i `uc ]
+[; ;main.c: 251: j++;
+"251
+[e ++ _j -> 1 `i ]
+"252
 }
 [e :U 126 ]
-[; ;main.c: 273: }
-[; ;main.c: 274: }
-"274
-[e :UE 125 ]
+"254
 }
-[a 2C 45 45 70 114 101 113 32 68 105 115 112 108 97 121 45 45 0 ]
-[a 1C 42 42 42 42 32 73 67 45 55 53 54 32 42 42 42 42 0 ]
+"230
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 8 `i 120  ]
+[e :U 121 ]
+"254
+}
+[; ;main.c: 252: }
+[; ;main.c: 254: }
+[; ;main.c: 255: status_num = 3;
+"255
+[e = _status_num -> 3 `i ]
+[; ;main.c: 256: }
+"256
+[e :UE 116 ]
+}
+"258
+[v _indicate_frequency_data `(v ~T0 @X0 1 ef ]
+"259
+{
+[; ;main.c: 258: void indicate_frequency_data()
+[; ;main.c: 259: {
+[e :U _indicate_frequency_data ]
+[f ]
+[; ;main.c: 260: lcd_goto(0x46);
+"260
+[e ( _lcd_goto (1 -> -> 70 `i `uc ]
+[; ;main.c: 261: _delay((unsigned long)((50)*(20000000/4000000.0)));
+"261
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 262: lcd_puts(receive_data);
+"262
+[e ( _lcd_puts (1 -> &U _receive_data `*Cuc ]
+[; ;main.c: 263: _delay((unsigned long)((50)*(20000000/4000000.0)));
+"263
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 264: status_num = 1;
+"264
+[e = _status_num -> 1 `i ]
+[; ;main.c: 266: if(flag == 0)
+"266
+[e $ ! == _flag -> 0 `i 128  ]
+[; ;main.c: 267: {
+"267
+{
+[; ;main.c: 268: flag = 1;
+"268
+[e = _flag -> 1 `i ]
+[; ;main.c: 269: status_num = 0;
+"269
+[e = _status_num -> 0 `i ]
+"270
+}
+[e :U 128 ]
+[; ;main.c: 270: }
+[; ;main.c: 271: }
+"271
+[e :UE 127 ]
+}
+"273
+[v _indicate_mode `(v ~T0 @X0 1 ef ]
+"274
+{
+[; ;main.c: 273: void indicate_mode()
+[; ;main.c: 274: {
+[e :U _indicate_mode ]
+[f ]
+[; ;main.c: 275: lcd_goto(0x07);
+"275
+[e ( _lcd_goto (1 -> -> 7 `i `uc ]
+[; ;main.c: 276: _delay((unsigned long)((50)*(20000000/4000000.0)));
+"276
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 277: lcd_puts("MODE:");
+"277
+[e ( _lcd_puts (1 :s 5C ]
+[; ;main.c: 278: _delay((unsigned long)((50)*(20000000/4000000.0)));
+"278
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 280: lcd_goto(0x0C);
+"280
+[e ( _lcd_goto (1 -> -> 12 `i `uc ]
+[; ;main.c: 282: switch(receive_data[4 + 1])
+"282
+[e $U 131  ]
+[; ;main.c: 283: {
+"283
+{
+[; ;main.c: 284: case 0 : lcd_puts(" LSB");
+"284
+[e :U 132 ]
+[e ( _lcd_puts (1 :s 6C ]
+[; ;main.c: 285: break;
+"285
+[e $U 130  ]
+[; ;main.c: 287: case 1 : lcd_puts(" USB");
+"287
+[e :U 133 ]
+[e ( _lcd_puts (1 :s 7C ]
+[; ;main.c: 288: break;
+"288
+[e $U 130  ]
+[; ;main.c: 290: case 2 : lcd_puts(" AM ");
+"290
+[e :U 134 ]
+[e ( _lcd_puts (1 :s 8C ]
+[; ;main.c: 291: break;
+"291
+[e $U 130  ]
+[; ;main.c: 293: case 3 : lcd_puts(" CW ");
+"293
+[e :U 135 ]
+[e ( _lcd_puts (1 :s 9C ]
+[; ;main.c: 294: break;
+"294
+[e $U 130  ]
+[; ;main.c: 296: case 4 : lcd_puts("RTTY");
+"296
+[e :U 136 ]
+[e ( _lcd_puts (1 :s 10C ]
+[; ;main.c: 297: break;
+"297
+[e $U 130  ]
+[; ;main.c: 299: case 5 : lcd_puts(" FM ");
+"299
+[e :U 137 ]
+[e ( _lcd_puts (1 :s 11C ]
+[; ;main.c: 300: break;
+"300
+[e $U 130  ]
+[; ;main.c: 302: default : lcd_puts("????");
+"302
+[e :U 138 ]
+[e ( _lcd_puts (1 :s 12C ]
+"303
+}
+[; ;main.c: 303: }
+[e $U 130  ]
+"282
+[e :U 131 ]
+[e [\ *U + &U _receive_data * -> -> + -> 4 `i -> 1 `i `ui `ux -> -> # *U &U _receive_data `ui `ux , $ -> -> 0 `i `uc 132
+ , $ -> -> 1 `i `uc 133
+ , $ -> -> 2 `i `uc 134
+ , $ -> -> 3 `i `uc 135
+ , $ -> -> 4 `i `uc 136
+ , $ -> -> 5 `i `uc 137
+ 138 ]
+"303
+[e :U 130 ]
+[; ;main.c: 304: status_num = 1;
+"304
+[e = _status_num -> 1 `i ]
+[; ;main.c: 305: }
+"305
+[e :UE 129 ]
+}
+[a 10C 82 84 84 89 0 ]
+[a 7C 32 85 83 66 0 ]
+[a 6C 32 76 83 66 0 ]
+[a 12C 63 63 63 63 0 ]
+[a 5C 77 79 68 69 58 0 ]
+[a 2C 45 32 70 114 101 113 32 68 105 115 112 108 97 121 32 45 0 ]
+[a 1C 42 42 42 42 32 74 80 55 73 70 72 32 42 42 42 42 0 ]
+[a 9C 32 67 87 32 0 ]
+[a 11C 32 70 77 32 0 ]
+[a 8C 32 65 77 32 0 ]
 [a 4C 70 114 101 113 61 32 0 ]
-[a 3C 73 67 45 55 53 54 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 3C 74 80 55 73 70 72 32 32 32 32 32 32 32 32 32 32 0 ]

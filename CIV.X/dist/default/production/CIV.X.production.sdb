@@ -27,22 +27,24 @@
 [v _lcd_goto lcd_goto `(v  1 e 0 0 ]
 "86
 [v _lcd_init lcd_init `(v  1 e 0 0 ]
-"83 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+"82 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
 [v _main main `(v  1 e 0 0 ]
-"109
+"108
 [v _ci_v_init ci_v_init `(v  1 e 0 0 ]
-"155
+"152
 [v _scanning_frequency_data scanning_frequency_data `(v  1 e 0 0 ]
-"187
+"184
 [v _check_data check_data `(v  1 e 0 0 ]
-"204
+"201
 [v _data_division data_division `(v  1 e 0 0 ]
-"210
+"207
 [v _trans_value trans_value `(uc  1 e 1 0 ]
-"221
+"218
 [v _swap_freq_data swap_freq_data `(v  1 e 0 0 ]
-"261
+"258
 [v _indicate_frequency_data indicate_frequency_data `(v  1 e 0 0 ]
+"273
+[v _indicate_mode indicate_mode `(v  1 e 0 0 ]
 "8 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
 [v _putch putch `(v  1 e 0 0 ]
 "16
@@ -87,52 +89,56 @@
 [v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
 "2445
 [v _TXIF TXIF `VEb  1 e 0 @100 ]
-"76 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+"74 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
 [v _status_num status_num `i  1 s 2 status_num ]
-"77
-[v _frag frag `i  1 s 2 frag ]
-"78
+"75
+[v _flag flag `i  1 s 2 flag ]
+"76
 [v _receive_data receive_data `[12]uc  1 e 12 0 ]
-"79
+"77
 [v _freq_data freq_data `[8]uc  1 e 8 0 ]
-"80
+"78
 [v _data_num data_num `i  1 e 2 0 ]
-"81
+"79
 [v _err_cnt err_cnt `i  1 e 2 0 ]
+"80
+[v _recv_addr recv_addr `uc  1 e 1 0 ]
 "6 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
 [v _rate_num rate_num `i  1 s 2 rate_num ]
-"83 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+"82 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"106
+"105
 } 0
-"155
+"152
 [v _scanning_frequency_data scanning_frequency_data `(v  1 e 0 0 ]
 {
-"185
+"182
 } 0
 "16 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
 [v _getch getch `(uc  1 e 1 0 ]
 {
-"55
+"43
 } 0
-"261 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+"258 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
 [v _indicate_frequency_data indicate_frequency_data `(v  1 e 0 0 ]
 {
-"274
+"271
 } 0
-"109
+"108
 [v _ci_v_init ci_v_init `(v  1 e 0 0 ]
 {
-"153
+"150
 } 0
-"59 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
-[v _lcd_puts lcd_puts `(v  1 e 0 0 ]
+"8 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/usart.c
+[v _putch putch `(v  1 e 0 0 ]
 {
-[v lcd_puts@s s `*.26DCCuc  1 p 2 3 ]
-"64
+[v putch@byte byte `uc  1 a 1 wreg ]
+[v putch@byte byte `uc  1 a 1 wreg ]
+[v putch@byte byte `uc  1 a 1 0 ]
+"14
 } 0
-"86
+"86 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
 [v _lcd_init lcd_init `(v  1 e 0 0 ]
 {
 "88
@@ -143,6 +149,56 @@
 [v _lcd_clear lcd_clear `(v  1 e 0 0 ]
 {
 "55
+} 0
+"184 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
+[v _check_data check_data `(v  1 e 0 0 ]
+{
+"199
+} 0
+"218
+[v _swap_freq_data swap_freq_data `(v  1 e 0 0 ]
+{
+"221
+[v swap_freq_data@i i `i  1 a 2 10 ]
+[v swap_freq_data@j j `i  1 a 2 8 ]
+"220
+[v swap_freq_data@space_flag space_flag `i  1 a 2 6 ]
+"256
+} 0
+"207
+[v _trans_value trans_value `(uc  1 e 1 0 ]
+{
+[v trans_value@val val `uc  1 a 1 wreg ]
+"209
+[v trans_value@ascii_array ascii_array `[10]uc  1 a 10 0 ]
+"207
+[v trans_value@val val `uc  1 a 1 wreg ]
+"208
+[v trans_value@F1040 F1040 `[10]uc  1 s 10 F1040 ]
+"210
+[v trans_value@val val `uc  1 a 1 10 ]
+"215
+} 0
+"201
+[v _data_division data_division `(v  1 e 0 0 ]
+{
+[v data_division@freq freq `uc  1 a 1 wreg ]
+[v data_division@freq freq `uc  1 a 1 wreg ]
+[v data_division@num num `i  1 p 2 0 ]
+"203
+[v data_division@freq freq `uc  1 a 1 4 ]
+"205
+} 0
+"273
+[v _indicate_mode indicate_mode `(v  1 e 0 0 ]
+{
+"305
+} 0
+"59 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/lcd.c
+[v _lcd_puts lcd_puts `(v  1 e 0 0 ]
+{
+[v lcd_puts@s s `*.26DCCuc  1 p 2 3 ]
+"64
 } 0
 "79
 [v _lcd_goto lcd_goto `(v  1 e 0 0 ]
@@ -161,43 +217,4 @@
 "39
 [v lcd_write@c c `uc  1 a 1 2 ]
 "44
-} 0
-"187 /Users/YudaiHashimoto/MPLABXProjects/CIV.X/main.c
-[v _check_data check_data `(v  1 e 0 0 ]
-{
-"202
-} 0
-"221
-[v _swap_freq_data swap_freq_data `(v  1 e 0 0 ]
-{
-"224
-[v swap_freq_data@i i `i  1 a 2 10 ]
-[v swap_freq_data@j j `i  1 a 2 8 ]
-"223
-[v swap_freq_data@space_frag space_frag `i  1 a 2 6 ]
-"259
-} 0
-"210
-[v _trans_value trans_value `(uc  1 e 1 0 ]
-{
-[v trans_value@val val `uc  1 a 1 wreg ]
-"212
-[v trans_value@ascii_array ascii_array `[10]uc  1 a 10 0 ]
-"210
-[v trans_value@val val `uc  1 a 1 wreg ]
-"211
-[v trans_value@F1039 F1039 `[10]uc  1 s 10 F1039 ]
-"213
-[v trans_value@val val `uc  1 a 1 10 ]
-"218
-} 0
-"204
-[v _data_division data_division `(v  1 e 0 0 ]
-{
-[v data_division@freq freq `uc  1 a 1 wreg ]
-[v data_division@freq freq `uc  1 a 1 wreg ]
-[v data_division@num num `i  1 p 2 0 ]
-"206
-[v data_division@freq freq `uc  1 a 1 4 ]
-"208
 } 0

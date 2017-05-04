@@ -53,23 +53,23 @@
 [v _Setting Setting `(v  1 e 0 0 ]
 "201
 [v _SetCheckRow SetCheckRow `(v  1 e 0 0 ]
-"263
+"274
 [v _SetNumberOfTimes SetNumberOfTimes `(v  1 e 0 0 ]
-"341
+"352
 [v _Confirm Confirm `(v  1 e 0 0 ]
-"381
+"394
 [v _CheckDo CheckDo `(v  1 e 0 0 ]
-"435
+"448
 [v _DebugMode DebugMode `(v  1 e 0 0 ]
-"480
+"493
 [v _ShowResult ShowResult `(v  1 e 0 0 ]
-"503
+"516
 [v _ButtonPush ButtonPush `(i  1 e 2 0 ]
-"526
+"539
 [v _IndicadeSettingMode IndicadeSettingMode `(v  1 e 0 0 ]
-"536
+"549
 [v _IndicateSelectedMode IndicateSelectedMode `(v  1 e 0 0 ]
-"553
+"568
 [v _SetIntervalTime SetIntervalTime `(v  1 e 0 0 ]
 "160 /Applications/microchip/xc8/v1.34/include/pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -198,58 +198,58 @@
 [v eeprom_init@eepgd eepgd `uc  1 a 1 1 ]
 "63
 } 0
-"480 /Users/YudaiHashimoto/MPLABXProjects/LanCableChecker.X/main.c
+"493 /Users/YudaiHashimoto/MPLABXProjects/LanCableChecker.X/main.c
 [v _ShowResult ShowResult `(v  1 e 0 0 ]
 {
-"482
-[v ShowResult@result_str result_str `[4]uc  1 a 4 24 ]
-"501
+"495
+[v ShowResult@result_str result_str `[4]uc  1 a 4 18 ]
+"514
 } 0
 "15 /Applications/microchip/xc8/v1.34/sources/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 {
 "17
-[v ___wmul@product product `ui  1 a 2 4 ]
+[v ___wmul@product product `ui  1 a 2 0 ]
 "15
-[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+[v ___wmul@multiplier multiplier `ui  1 p 2 9 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 11 ]
 "53
 } 0
 "160 /Users/YudaiHashimoto/MPLABXProjects/LanCableChecker.X/main.c
 [v _Setting Setting `(v  1 e 0 0 ]
 {
 "162
-[v Setting@setmode setmode `i  1 a 2 34 ]
+[v Setting@setmode setmode `i  1 a 2 28 ]
 "163
-[v Setting@button button `i  1 a 2 32 ]
+[v Setting@button button `i  1 a 2 26 ]
 "199
 } 0
-"553
+"568
 [v _SetIntervalTime SetIntervalTime `(v  1 e 0 0 ]
 {
-"556
-[v SetIntervalTime@str str `[4]uc  1 a 4 26 ]
-"555
-[v SetIntervalTime@button button `i  1 a 2 30 ]
+"571
+[v SetIntervalTime@str str `[4]uc  1 a 4 20 ]
+"570
+[v SetIntervalTime@button button `i  1 a 2 24 ]
 [v SetIntervalTime@F1761 F1761 `[4]uc  1 s 4 F1761 ]
-"587
+"602
 } 0
-"526
+"539
 [v _IndicadeSettingMode IndicadeSettingMode `(v  1 e 0 0 ]
 {
 [v IndicadeSettingMode@modenum modenum `i  1 p 2 5 ]
-"534
+"547
 } 0
-"263
+"274
 [v _SetNumberOfTimes SetNumberOfTimes `(v  1 e 0 0 ]
 {
-"266
-[v SetNumberOfTimes@numstr numstr `[4]uc  1 a 4 24 ]
-"268
-[v SetNumberOfTimes@cursor cursor `i  1 a 2 30 ]
-"267
-[v SetNumberOfTimes@button button `i  1 a 2 28 ]
-"339
+"277
+[v SetNumberOfTimes@numstr numstr `[4]uc  1 a 4 18 ]
+"279
+[v SetNumberOfTimes@cursor cursor `i  1 a 2 24 ]
+"278
+[v SetNumberOfTimes@button button `i  1 a 2 22 ]
+"350
 } 0
 "65 /Users/YudaiHashimoto/MPLABXProjects/LanCableChecker.X/eeprom.c
 [v _eeprom_write_int eeprom_write_int `(i  1 e 2 0 ]
@@ -279,7 +279,7 @@
 [v SetCheckRow@cursor cursor `i  1 a 2 10 ]
 "204
 [v SetCheckRow@button button `i  1 a 2 8 ]
-"261
+"272
 } 0
 "111 /Users/YudaiHashimoto/MPLABXProjects/LanCableChecker.X/lcd.c
 [v _lcd_cmd lcd_cmd `(v  1 e 0 0 ]
@@ -297,82 +297,82 @@
 [v ModeSelect@button button `i  1 a 2 6 ]
 "159
 } 0
-"536
+"549
 [v _IndicateSelectedMode IndicateSelectedMode `(v  1 e 0 0 ]
 {
 [v IndicateSelectedMode@start start `uc  1 a 1 wreg ]
 [v IndicateSelectedMode@start start `uc  1 a 1 wreg ]
-"538
-[v IndicateSelectedMode@start start `uc  1 a 1 5 ]
 "551
+[v IndicateSelectedMode@start start `uc  1 a 1 5 ]
+"566
 } 0
-"435
+"448
 [v _DebugMode DebugMode `(v  1 e 0 0 ]
 {
-"437
+"450
 [v DebugMode@debug_arr debug_arr `[9]uc  1 a 9 0 ]
-"438
+"451
 [v DebugMode@j j `i  1 a 2 12 ]
 [v DebugMode@i i `i  1 a 2 10 ]
-"439
+"452
 [v DebugMode@result result `uc  1 a 1 9 ]
-"436
+"449
 [v DebugMode@F1746 F1746 `[9]uc  1 s 9 F1746 ]
-"478
+"491
 } 0
-"341
+"352
 [v _Confirm Confirm `(v  1 e 0 0 ]
 {
-"343
-[v Confirm@chknum chknum `[4]uc  1 a 4 24 ]
-"379
+"354
+[v Confirm@chknum chknum `[4]uc  1 a 4 18 ]
+"392
 } 0
-"503
+"516
 [v _ButtonPush ButtonPush `(i  1 e 2 0 ]
 {
-"505
+"518
 [v ButtonPush@push_value push_value `i  1 a 2 2 ]
-"524
+"537
 } 0
-"381
+"394
 [v _CheckDo CheckDo `(v  1 e 0 0 ]
 {
-"386
-[v CheckDo@checked_num checked_num `[4]uc  1 a 4 29 ]
-"383
-[v CheckDo@k k `i  1 a 2 41 ]
-[v CheckDo@j j `i  1 a 2 39 ]
-[v CheckDo@i i `i  1 a 2 37 ]
-"387
-[v CheckDo@success_check success_check `i  1 a 2 33 ]
-"385
-[v CheckDo@expected expected `uc  1 a 1 36 ]
-"384
-[v CheckDo@result result `uc  1 a 1 35 ]
-"385
+"399
+[v CheckDo@checked_num checked_num `[4]uc  1 a 4 23 ]
+"396
+[v CheckDo@k k `i  1 a 2 35 ]
+[v CheckDo@j j `i  1 a 2 33 ]
+[v CheckDo@i i `i  1 a 2 31 ]
+"400
+[v CheckDo@success_check success_check `i  1 a 2 27 ]
+"398
+[v CheckDo@expected expected `uc  1 a 1 30 ]
+"397
+[v CheckDo@result result `uc  1 a 1 29 ]
+"398
 [v CheckDo@F1741 F1741 `[4]uc  1 s 4 F1741 ]
-"433
+"446
 } 0
 "117 /Users/YudaiHashimoto/MPLABXProjects/LanCableChecker.X/lcd.c
 [v _lcd_putint lcd_putint `(v  1 e 0 0 ]
 {
 [v lcd_putint@buf buf `*.4uc  1 a 1 wreg ]
 "121
-[v lcd_putint@length length `i  1 a 2 21 ]
+[v lcd_putint@length length `i  1 a 2 15 ]
 "122
-[v lcd_putint@minus_f minus_f `i  1 a 2 18 ]
+[v lcd_putint@minus_f minus_f `i  1 a 2 12 ]
 "119
-[v lcd_putint@v v `ui  1 a 2 16 ]
+[v lcd_putint@v v `ui  1 a 2 10 ]
 "120
-[v lcd_putint@c c `uc  1 a 1 20 ]
+[v lcd_putint@c c `uc  1 a 1 14 ]
 "117
 [v lcd_putint@buf buf `*.4uc  1 a 1 wreg ]
-[v lcd_putint@val val `i  1 p 2 8 ]
-[v lcd_putint@base base `i  1 p 2 10 ]
-[v lcd_putint@str_length str_length `i  1 p 2 12 ]
-[v lcd_putint@space_f space_f `uc  1 p 1 14 ]
+[v lcd_putint@val val `i  1 p 2 2 ]
+[v lcd_putint@base base `i  1 p 2 4 ]
+[v lcd_putint@str_length str_length `i  1 p 2 6 ]
+[v lcd_putint@space_f space_f `uc  1 p 1 8 ]
 "121
-[v lcd_putint@buf buf `*.4uc  1 a 1 23 ]
+[v lcd_putint@buf buf `*.4uc  1 a 1 17 ]
 "172
 } 0
 "59
@@ -397,24 +397,24 @@
 [v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "11
-[v ___awmod@sign sign `uc  1 a 1 13 ]
-[v ___awmod@counter counter `uc  1 a 1 12 ]
+[v ___awmod@sign sign `uc  1 a 1 1 ]
+[v ___awmod@counter counter `uc  1 a 1 0 ]
 "6
-[v ___awmod@divisor divisor `i  1 p 2 4 ]
-[v ___awmod@dividend dividend `i  1 p 2 6 ]
+[v ___awmod@divisor divisor `i  1 p 2 9 ]
+[v ___awmod@dividend dividend `i  1 p 2 11 ]
 "35
 } 0
 "6 /Applications/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "11
-[v ___awdiv@quotient quotient `i  1 a 2 2 ]
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
 "12
-[v ___awdiv@sign sign `uc  1 a 1 1 ]
-[v ___awdiv@counter counter `uc  1 a 1 0 ]
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
 "6
-[v ___awdiv@divisor divisor `i  1 p 2 6 ]
-[v ___awdiv@dividend dividend `i  1 p 2 8 ]
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "42
 } 0
 "68 /Users/YudaiHashimoto/MPLABXProjects/LanCableChecker.X/lcd.c

@@ -53,10 +53,9 @@ Pin-18ＬＣＤ：Ｄ６
 #pragma config PWRTE = ON       // Power-up Timer Enable bit (PWRT enabled)
 #pragma config CP = OFF         // FLASH Program Memory Code Protection bits (Code protection off)
 #pragma config BOREN = ON       // Brown-out Reset Enable bit (BOR enabled)
-#pragma config LVP = OFF        // Low Voltage In-Circuit Serial Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
+#pragma config LVP = ON        // Low Voltage In-Circuit Serial Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
 #pragma config CPD = OFF        // Data EE Memory Code Protection (Code Protection off)
 #pragma config WRT = ON         // FLASH Program Memory Write Enable (Unprotected program memory may be written to by EECON control)
-
 
 #include "lcd.h"
 
@@ -66,6 +65,10 @@ Pin-18ＬＣＤ：Ｄ６
 #define GTIME 0 //getetime 1sec
 
 #define _XTAL_FREQ 20000000
+
+#define BUTTON1 RA0
+#define BUTTON2 RA1
+
 
 static unsigned int MeasurementCnt;
 void interrupt itrpt(void);
@@ -147,6 +150,9 @@ void main()
   static char* msg;
   static unsigned long freq, temp; // 0...4294967295
   unsigned char buf[13], prescaler, gateTime;
+  int wave, freq_range;
+  
+  
   // ポートの設定
   TRISA = 0b11101111;
   TRISB = 0b00000000;
@@ -222,8 +228,73 @@ void main()
     lcd_goto(0x0C);
     lcd_puts("Hz");
     
-    RB7 = 0;
-    __delay_ms(500);
-    RB7 = 1;
+    if(!BUTTON1)
+    {
+      while(!BUTTON1)
+        continue;
+      freq_range ++;
+      freq_range %= 8;
+    }
+    
+    if(!BUTTON2)
+    {
+      while(!BUTTON2)
+        continue;
+      freq_range ++;
+      freq_range %= 3;
+    }
+    
+    switch(freq_range)
+    {
+      case 0 : lcd_goto(0x48);
+               lcd_puts("20k");
+               PORTB = (0b00000100 & 0b11111100) | (PORTB & 0b00000011);
+               break;
+      case 1 : lcd_goto(0x48);
+               lcd_puts("Hz");
+               PORTB = (0b00001000 & 0b11111100) | (PORTB & 0b00000011);
+               break;
+      case 2 : lcd_goto(0x48);
+               lcd_puts("Hz");
+               PORTB = (0b00010000 & 0b11111100) | (PORTB & 0b00000011);
+               break;
+      case 3 : lcd_goto(0x48);
+               lcd_puts("Hz");
+               PORTB = (0b00100000 & 0b11111100) | (PORTB & 0b00000011);
+               break;
+      case 4 : lcd_goto(0x48);
+               lcd_puts("Hz");
+               PORTB = (0b01000000 & 0b11111100) | (PORTB & 0b00000011);
+               break;
+      case 5 : lcd_goto(0x48);
+               lcd_puts("Hz");
+               PORTB = (0b10000000 & 0b11111100) | (PORTB & 0b00000011);
+               break;
+      default: lcd_goto(0x48);
+               lcd_puts("???");
+               PORTB = (0b00000100 & 0b11111100) | (PORTB & 0b00000011);
+               break;
+    }
+    
+    switch(wave)
+    {
+      case 0 : lcd_goto(0x40);
+               lcd_puts("SIN");
+               PORTB = (0b00000001 & 0b00000011) | (PORTB & 0b11111100);
+               break;
+      case 1 : lcd_goto(0x40);
+               lcd_puts("SQU");
+               PORTB = (0b00000010 & 0b00000011) | (PORTB & 0b11111100);
+               break;
+      case 2 : lcd_goto(0x40);
+               lcd_puts("TRI");
+               PORTB = (0b00000011 & 0b00000011) | (PORTB & 0b11111100);
+               break;
+      default: lcd_goto(0x40);
+               lcd_puts("???");
+               PORTB = (0b00000001 & 0b00000011) | (PORTB & 0b11111100);
+               break;
+    }
+    
   }
 }

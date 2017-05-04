@@ -6,9 +6,9 @@
 #include	<xc.h>
 #include	"lcd.h"
 
-#define	LCD_RS RC5
+#define	LCD_RS RC7
 #define	LCD_RW RC6
-#define LCD_EN RC7
+#define LCD_EN RC5
 #define LCD_D4 RC1
 #define LCD_D5 RC2
 #define LCD_D6 RC3

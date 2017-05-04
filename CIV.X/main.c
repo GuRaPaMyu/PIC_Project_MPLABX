@@ -1,5 +1,5 @@
 #define _XTAL_FREQ 20000000
-#define IC756
+#define IC7200
 
 
 #ifdef IC7200
@@ -7,15 +7,15 @@
 	#define FREQ_START 5
 	#define ADDRESS 0x76
 #endif
-#ifdef IC756
-	#define CHKDATA 4
-	#define FREQ_START 5
-	#define ADDRESS 0x50
-#else
-	#define CHKDATA 4
-	#define FREQ_START 5
-	#define ADDRESS 0x00
-#endif
+//#ifdef IC756
+//	#define CHKDATA 4
+//	#define FREQ_START 5
+//	#define ADDRESS 0x50
+//#else
+//	#define CHKDATA 4
+//	#define FREQ_START 5
+//	#define ADDRESS 0x00
+//#endif
 
 /*
 __CONFIG(FOSC_HS
@@ -48,17 +48,15 @@ __CONFIG(FCMEN_OFF & IESO_OFF);
 #pragma config PWRTE = ON       // Power-up Timer Enable bit (PWRT enabled)
 #pragma config MCLRE = ON       // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is MCLR)
 #pragma config BOREN = ON       // Brown-out Reset Enable bit (BOR enabled)
-#pragma config LVP = ON         // Low-Voltage Programming Enable bit (RB3/PGM pin has PGM function, Low-Voltage Programming enabled)
+#pragma config LVP = OFF         // Low-Voltage Programming Enable bit (RB3/PGM pin has PGM function, Low-Voltage Programming enabled)
 #pragma config CPD = OFF        // Data EE Memory Code Protection bit (Code protection off)
 #pragma config WRT = OFF        // Flash Program Memory Write Enable bits (Write protection off)
 #pragma config CCPMX = RB0      // CCP1 Pin Selection bit (CCP1 function on RB0)
 #pragma config CP = OFF         // Flash Program Memory Code Protection bit (Code protection off)
 
 // CONFIG2
-#pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
-#pragma config IESO = ON        // Internal External Switchover bit (Internal External Switchover mode enabled)
-
-
+#pragma config FCMEN = OFF       // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
+#pragma config IESO = OFF        // Internal External Switchover bit (Internal External Switchover mode enabled
 
 // prototype declaration
 void ci_v_init();
@@ -74,18 +72,19 @@ void debug_unit(char debug_unit);
 
 //variable declaration
 static int status_num = 0;
-static int frag = 0;
+static int flag = 0;
 char receive_data[12];
 char freq_data[8];
 int data_num = 0;
 int err_cnt = 0;
+unsigned char recv_addr = 0x00;
 
 void main(void)
 {	
+  ci_v_init();
 	while(1)
 	{
-//	ci_v_init();
-//	scan_ex();
+//	scan_ex(); 
 		switch(status_num)
 		{
 			case 0 : 	ci_v_init();
@@ -108,7 +107,7 @@ void main(void)
 
 void ci_v_init()
 {
-	if(frag == 0)
+	if(flag == 0)
 	{
 	CMCON = 0b00000111; //cut off analog comparator just add this one
 	TRISA = 0b00000000;
@@ -123,31 +122,29 @@ void ci_v_init()
 	__delay_ms(2);
 	lcd_goto(0x00);	// select first line
 	__delay_us(50);
-	lcd_puts("**** IC-756 ****");
+	lcd_puts("**** JP7IFH ****");
 	lcd_goto(0x40);	// Select second line
 	__delay_us(50);
-	lcd_puts("--Freq Display--");
+	lcd_puts("- Freq Display -");
 	__delay_ms(30);
-	
-	/*	
-	putch(0xFE);
-	putch(0xFE);
-	putch(ADDRESS);
-	putch(0x00);
-	putch(0x30);
-	putch(0xFD);
-	*/
 	
 	status_num = 1;
 	
 	}else{
 	lcd_goto(0x00);
 	__delay_us(50);
-	lcd_puts("IC-756          ");
+	lcd_puts("JP7IFH          ");
 	__delay_us(50);
 	lcd_goto(0x40);
 	__delay_us(50);
 	lcd_puts("Freq= ");
+  recv_addr = receive_data[CHKDATA - 1];
+  putch(0xFE);
+	putch(0xFE);
+	putch(recv_addr);
+	putch(0x00);
+	putch(0x04);
+	putch(0xFD);
 	status_num = 1;
 	}
 }
@@ -191,9 +188,9 @@ void check_data()
 	{
 		swap_freq_data();
 		
-//	}else if(receive_data[CHKDATA] == 0x01)
-//	{
-//		indicate_mode();
+	}else if(receive_data[CHKDATA] == 0x01)
+	{
+		indicate_mode();
 		
 	}else{
 	
@@ -220,7 +217,7 @@ char trans_value(char val)
 
 void swap_freq_data()
 {
-	int space_frag;
+	int space_flag;
 	int i,j;
 
 	for(i=0;i<4;i++)
@@ -229,7 +226,7 @@ void swap_freq_data()
  	}
  	
  	j = 0;
- 	space_frag = 0;
+ 	space_flag = 0;
 	for(i=0;i<8;i++)
 	{
 		if((i == 2) || (i == 5))
@@ -241,11 +238,11 @@ void swap_freq_data()
 		receive_data[j] = trans_value(freq_data[i]); //set char instead of hex number
 		j++;
 	
-		if((receive_data[i] == 0x30) && (space_frag == 0))  //change to space if the head number is 0
+		if((receive_data[i] == 0x30) && (space_flag == 0))  //change to space if the head number is 0
 	 	{
 	 	receive_data[i] = 0x20;
 		}else{
-		space_frag = 1;
+		space_flag = 1;
 		}
 	
 		if(j == 10)
@@ -266,14 +263,13 @@ void indicate_frequency_data()
 	__delay_us(50);
 	status_num = 1;
 
-	if(frag == 0)
+	if(flag == 0)
 	{
-	frag = 1;
+	flag = 1;
 	status_num = 0;
 	}
 }
 
-/*
 void indicate_mode()
 {	
 	lcd_goto(0x07);
@@ -307,5 +303,3 @@ void indicate_mode()
 	}
 	status_num = 1;	
 }
-
-*/
